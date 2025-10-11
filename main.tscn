@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=4 uid="uid://dofvc2ex1xykw"]
+
+[ext_resource type="Script" uid="uid://dd8e7lcfu6dkt" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b1vf8vuod1vvw" path="res://TextProcessor.tscn" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cju0nqelwrivj" path="res://assets/ui_frame.png" id="2_kek77"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="3_4c57u"]
+[ext_resource type="PackedScene" uid="uid://sw0x55mw6x86" path="res://Connection.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dy4dr3y4q365w" path="res://Input.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dywvgxco7w4qo" path="res://map.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://e8rqkwrkkjie" path="res://status.tscn" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://47siqdrbmm5y" path="res://Containers.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dsg3jfw1l31dd" path="res://mobs.tscn" id="8_5vw27"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
+texture = ExtResource("2_kek77")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_efxa6"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_4c57u")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
+
+[node name="bg" type="Panel" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="frames" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAnAAEAAQAAAAEAAAAeAAIAAQABAAEAAAAeAAMAAQAAAAEAAAAeAAQAAQAAAAEAAAAeAAUAAQAAAAEAAAAeAAYAAQAAAAEAAAAeAAcAAQAAAAEAAAAeAAgAAQAAAAEAAAAeAAoAAQAAAAIAAAAfAAoAAQABAAIAAAAgAAoAAQABAAIAAAAhAAoAAQABAAIAAAAiAAoAAQABAAIAAAAjAAoAAQABAAIAAAAkAAoAAQABAAIAAAAlAAoAAQABAAIAAAAmAAoAAQABAAIAAAAnAAoAAQADAAIAAAAeAAkAAQAAAAEAAAAnAAMAAQAAAAEAAAAnAAQAAQAAAAEAAAAnAAUAAQAAAAEAAAAnAAYAAQAAAAEAAAAnAAcAAQAAAAEAAAAnAAgAAQAAAAEAAAAnAAkAAQAAAAEAAAAeAAEAAQAAAAEAAAAeAAAAAQAAAAAAAAAfAAAAAQABAAAAAAAgAAAAAQABAAAAAAAhAAAAAQABAAIAAAAlAAAAAQABAAAAAAAmAAAAAQABAAAAAAAnAAAAAQADAAAAAAAeAAsAAQAAAAAAAAAeAAwAAQABAAEAAAAeAA0AAQAAAAEAAAAeAA4AAQAAAAEAAAAeAA8AAQABAAEAAAAeABAAAQAAAAEAAAAeABEAAQAAAAEAAAAeABIAAQABAAEAAAAeABMAAQAAAAEAAAAeABQAAQAAAAEAAAAfAAsAAQABAAAAAAAgAAsAAQABAAAAAAAhAAsAAQABAAAAAAAhAAwAAQACAAAAAAAhAA0AAQAAAAEAAAAhAA4AAQAAAAEAAAAhAA8AAQACAAEAAAAhABAAAQAAAAEAAAAhABEAAQAAAAEAAAAhABIAAQACAAEAAAAhABMAAQAAAAEAAAAhABQAAQAAAAEAAAAiAAsAAQABAAAAAAAjAAsAAQABAAAAAAAkAAsAAQABAAAAAAAkAAwAAQACAAAAAAAkAA0AAQAAAAEAAAAkAA4AAQAAAAEAAAAkAA8AAQACAAEAAAAkABAAAQAAAAEAAAAkABEAAQAAAAEAAAAkABIAAQACAAEAAAAkABMAAQAAAAEAAAAkABQAAQAAAAEAAAAlAAsAAQABAAAAAAAmAAsAAQABAAAAAAAnAAsAAQADAAAAAAAnAAwAAQADAAEAAAAnAA0AAQAAAAEAAAAnAA4AAQAAAAEAAAAnAA8AAQADAAEAAAAnABAAAQAAAAEAAAAnABEAAQAAAAEAAAAnABIAAQADAAEAAAAnABMAAQAAAAEAAAAnABQAAQAAAAEAAAAeABUAAQAAAAIAAAAfAAwAAQABAAAAAAAfAA8AAQABAAAAAAAfABIAAQABAAAAAAAfABUAAQABAAAAAAAgAAwAAQABAAAAAAAgAA8AAQABAAAAAAAgABIAAQABAAAAAAAgABUAAQABAAAAAAAhABUAAQACAAIAAAAiAAwAAQABAAAAAAAiAA8AAQABAAAAAAAiABIAAQABAAAAAAAiABUAAQABAAAAAAAjAAwAAQABAAAAAAAjAA8AAQABAAAAAAAjABIAAQABAAAAAAAjABUAAQABAAAAAAAkABUAAQACAAIAAAAlAAwAAQABAAAAAAAlAA8AAQABAAAAAAAlABIAAQABAAAAAAAlABUAAQABAAAAAAAmAAwAAQABAAAAAAAmAA8AAQABAAAAAAAmABIAAQABAAAAAAAmABUAAQABAAAAAAAnABUAAQADAAIAAAAnAAIAAQADAAEAAAAfAAIAAQABAAAAAAAgAAIAAQABAAAAAAAhAAIAAQABAAAAAAAiAAIAAQABAAAAAAAjAAIAAQABAAAAAAAkAAIAAQABAAAAAAAlAAIAAQABAAAAAAAmAAIAAQABAAAAAAAkAAAAAQABAAIAAAAiAAAAAQAAAAMAAAAjAAAAAQABAAMAAAACABUAAQAAAAIAAAADABUAAQABAAAAAAAEABUAAQABAAAAAAAFABUAAQABAAAAAAAGABUAAQABAAAAAAAHABUAAQABAAAAAAAIABUAAQABAAAAAAAJABUAAQABAAAAAAAKABUAAQABAAAAAAALABUAAQABAAAAAAAMABUAAQABAAAAAAANABUAAQABAAAAAAAOABUAAQABAAAAAAAPABUAAQABAAAAAAAQABUAAQADAAIAAAATABUAAQAAAAIAAAAUABUAAQABAAIAAAAVABUAAQABAAIAAAAWABUAAQABAAIAAAAXABUAAQABAAIAAAAYABUAAQABAAIAAAAZABUAAQABAAIAAAAaABUAAQABAAIAAAAbABUAAQABAAIAAAAcABUAAQABAAIAAAAdABUAAQADAAIAAAAcABQAAQABAAIAAAAbABQAAQABAAIAAAAaABQAAQABAAIAAAAZABQAAQABAAIAAAAYABQAAQABAAIAAAAXABQAAQABAAIAAAAWABQAAQABAAIAAAAVABQAAQABAAIAAAAUABQAAQABAAIAAAATABQAAQAAAAAAAAADABQAAQABAAAAAAAEABQAAQABAAAAAAAFABQAAQABAAAAAAAGABQAAQABAAAAAAAHABQAAQABAAAAAAAIABQAAQABAAAAAAAJABQAAQABAAAAAAAKABQAAQABAAAAAAALABQAAQABAAAAAAAMABQAAQABAAAAAAANABQAAQABAAAAAAAOABQAAQABAAAAAAAPABQAAQABAAAAAAAQABQAAQADAAAAAAAdABMAAQADAAIAAAAcABMAAQABAAMAAAAdABIAAQACAAMAAAAdAAAAAQADAAAAAAAAAAAAAQAAAAAAAAAdAAEAAQADAAMAAAAAAAEAAQADAAMAAAABAAAAAQAAAAMAAAAcAAAAAQABAAMAAAAAABMAAQAAAAIAAAAAABIAAQACAAMAAAABABMAAQAAAAMAAAAdABQAAQADAAAAAAACABQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_efxa6")
+
+[node name="Input_label" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 11.0
+offset_top = 652.0
+offset_right = 77.0
+offset_bottom = 692.0
+theme_override_fonts/normal_font = ExtResource("3_4c57u")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Input:"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Status_label" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 545.0
+offset_top = 652.0
+offset_right = 621.0
+offset_bottom = 692.0
+theme_override_fonts/normal_font = ExtResource("3_4c57u")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Status:"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextProcessor" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(33, 33)
+
+[node name="Connection" parent="." instance=ExtResource("3_lquwl")]
+
+[node name="Input" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(81, 656)
+
+[node name="Status" parent="." instance=ExtResource("5_272bh")]
+position = Vector2(-28, 22)
+
+[node name="Map" parent="." instance=ExtResource("5_7mycd")]
+position = Vector2(973, 13)
+
+[node name="Mobs" parent="." instance=ExtResource("8_5vw27")]
+position = Vector2(1, 625)
+
+[node name="Containers" parent="." instance=ExtResource("5_lquwl")]

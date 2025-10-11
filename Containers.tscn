@@ -1,0 +1,347 @@
+[gd_scene load_steps=20 format=4 uid="uid://47siqdrbmm5y"]
+
+[ext_resource type="Script" uid="uid://dh5p1h1ow0a8g" path="res://containers.gd" id="1_aqjdc"]
+[ext_resource type="Texture2D" uid="uid://c3fn1ppgdav4d" path="res://assets/backpack.png" id="1_l1ewb"]
+[ext_resource type="Texture2D" uid="uid://c30y87tpk5nvi" path="res://assets/status.png" id="3_eq0ym"]
+[ext_resource type="Texture2D" uid="uid://db7d38mogv2yf" path="res://assets/skills.png" id="4_cqlh8"]
+[ext_resource type="Texture2D" uid="uid://c4nrcqenb1u7i" path="res://assets/spells.png" id="5_yq0kq"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="6_jsvej"]
+[ext_resource type="Script" uid="uid://ccuqqlwx5pgei" path="res://backpack.gd" id="7_q7mms"]
+[ext_resource type="Texture2D" uid="uid://cju0nqelwrivj" path="res://assets/ui_frame.png" id="7_yq0kq"]
+[ext_resource type="Script" uid="uid://b7hug1li3jn7u" path="res://status_container.gd" id="9_labx1"]
+[ext_resource type="Script" uid="uid://chgk7vyc311w3" path="res://skills.gd" id="10_2t56i"]
+[ext_resource type="Script" uid="uid://dqhhwy0l5vbbb" path="res://spells.gd" id="11_x6kya"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqlh8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq0ym"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7mms"]
+texture = ExtResource("7_yq0kq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_labx1"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_q7mms")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq0kq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7mms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_labx1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2t56i"]
+
+[node name="Containers" type="Node2D"]
+script = ExtResource("1_aqjdc")
+
+[node name="Buttons_BG" type="Panel" parent="."]
+texture_filter = 1
+offset_left = 955.0
+offset_top = 363.0
+offset_right = 1275.0
+offset_bottom = 716.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cqlh8")
+
+[node name="GridContainer" type="GridContainer" parent="Buttons_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 23.0
+offset_top = 40.0
+offset_right = 2302.0
+offset_bottom = 1558.0
+scale = Vector2(0.125, 0.125)
+columns = 3
+
+[node name="backpack_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("1_l1ewb")
+
+[node name="backpack_button2" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("3_eq0ym")
+
+[node name="skills_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("4_cqlh8")
+
+[node name="spells_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("5_yq0kq")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Buttons_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = 2.0
+offset_right = 310.0
+offset_bottom = 42.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Options"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backpack" type="Panel" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 317.0
+offset_bottom = 604.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("7_q7mms")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Backpack"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 9.0
+offset_top = 34.0
+offset_right = 317.0
+offset_bottom = 570.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+autowrap_trim_flags = 0
+tab_size = 2
+
+[node name="frames" type="TileMapLayer" parent="Backpack"]
+texture_filter = 1
+position = Vector2(-16, -18)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAABMAAQAAAAIAAAAIABMAAQABAAIAAAABABMAAQABAAIAAAACABMAAQABAAIAAAADABMAAQABAAIAAAAEABMAAQABAAAAAAAFABMAAQABAAIAAAAGABMAAQABAAIAAAAHABMAAQABAAIAAAAAAAwAAQAAAAEAAAAAAA0AAQAAAAEAAAAAAA4AAQAAAAEAAAAAAA8AAQAAAAEAAAAAABAAAQAAAAEAAAAAABEAAQAAAAEAAAAAABIAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAAIABIAAQABAAIAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAABABIAAQABAAAAAAACABIAAQABAAAAAAADABIAAQABAAAAAAAEABIAAQABAAAAAAAFABIAAQABAAAAAAAGABIAAQABAAAAAAAHABIAAQABAAAAAAAJABIAAQABAAAAAAAJABMAAQABAAIAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQAAAAEAAAAKAAMAAQAAAAEAAAAKAAQAAQAAAAEAAAAKAAUAAQAAAAEAAAAKAAYAAQAAAAEAAAAKAAcAAQAAAAEAAAAKAAgAAQAAAAEAAAAKAAkAAQAAAAEAAAAKAAoAAQAAAAEAAAAKAAsAAQAAAAEAAAAKAAwAAQAAAAEAAAAKAA0AAQAAAAEAAAAKAA4AAQAAAAEAAAAKAA8AAQAAAAEAAAAKABAAAQAAAAEAAAAKABEAAQAAAAEAAAAKABIAAQADAAEAAAAKABMAAQADAAIAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Move" type="Button" parent="Backpack"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 317.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Backpack"
+autowrap_trim_flags = 0
+
+[node name="Close" type="Button" parent="Backpack"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 577.0
+offset_right = 317.0
+offset_bottom = 603.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Status" type="Panel" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 797.0
+offset_bottom = 284.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("9_labx1")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Status"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 34.0
+offset_right = 796.0
+offset_bottom = 250.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+autowrap_trim_flags = 0
+tab_size = 2
+vertical_alignment = 1
+
+[node name="frames" type="TileMapLayer" parent="Status"]
+texture_filter = 1
+position = Vector2(-16, -18)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQABAAEAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAEAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQAAAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAAAAAkAAQAAAAIAAAABAAkAAQABAAAAAAACAAkAAQABAAAAAAADAAkAAQABAAAAAAAEAAkAAQABAAAAAAAFAAkAAQABAAAAAAAGAAkAAQABAAAAAAAHAAkAAQABAAAAAAAIAAkAAQABAAAAAAAJAAkAAQABAAAAAAAKAAkAAQABAAAAAAALAAkAAQABAAAAAAAMAAkAAQABAAAAAAANAAkAAQABAAAAAAAOAAkAAQABAAAAAAAPAAkAAQABAAAAAAAQAAkAAQABAAAAAAARAAkAAQABAAAAAAASAAkAAQABAAAAAAATAAkAAQABAAAAAAAUAAkAAQABAAAAAAAVAAkAAQABAAAAAAAWAAkAAQABAAAAAAAXAAkAAQABAAAAAAAYAAkAAQABAAAAAAAZAAkAAQADAAIAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Move" type="Button" parent="Status"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 797.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Score"
+autowrap_trim_flags = 0
+
+[node name="Close" type="Button" parent="Status"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 257.0
+offset_right = 797.0
+offset_bottom = 283.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Skills" type="Panel" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 797.0
+offset_bottom = 251.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("10_2t56i")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Skills"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 34.0
+offset_right = 793.0
+offset_bottom = 218.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+vertical_alignment = 1
+
+[node name="frames" type="TileMapLayer" parent="Skills"]
+texture_filter = 1
+position = Vector2(-19, -18)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAIAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQADAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Close" type="Button" parent="Skills"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 225.0
+offset_right = 794.0
+offset_bottom = 251.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Move" type="Button" parent="Skills"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 797.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Skills"
+autowrap_trim_flags = 0
+
+[node name="Spells" type="Panel" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 794.0
+offset_bottom = 250.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Spells"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 793.0
+offset_bottom = 217.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+
+[node name="frames" type="TileMapLayer" parent="Spells"]
+texture_filter = 1
+position = Vector2(-19, -19)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAIAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQADAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Close" type="Button" parent="Spells"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 224.0
+offset_right = 794.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Move" type="Button" parent="Spells"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 797.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Spells"
+autowrap_trim_flags = 0
+
+[connection signal="pressed" from="Buttons_BG/GridContainer/backpack_button" to="." method="_on_backpack_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/backpack_button2" to="." method="_on_status_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/skills_button" to="." method="_on_skills_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/spells_button" to="." method="_on_spells_button_pressed"]
+[connection signal="button_down" from="Backpack/Move" to="Backpack" method="_on_move_button_down"]
+[connection signal="button_up" from="Backpack/Move" to="Backpack" method="_on_move_button_up"]
+[connection signal="pressed" from="Backpack/Close" to="." method="_on_close_pressed"]
+[connection signal="button_down" from="Status/Move" to="Status" method="_on_move_button_down"]
+[connection signal="button_up" from="Status/Move" to="Status" method="_on_move_button_up"]
+[connection signal="pressed" from="Status/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Skills/Close" to="." method="_on_close_pressed"]
+[connection signal="button_down" from="Skills/Move" to="Skills" method="_on_move_button_down"]
+[connection signal="button_up" from="Skills/Move" to="Skills" method="_on_move_button_up"]
+[connection signal="pressed" from="Spells/Close" to="." method="_on_close_pressed"]
+[connection signal="button_down" from="Spells/Move" to="Spells" method="_on_move_button_down"]
+[connection signal="button_up" from="Spells/Move" to="Spells" method="_on_move_button_up"]

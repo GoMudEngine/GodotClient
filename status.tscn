@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://e8rqkwrkkjie"]
+
+[ext_resource type="Script" uid="uid://7r6mrpmkjods" path="res://status.gd" id="1_b8nkn"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_b8nkn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8nkn"]
+
+[node name="Status" type="Node2D"]
+script = ExtResource("1_b8nkn")
+
+[node name="Status_BG" type="Panel" parent="."]
+texture_filter = 1
+offset_left = 630.0
+offset_top = 675.0
+offset_right = 950.0
+offset_bottom = 715.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b8nkn")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Status_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = -44.0
+offset_right = 337.0
+offset_bottom = -4.0
+theme_override_fonts/normal_font = ExtResource("2_b8nkn")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1

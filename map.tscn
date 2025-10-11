@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://dywvgxco7w4qo"]
+
+[ext_resource type="Script" uid="uid://bmy4ghrn00lv0" path="res://map.gd" id="1_c7s6e"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_wijl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wijl4"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_c7s6e")
+
+[node name="Map_BG" type="Panel" parent="."]
+texture_filter = 1
+offset_right = 288.0
+offset_bottom = 288.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wijl4")
+
+[node name="Name" type="RichTextLabel" parent="Map_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = -12.0
+offset_right = 290.0
+offset_bottom = 12.0
+theme_override_fonts/normal_font = ExtResource("2_wijl4")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Map"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextDisplay_Location_Name" type="RichTextLabel" parent="Map_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 290.0
+offset_bottom = 68.0
+theme_override_fonts/normal_font = ExtResource("2_wijl4")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextDisplay" type="RichTextLabel" parent="Map_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 48.0
+offset_right = 290.0
+offset_bottom = 332.0
+theme_override_fonts/normal_font = ExtResource("2_wijl4")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextDisplay_Exits" type="RichTextLabel" parent="Map_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 257.0
+offset_right = 290.0
+offset_bottom = 321.0
+theme_override_fonts/normal_font = ExtResource("2_wijl4")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 2

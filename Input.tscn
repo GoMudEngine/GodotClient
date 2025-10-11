@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy4dr3y4q365w"]
+
+[ext_resource type="Script" uid="uid://d3sukwct6alh0" path="res://input.gd" id="1_xone2"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_qa0ix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xone2"]
+
+[node name="Input" type="Node2D"]
+script = ExtResource("1_xone2")
+
+[node name="Command" type="LineEdit" parent="."]
+offset_right = 446.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("2_qa0ix")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xone2")
+placeholder_text = "Input something here....."
+alignment = 1
+keep_editing_on_text_submit = true
+
+[connection signal="text_submitted" from="Command" to="." method="_on_command_text_submitted"]

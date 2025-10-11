@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://dofvc2ex1xykw"]
+
+[ext_resource type="Script" uid="uid://dd8e7lcfu6dkt" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b1vf8vuod1vvw" path="res://TextProcessor.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://sw0x55mw6x86" path="res://Connection.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dy4dr3y4q365w" path="res://Input.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dywvgxco7w4qo" path="res://map.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://47siqdrbmm5y" path="res://backpack.tscn" id="5_lquwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
+
+[node name="bg" type="Panel" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
+
+[node name="TextProcessor" parent="." instance=ExtResource("2_h2yge")]
+
+[node name="Connection" parent="." instance=ExtResource("3_lquwl")]
+
+[node name="Input" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="Map" parent="." instance=ExtResource("5_7mycd")]
+
+[node name="Backpack" parent="." instance=ExtResource("5_lquwl")]

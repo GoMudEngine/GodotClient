@@ -145,10 +145,5 @@ If you’d like to collaborate, please follow these steps:</p>
 <h2>📬 Contact</h2>
 <ul>
   <li><b>GitHub:</b> <a href="https://github.com/GoMudEngine">GoMudEngine</a></li>
-  <li><b>Project Maintainer:</b> (add your name or contact)</li>
+  <li><b>Project Maintainer:</b> DEVCI </li>
 </ul>
-
-<hr>
-
-<h2>🧙‍♂️ Quote</h2>
-<blockquote><i>"In text, the world becomes infinite."</i> — <b>GoMudEngine Philosophy</b></blockquote>

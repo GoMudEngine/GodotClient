@@ -1,23 +1,9 @@
 extends Node2D
-
-signal button_commands_submitted(data: String)
 	
 func _ready():
 	$Backpack.visible = false
 	$Status.visible = false
 	$"../TextProcessor".connect("container_request", Callable(self, "_on_container_request_received"))
-
-func _on_backpack_button_pressed() -> void:
-	emit_signal("button_commands_submitted", "eq")
-	
-func _on_status_button_pressed() -> void:
-	emit_signal("button_commands_submitted", "status")
-	
-func _on_skills_button_pressed() -> void:
-	emit_signal("button_commands_submitted", "skills")
-
-func _on_spells_button_pressed() -> void:
-	emit_signal("button_commands_submitted", "spells")
 
 func clean_unwanted_symbols(data: String) -> String:
 	data = data.replace("┌"," ")

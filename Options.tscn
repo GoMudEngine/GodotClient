@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://6wgctohcvfte"]
+
+[ext_resource type="Texture2D" uid="uid://c3fn1ppgdav4d" path="res://assets/backpack.png" id="1_2r1l1"]
+[ext_resource type="Script" uid="uid://cjyiwpvt3l6me" path="res://options.gd" id="1_p8250"]
+[ext_resource type="Texture2D" uid="uid://c30y87tpk5nvi" path="res://assets/status.png" id="2_bwr58"]
+[ext_resource type="Texture2D" uid="uid://db7d38mogv2yf" path="res://assets/skills.png" id="3_dfe3t"]
+[ext_resource type="Texture2D" uid="uid://c4nrcqenb1u7i" path="res://assets/spells.png" id="4_t1d33"]
+[ext_resource type="Texture2D" uid="uid://cirk3qabkxsfu" path="res://assets/exit.png" id="6_dfe3t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pjjr"]
+
+[node name="Options" type="Node2D"]
+script = ExtResource("1_p8250")
+
+[node name="Buttons_BG" type="Panel" parent="."]
+texture_filter = 1
+offset_right = 320.0
+offset_bottom = 353.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5pjjr")
+
+[node name="GridContainer" type="GridContainer" parent="Buttons_BG"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 23.0
+offset_top = 40.0
+offset_right = 2302.0
+offset_bottom = 1558.0
+scale = Vector2(0.125, 0.125)
+columns = 3
+
+[node name="backpack_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("1_2r1l1")
+stretch_mode = 0
+
+[node name="status_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_bwr58")
+stretch_mode = 0
+
+[node name="skills_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("3_dfe3t")
+stretch_mode = 0
+
+[node name="spells_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("4_t1d33")
+stretch_mode = 0
+
+[node name="exit_button" type="TextureButton" parent="Buttons_BG/GridContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("6_dfe3t")
+stretch_mode = 0
+
+[connection signal="pressed" from="Buttons_BG/GridContainer/backpack_button" to="." method="_on_backpack_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/status_button" to="." method="_on_status_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/skills_button" to="." method="_on_skills_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/spells_button" to="." method="_on_spells_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/exit_button" to="." method="_on_exit_button_pressed"]

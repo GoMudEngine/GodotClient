@@ -3,7 +3,7 @@ extends Node2D
 signal cmd_text_submitted(data: String)
 
 func _ready():
-	$"../Containers".connect("button_commands_submitted", Callable(self, "_on_button_command_text_submitted"))
+	$"../Options".connect("button_commands_submitted", Callable(self, "_on_button_command_text_submitted"))
 
 func _on_button_command_text_submitted(data: String) -> void:
 	if len(data) > 0:

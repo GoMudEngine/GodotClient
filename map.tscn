@@ -14,23 +14,6 @@ offset_right = 288.0
 offset_bottom = 288.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wijl4")
 
-[node name="Name" type="RichTextLabel" parent="Map_BG"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 6.0
-offset_top = -12.0
-offset_right = 290.0
-offset_bottom = 12.0
-theme_override_fonts/normal_font = ExtResource("2_wijl4")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Map"
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TextDisplay_Location_Name" type="RichTextLabel" parent="Map_BG"]
 texture_filter = 1
 layout_mode = 0

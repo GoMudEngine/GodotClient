@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dofvc2ex1xykw"]
+[gd_scene load_steps=15 format=4 uid="uid://dofvc2ex1xykw"]
 
 [ext_resource type="Script" uid="uid://dd8e7lcfu6dkt" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b1vf8vuod1vvw" path="res://TextProcessor.tscn" id="2_h2yge"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://e8rqkwrkkjie" path="res://status.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://47siqdrbmm5y" path="res://Containers.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dsg3jfw1l31dd" path="res://mobs.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://6wgctohcvfte" path="res://Options.tscn" id="10_efxa6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
 bg_color = Color(0, 0, 0, 1)
@@ -83,6 +84,38 @@ tab_size = 2
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Options_label" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 976.0
+offset_top = 364.0
+offset_right = 1264.0
+offset_bottom = 404.0
+theme_override_fonts/normal_font = ExtResource("3_4c57u")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Options"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map_label" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 980.0
+offset_top = 4.0
+offset_right = 1264.0
+offset_bottom = 28.0
+theme_override_fonts/normal_font = ExtResource("3_4c57u")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Map"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextProcessor" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(33, 33)
 
@@ -100,4 +133,8 @@ position = Vector2(973, 13)
 [node name="Mobs" parent="." instance=ExtResource("8_5vw27")]
 position = Vector2(1, 625)
 
+[node name="Options" parent="." instance=ExtResource("10_efxa6")]
+position = Vector2(954, 362)
+
 [node name="Containers" parent="." instance=ExtResource("5_lquwl")]
+position = Vector2(8, 8)

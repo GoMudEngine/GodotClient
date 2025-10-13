@@ -54,32 +54,6 @@ cd GodotClient
 
 <hr>
 
-<h2>⚙️ Customization</h2>
-<ul>
-  <li>🎨 <b>Themes & Fonts</b> – Use your own color palette or UI skin in the Theme resource</li>
-  <li>🧮 <b>Protocol adapters</b> – Extend the <code>Connection</code> class for custom Telnet / WebSocket protocols</li>
-  <li>⚔️ <b>Macros & Aliases</b> – Add local command automation or key bindings</li>
-  <li>📜 <b>Logging / Transcript</b> – Implement chat logging for debugging or story replay</li>
-  <li>🔔 <b>Audio / Visual Feedback</b> – Integrate sound cues or animations for events</li>
-</ul>
-
-<hr>
-
-<h2>🧾 Example Session</h2>
-
-<pre><code>&gt; connect mud.example.com 4000
-[Connected successfully!]
-
-&lt; The MUD server says: “Welcome, adventurer.” &gt;
-&gt; look
-You are in a small forest glade. Paths lead north and east.
-&gt; go north
-</code></pre>
-
-<p>Text input is handled by <code>Input.gd</code>, output is processed via <code>TextProcessor.gd</code>, and displayed in a <code>RichTextLabel</code> with BBCode formatting.</p>
-
-<hr>
-
 <h2>🧰 Tech Stack</h2>
 <ul>
   <li><b>Engine:</b> Godot 4.x</li>

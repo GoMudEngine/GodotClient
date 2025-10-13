@@ -120,6 +120,7 @@ vertical_alignment = 1
 position = Vector2(33, 33)
 
 [node name="Connection" parent="." instance=ExtResource("3_lquwl")]
+position = Vector2(39, 1)
 
 [node name="Input" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(81, 656)

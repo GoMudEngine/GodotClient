@@ -12,7 +12,6 @@ const _RIGHT_CHARS := {"╗": true, "║": true, "╝": true}
 
 var _in_map := false
 var _cur_map: Array = []
-var _first_msg := true
 var _backpack_prohibit = false
 
 # remember first line + left index to compute prefix
@@ -317,9 +316,9 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 	# big message
 	if descs_size > 2:
 		#print("Large desc ---------------")
-		if _first_msg:
+		if Global_Status._first_msg:
 			$TextDisplay.append_text(bb_chunk)
-			_first_msg = false
+			Global_Status._first_msg = false
 			return
 
 		# --- Step 1: Trim each line and remove empties ---

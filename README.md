@@ -50,23 +50,6 @@ cd GodotClient
 
 <hr>
 
-<h2>🛠️ Project Structure</h2>
-
-<table>
-<thead>
-<tr><th>File / Scene</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td><code>main.tscn</code> / <code>main.gd</code></td><td>Entry point — orchestrates UI and manages the client lifecycle</td></tr>
-<tr><td><code>Connection.tscn</code> / <code>connection.gd</code></td><td>Handles WebSocket / socket communication</td></tr>
-<tr><td><code>TextProcessor.tscn</code> / <code>text_processor.gd</code></td><td>Parses incoming text, applies colors and formatting</td></tr>
-<tr><td><code>Input.tscn</code> / <code>input.gd</code></td><td>Command line input, history navigation</td></tr>
-<tr><td><code>Containers</code>, <code>Mobs</code>, <code>Map</code>, <code>Status</code></td><td>Modules for inventory, NPCs, world map, player stats</td></tr>
-<tr><td><code>fonts/</code></td><td>Contains main and fallback fonts (e.g., Noto Sans + Unifont)</td></tr>
-<tr><td><code>export_presets.cfg</code></td><td>Export settings for desktop and HTML5 builds</td></tr>
-</tbody>
-</table>
-
 <p><i>🧠 Each module is independent — you can easily extend, replace, or restyle any system without breaking the others.</i></p>
 
 <hr>

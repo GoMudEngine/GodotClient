@@ -16,3 +16,6 @@ func _on_spells_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	emit_signal("button_commands_submitted", "quit")
+
+func _on_look_button_pressed() -> void:
+	emit_signal("button_commands_submitted", "look")

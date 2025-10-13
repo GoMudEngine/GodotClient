@@ -6,6 +6,7 @@ signal status_text(text: String)
 signal mobs_text(text: String)
 signal exits_text(text: String)
 signal container_request(data: Array)
+signal auto_commands_submitted(cmd: String)
 
 const _LEFT_CHARS  := {"╔": true, "║": true, "╚": true}
 const _RIGHT_CHARS := {"╗": true, "║": true, "╝": true}
@@ -13,6 +14,8 @@ const _RIGHT_CHARS := {"╗": true, "║": true, "╝": true}
 var _in_map := false
 var _cur_map: Array = []
 var _backpack_prohibit = false
+var _prevent_location_name = false
+var _prevent_location_desc = false
 
 # remember first line + left index to compute prefix
 var _first_line_raw := ""
@@ -279,16 +282,10 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 
 	# After processing all lines in the chunk, append descriptions once
 	var descs_size = descs.size()
-	#print("Desc size = ", descs_size)
-	#print("Start to process desc.....")
-	
 	var text = ""
 	
 	# one line message
 	if descs_size == 1:
-		#print("------------------------------")
-		#print("One line desc: ", descs)
-		#print("------------------------------")
 		if _visible_prefix(descs[0], 1) == "(":
 			# status text
 			emit_signal("status_text", str(descs[0]))
@@ -296,13 +293,15 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 		elif _visible_prefix(descs[0], 100) in ["TEXTMASK:false", "TEXTMASK:true"]:
 			return
 		else:
-			$TextDisplay.append_text(bb_chunk)
+			# classified as short msg
+			var short_msg = _visible_prefix(descs[0], 30)
+			if len(short_msg) > 3:
+				if short_msg not in ["look", "status", "equipment", "skills", "spells"]:
+					$TextDisplay.append_text(bb_chunk)
+					return
 	
 	# two line message
 	if descs_size == 2:
-		#print("------------------------------")
-		#print("Two line desc: ", descs)
-		#print("------------------------------")
 		if _visible_prefix(descs[0], 5) == "Exits":
 			# exits
 			emit_signal("exits_text", bb_chunk)
@@ -311,6 +310,24 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 			emit_signal("mobs_text", descs[0])
 		else:
 			$TextDisplay.append_text(bb_chunk)
+			# auto refresh the mobs
+			var l0_prefix_100 = _visible_prefix(descs[0], 100)
+			if contains_term(l0_prefix_100, "enters"):
+				_prevent_location_name = true
+				_prevent_location_desc = true
+				emit_signal("auto_commands_submitted", "look")
+			if contains_term(l0_prefix_100, "leaves"):
+				_prevent_location_name = true
+				_prevent_location_desc = true
+				emit_signal("auto_commands_submitted", "look")
+			if contains_term(l0_prefix_100, "died"):
+				_prevent_location_name = true
+				_prevent_location_desc = true
+				emit_signal("auto_commands_submitted", "look")
+			if contains_term(l0_prefix_100, "prepares"):
+				_prevent_location_name = true
+				_prevent_location_desc = true
+				emit_signal("auto_commands_submitted", "look")
 			return
 			
 	# big message
@@ -348,7 +365,11 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 			# location name
 			emit_signal("location_name", bb_chunk)
 			emit_signal("mobs_text", "")
-			$TextDisplay.append_text(bb_chunk)
+			if not _prevent_location_name:
+				$TextDisplay.append_text(bb_chunk)
+			else:
+				_prevent_location_name = false
+				return
 		
 		elif l2_prefix_100 == "┌─ .:Info ──────────────────────┐ ┌─ .:Attributes ───────────────────────────┐":
 			# status table
@@ -382,8 +403,12 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 			$TextDisplay.append_text(bb_chunk)
 			
 		else:
-			$TextDisplay.append_text(text + "\n")
-		
+			if not _prevent_location_desc:
+				$TextDisplay.append_text(text + "\n")
+			else:
+				_prevent_location_desc = false
+				return
+
 # ---------------- helpers ----------------
 func _line_map_slice_indices(bb_line: String) -> Array:
 	var left := -1
@@ -474,3 +499,6 @@ func _closing_for_stack(stack: Array) -> String:
 		if String(stack[i]).begins_with("[color"):
 			s += "[/color]"
 	return s
+
+func contains_term(message: String, term: String) -> bool:
+	return message.find(term) != -1

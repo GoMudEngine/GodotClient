@@ -18,4 +18,11 @@ placeholder_text = "Input something here....."
 alignment = 1
 keep_editing_on_text_submit = true
 
+[node name="Button" type="Button" parent="."]
+offset_right = 446.0
+offset_bottom = 32.0
+
+[connection signal="text_change_rejected" from="Command" to="." method="_on_command_text_change_rejected"]
+[connection signal="text_changed" from="Command" to="." method="_on_command_text_changed"]
 [connection signal="text_submitted" from="Command" to="." method="_on_command_text_submitted"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

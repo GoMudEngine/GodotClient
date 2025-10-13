@@ -43,7 +43,7 @@ func organize_exits(data: String) -> String:
 	for raw_line in data.split("\n", false):
 		var line := raw_line.rstrip("\r")
 		line = re_paren.sub(line, "", true)
-		print(i, line)
+		#print(i, line)
 		organized_exits.append(line + "\n")
 	var text = "".join(organized_exits)
 	return text

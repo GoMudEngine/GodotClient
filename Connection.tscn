@@ -18,7 +18,6 @@ offset_bottom = 52.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gipfx")
 
 [node name="Status" type="Label" parent="Status_BG"]
-z_index = 1
 texture_filter = 1
 layout_mode = 0
 offset_left = 1.0

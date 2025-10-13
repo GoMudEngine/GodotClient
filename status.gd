@@ -5,7 +5,7 @@ func _ready():
 	$Status_BG/TextDisplay.bbcode_enabled = true  # important
 
 func _on_status_text_received(bb_line: String) -> void:
-	print(bb_line)
+	#print(bb_line)
 	var n := bb_line.length()
 	if n >= 2:
 		bb_line = bb_line.substr(24, n -49)

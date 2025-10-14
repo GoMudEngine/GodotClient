@@ -4,6 +4,7 @@ signal bb_data(text: String)
 signal location_name(text: String)
 signal status_text(text: String)
 signal mobs_text(text: String)
+signal items_text(text: String)
 signal exits_text(text: String)
 signal container_request(data: Array)
 signal auto_commands_submitted(cmd: String)
@@ -14,8 +15,8 @@ const _RIGHT_CHARS := {"╗": true, "║": true, "╝": true}
 var _in_map := false
 var _cur_map: Array = []
 var _backpack_prohibit = false
-var _prevent_location_name = false
-var _prevent_location_desc = false
+var _prevent_location_name: int = 0
+var _prevent_location_desc: int = 0
 
 # remember first line + left index to compute prefix
 var _first_line_raw := ""
@@ -241,7 +242,10 @@ func _visible_prefix(bb_chunk: String, n: int = 30) -> String:
 	
 func _process_one_bb_line(bb_chunk: String) -> void:
 	var descs: Array = []
-
+	var sys_msg: bool = false
+	if contains_term(bb_chunk, ".:") or contains_term(bb_chunk, "───────────"):
+		sys_msg = true
+	
 	for raw_line in bb_chunk.split("\n", false):
 		var line := raw_line.rstrip("\r")
 		var pair := _line_map_slice_indices(line)
@@ -302,31 +306,36 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 	
 	# two line message
 	if descs_size == 2:
-		if _visible_prefix(descs[0], 5) == "Exits":
+		if contains_term(descs[0], "Exits"):
 			# exits
 			emit_signal("exits_text", bb_chunk)
 			return
-		elif _visible_prefix(descs[0], 9) == "Also here":
+		elif contains_term(descs[0], "Also here"):
+			# mobs
 			emit_signal("mobs_text", descs[0])
+		elif contains_term(descs[0], "On the Ground"):
+			# items
+			print(descs[0])
+			emit_signal("items_text", descs[0])
 		else:
 			$TextDisplay.append_text(bb_chunk)
 			# auto refresh the mobs
 			var l0_prefix_100 = _visible_prefix(descs[0], 100)
 			if contains_term(l0_prefix_100, "enters"):
-				_prevent_location_name = true
-				_prevent_location_desc = true
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
 				emit_signal("auto_commands_submitted", "look")
 			if contains_term(l0_prefix_100, "leaves"):
-				_prevent_location_name = true
-				_prevent_location_desc = true
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
 				emit_signal("auto_commands_submitted", "look")
 			if contains_term(l0_prefix_100, "died"):
-				_prevent_location_name = true
-				_prevent_location_desc = true
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
 				emit_signal("auto_commands_submitted", "look")
 			if contains_term(l0_prefix_100, "prepares"):
-				_prevent_location_name = true
-				_prevent_location_desc = true
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
 				emit_signal("auto_commands_submitted", "look")
 			return
 			
@@ -341,7 +350,6 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 		# --- Step 1: Trim each line and remove empties ---
 		for i in range(descs_size):
 			descs[i] = descs[i].strip_edges()
-			#print("Desc appended ", i, " : ", descs[i])
 
 		# --- Step 2: Join with newlines instead of spaces ---
 		text = " ".join(descs)
@@ -355,58 +363,46 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 		var l0_prefix_100 = _visible_prefix(descs[0], 100)
 		var l1_prefix_100 = _visible_prefix(descs[1], 100)
 		var l2_prefix_100 = _visible_prefix(descs[2], 100)
-		#print("------------------------------")
-		#print("L0 Prefix: ", l0_prefix_100)
-		#print("L1 Prefix: ", l1_prefix_100)
-		#print("L2 Prefix: ", l2_prefix_100)
-		#print("------------------------------")
-		
-		if _visible_prefix(l1_prefix_100, 4) == ".: (":
+			
+		if contains_term(l1_prefix_100, ".: ("):
 			# location name
 			emit_signal("location_name", bb_chunk)
 			emit_signal("mobs_text", "")
-			if not _prevent_location_name:
+			emit_signal("items_text", "")
+			if _prevent_location_name < 1:
 				$TextDisplay.append_text(bb_chunk)
 			else:
-				_prevent_location_name = false
+				_prevent_location_name -= 1
 				return
 		
-		elif l2_prefix_100 == "┌─ .:Info ──────────────────────┐ ┌─ .:Attributes ───────────────────────────┐":
+		elif contains_term(l2_prefix_100, ".:Attributes"):
 			# status table
 			emit_signal("container_request", bb_chunk, "status")
 			_backpack_prohibit = true
 			
-		elif l0_prefix_100 == "┌─ .:Equipment ──────────────────────────────────────────────────────────────┐":
+		elif contains_term(l0_prefix_100, ".:Equipment"):
 			# backpack
 			if not _backpack_prohibit:
 				emit_signal("container_request", bb_chunk, "equipment")
 			else:
 				_backpack_prohibit = false
 		
-		elif l1_prefix_100 == "┌─ .:Skills ─────────────────────────────────────────────────────────────────┐":
+		elif contains_term(l1_prefix_100, ".:Skills"):
 			# skills table
 			emit_signal("container_request", bb_chunk, "skills")
 		
-		elif l0_prefix_100 == ".: Spells":
+		elif contains_term(l0_prefix_100, ".: Spells"):
 			# skills table
 			emit_signal("container_request", bb_chunk, "spells")
-				
-		elif l0_prefix_100 == "┌─────────────────────────────────────────────────────────────────────────┐":
-			# sunrise and sunset
-			$TextDisplay.append_text(bb_chunk)
 		
-		elif l2_prefix_100 == "│ Name   │ Level │ Alignment │ Profession │ Online │ Role │":
-			# player table
-			$TextDisplay.append_text(bb_chunk)
-		
-		elif l1_prefix_100 == ".: Pets by Rodric":
-			$TextDisplay.append_text(bb_chunk)
-			
 		else:
-			if not _prevent_location_desc:
+			if sys_msg:
+				$TextDisplay.append_text(bb_chunk)
+				return
+			if _prevent_location_desc < 1:
 				$TextDisplay.append_text(text + "\n")
 			else:
-				_prevent_location_desc = false
+				_prevent_location_desc -= 1
 				return
 
 # ---------------- helpers ----------------

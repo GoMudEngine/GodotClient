@@ -2,8 +2,8 @@
 <p align="center"><b>A Godot-based MUD Client for the GoMud Server</b></p>
 
 <p align="center">
-A lightweight, extensible, and fully Unicode-compatible client built with <b>Godot 4.x</b>, 
-designed for connecting to and interacting with <b>GoMud</b> (and other compatible MUD servers).
+A lightweight, extensible, and fully Unicode-compatible client built with Godot 4.x, designed for connecting to and interacting with GoMud and other compatible MUD servers.
+The goal is to create a cleaner, smarter, and more organized UI for exploring your text-based worlds.
 </p>
 
 <hr>

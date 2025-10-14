@@ -17,6 +17,7 @@ var _cur_map: Array = []
 var _backpack_prohibit = false
 var _prevent_location_name: int = 0
 var _prevent_location_desc: int = 0
+var _mob_list = []
 
 # remember first line + left index to compute prefix
 var _first_line_raw := ""
@@ -313,14 +314,46 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 		elif contains_term(descs[0], "Also here"):
 			# mobs
 			emit_signal("mobs_text", descs[0])
+			var mobs = _visible_prefix(descs[0], 200)
+			_mob_list = []
+			mobs = mobs.replace("Also here: ","")
+			if contains_term(mobs, "and"):
+				_mob_list.append(mobs.split("and")[1])
+				if contains_term(mobs.split("and")[0], ","):
+					for m in mobs.split("and")[0].split(","):
+						_mob_list.append(m)
+				else:
+					_mob_list.append(mobs.split("and")[0])
+			else:
+				_mob_list.append(mobs)
+			
+			for j in range(_mob_list.size()):
+				_mob_list[j] = _mob_list[j].strip_edges()
+			
+			if Global_Status._target_list.size() > 0:
+				var _cmd_to_execute = ""
+				for t in Global_Status._target_list:
+					if t in _mob_list:
+						_cmd_to_execute = "kill " + str(t)
+				emit_signal("auto_commands_submitted", _cmd_to_execute)
+			
 		elif contains_term(descs[0], "On the Ground"):
 			# items
-			print(descs[0])
 			emit_signal("items_text", descs[0])
 		else:
 			$TextDisplay.append_text(bb_chunk)
 			# auto refresh the mobs
 			var l0_prefix_100 = _visible_prefix(descs[0], 100)
+			if contains_term(l0_prefix_100, "You pick up"):
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
+				emit_signal("auto_commands_submitted", "look")
+				emit_signal("auto_commands_submitted", "i")
+			if contains_term(l0_prefix_100, "You drop"):
+				_prevent_location_name += 1
+				_prevent_location_desc += 1
+				emit_signal("auto_commands_submitted", "look")
+				emit_signal("auto_commands_submitted", "i")
 			if contains_term(l0_prefix_100, "enters"):
 				_prevent_location_name += 1
 				_prevent_location_desc += 1

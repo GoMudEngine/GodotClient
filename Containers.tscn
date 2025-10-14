@@ -216,7 +216,7 @@ autowrap_trim_flags = 0
 [node name="Spells" type="Panel" parent="."]
 visible = false
 texture_filter = 1
-offset_right = 794.0
+offset_right = 826.0
 offset_bottom = 250.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
 script = ExtResource("11_x6kya")
@@ -224,7 +224,7 @@ script = ExtResource("11_x6kya")
 [node name="frames" type="TileMapLayer" parent="Spells"]
 texture_filter = 1
 position = Vector2(-19, -19)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAIAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQADAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQABAAAAAAAZAAEAAQABAAAAAAAZAAcAAQABAAAAAAAZAAAAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAAaAAAAAQADAAAAAAAaAAgAAQADAAIAAAAaAAcAAQADAAEAAAAaAAEAAQADAAEAAAAaAAIAAQAAAAEAAAAaAAMAAQAAAAEAAAAaAAQAAQAAAAEAAAAaAAUAAQAAAAEAAAAaAAYAAQAAAAEAAAA=")
 tile_set = SubResource("TileSet_labx1")
 
 [node name="TextDisplay" type="RichTextLabel" parent="Spells"]
@@ -232,10 +232,10 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
 offset_top = 33.0
-offset_right = 793.0
+offset_right = 825.0
 offset_bottom = 217.0
 theme_override_fonts/normal_font = ExtResource("6_jsvej")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 scroll_active = false
 autowrap_trim_flags = 0
@@ -245,7 +245,7 @@ tab_size = 2
 texture_filter = 1
 layout_mode = 0
 offset_top = 224.0
-offset_right = 794.0
+offset_right = 826.0
 offset_bottom = 250.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
@@ -259,8 +259,7 @@ autowrap_trim_flags = 0
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
-offset_top = 1.0
-offset_right = 797.0
+offset_right = 826.0
 offset_bottom = 27.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
@@ -269,6 +268,99 @@ theme_override_styles/pressed = ExtResource("6_2t56i")
 theme_override_styles/hover = ExtResource("6_2t56i")
 text = "Spells"
 autowrap_trim_flags = 0
+
+[node name="Targets" type="Panel" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 218.0
+offset_bottom = 250.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="frames" type="TileMapLayer" parent="Targets"]
+texture_filter = 1
+position = Vector2(-19, -19)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQABAAEAAAAAAAYAAQABAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQADAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQADAAEAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQADAAIAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQACAAIAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQADAAEAAAAHAAIAAQAAAAEAAAAHAAMAAQAAAAEAAAAHAAQAAQAAAAEAAAAHAAUAAQADAAEAAAAHAAYAAQADAAEAAAABAAYAAQABAAAAAAACAAYAAQABAAAAAAADAAYAAQACAAAAAAAEAAYAAQABAAAAAAAFAAYAAQABAAAAAAAGAAYAAQABAAAAAAAEAAUAAQABAAAAAAAFAAUAAQABAAAAAAAGAAUAAQABAAAAAAADAAUAAQABAAAAAAACAAUAAQABAAAAAAABAAUAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Targets"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 218.0
+offset_bottom = 154.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+
+[node name="Close" type="Button" parent="Targets"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 224.0
+offset_right = 218.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("5_labx1")
+theme_override_styles/pressed = ExtResource("6_2t56i")
+theme_override_styles/hover = ExtResource("6_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Move" type="Button" parent="Targets"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 218.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("5_labx1")
+theme_override_styles/pressed = ExtResource("6_2t56i")
+theme_override_styles/hover = ExtResource("6_2t56i")
+text = "Targets"
+autowrap_trim_flags = 0
+
+[node name="Add" type="Button" parent="Targets"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 192.0
+offset_right = 90.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("5_labx1")
+theme_override_styles/pressed = ExtResource("6_2t56i")
+theme_override_styles/hover = ExtResource("6_2t56i")
+text = "Add"
+autowrap_trim_flags = 0
+
+[node name="Remove" type="Button" parent="Targets"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 192.0
+offset_right = 218.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = ExtResource("5_labx1")
+theme_override_styles/pressed = ExtResource("6_2t56i")
+theme_override_styles/hover = ExtResource("6_2t56i")
+text = "Remove"
+autowrap_trim_flags = 0
+
+[node name="LineEdit" type="LineEdit" parent="Targets"]
+layout_mode = 0
+offset_top = 160.0
+offset_right = 218.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 13
 
 [connection signal="button_down" from="Backpack/Move" to="Backpack" method="_on_move_button_down"]
 [connection signal="button_up" from="Backpack/Move" to="Backpack" method="_on_move_button_up"]
@@ -282,3 +374,8 @@ autowrap_trim_flags = 0
 [connection signal="pressed" from="Spells/Close" to="." method="_on_close_pressed"]
 [connection signal="button_down" from="Spells/Move" to="Spells" method="_on_move_button_down"]
 [connection signal="button_up" from="Spells/Move" to="Spells" method="_on_move_button_up"]
+[connection signal="pressed" from="Targets/Close" to="." method="_on_close_pressed"]
+[connection signal="button_down" from="Targets/Move" to="Targets" method="_on_move_button_down"]
+[connection signal="button_up" from="Targets/Move" to="Targets" method="_on_move_button_up"]
+[connection signal="pressed" from="Targets/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="Targets/Remove" to="." method="_on_remove_pressed"]

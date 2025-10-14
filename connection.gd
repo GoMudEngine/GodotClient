@@ -21,7 +21,6 @@ func _ready():
 
 func _connect_to_server():
 	status.text = "Connecting to: " + str(websocket_url)
-	print(status.text)
 	socket = WebSocketPeer.new()
 	var err = socket.connect_to_url(websocket_url)
 	if err != OK:

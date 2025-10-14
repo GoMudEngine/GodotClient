@@ -20,6 +20,7 @@ func _close_all_containers() -> void:
 	$Status.visible = false
 	$Skills.visible = false
 	$Spells.visible = false
+	$Targets.visible = false
 
 func _on_container_request_received(data: String, type: String) -> void:
 	data = clean_unwanted_symbols(data)
@@ -71,3 +72,28 @@ func organize_status(data: String) -> String:
 	
 func organize_backpack(data: String) -> String:
 	return data
+
+func _on_add_pressed() -> void:
+	var new_target = $Targets/LineEdit.text
+	if new_target == "":
+		return  # skip empty input
+	$Targets/LineEdit.text = ""
+	Global_Status._target_list.append(new_target)
+	if Global_Status._target_list.size() > 5:
+		Global_Status._target_list.pop_front()
+	_update_target_list()
+
+func _on_remove_pressed() -> void:
+	var target_to_remove = $Targets/LineEdit.text
+	if target_to_remove == "":
+		return  # skip empty input
+	$Targets/LineEdit.text = ""
+	if target_to_remove in Global_Status._target_list:
+		Global_Status._target_list.erase(target_to_remove)
+	_update_target_list()
+	
+func _update_target_list() -> void:
+	$Targets/TextDisplay.clear()
+	if Global_Status._target_list.size() > 0:
+		for t in Global_Status._target_list:
+			$Targets/TextDisplay.append_text(t + "\n")

@@ -19,3 +19,9 @@ func _on_exit_button_pressed() -> void:
 
 func _on_look_button_pressed() -> void:
 	emit_signal("button_commands_submitted", "look")
+
+func _on_target_button_pressed() -> void:
+	var containers = $"../Containers"
+	var targets_node = $"../Containers/Targets"
+	targets_node.visible = true
+	containers._update_target_list()

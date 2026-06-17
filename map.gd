@@ -7,6 +7,7 @@ const DEFAULT_ROOM_SYMBOL: String = "o"
 const TILE_MATRIX_SIZE: int = MAP_RADIUS * 4 + 1
 const TILE_CELL_SIZE: Vector2 = Vector2(24.0, 18.0)
 const DEFAULT_MAP_HISTORY_PATH: String = "user://map_history.json"
+const TILE_FONT: FontVariation = preload("res://fonts/kc_fonts_regular.tres")
 
 var _has_gmcp_room: bool = false
 var _current_coord: Vector3i = Vector3i.ZERO
@@ -181,6 +182,7 @@ func _ensure_tile_map_view() -> void:
 		tile.clip_text = true
 		tile.autowrap_mode = TextServer.AUTOWRAP_OFF
 		tile.add_theme_font_size_override("font_size", 16)
+		tile.add_theme_font_override("font", TILE_FONT)
 		_tile_grid.add_child(tile)
 		_tile_cells.append(tile)
 

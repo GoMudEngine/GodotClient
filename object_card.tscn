@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dkq8nsckvwoj2"]
+
+[ext_resource type="Script" uid="uid://bla0dwrb8jcv2" path="res://object_card.gd" id="1_object_card"]
+[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_object_card"]
+
+[node name="ObjectCard" type="PanelContainer" unique_id=97014473]
+custom_minimum_size = Vector2(210, 62)
+offset_right = 204.0
+offset_bottom = 62.0
+size_flags_horizontal = 0
+script = ExtResource("1_object_card")
+
+[node name="Layout" type="HBoxContainer" parent="." unique_id=696667520]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="IconFrame" type="PanelContainer" parent="Layout" unique_id=1298044111]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="IconTexture" type="TextureRect" parent="Layout/IconFrame" unique_id=659440152]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="VBoxContainer" parent="Layout" unique_id=1025929042]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="TextBox" type="VBoxContainer" parent="Layout/Content" unique_id=1082710095]
+custom_minimum_size = Vector2(126, 26)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="Layout/Content/TextBox" unique_id=1815706315]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_object_card")
+theme_override_font_sizes/font_size = 12
+text = "object name"
+clip_text = true
+
+[node name="TagLabel" type="Label" parent="Layout/Content/TextBox" unique_id=675008658]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_object_card")
+theme_override_font_sizes/font_size = 10
+text = "tags"
+clip_text = true
+
+[node name="ActionRow" type="HBoxContainer" parent="Layout/Content" unique_id=393548951]
+layout_mode = 2
+theme_override_constants/separation = 4

@@ -1,22 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://e8rqkwrkkjie"]
+[gd_scene format=4 uid="uid://e8rqkwrkkjie"]
 
 [ext_resource type="Script" uid="uid://7r6mrpmkjods" path="res://status.gd" id="1_b8nkn"]
 [ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_b8nkn"]
+[ext_resource type="Texture2D" uid="uid://dqvir5s7oafd6" path="res://assets/ui/ui_frame/ui_frame.png" id="2_k4yyl"]
+[ext_resource type="Texture2D" uid="uid://c2p6hdpn17y8j" path="res://assets/ui/status_icons/hp.png" id="3_hp"]
+[ext_resource type="Texture2D" uid="uid://cueb0aknpjdys" path="res://assets/ui/status_icons/sp.png" id="4_sp"]
+[ext_resource type="Texture2D" uid="uid://bi8vp4fuh1kxq" path="res://assets/ui/status_icons/gold.png" id="5_gold"]
+[ext_resource type="Texture2D" uid="uid://wipaqt0tm5ei" path="res://assets/ui/status_icons/xp.png" id="6_xp"]
+[ext_resource type="Texture2D" uid="uid://ytin8p77pqqv" path="res://assets/ui/status_icons/MobK.png" id="7_mobk"]
+[ext_resource type="Texture2D" uid="uid://dn4nhiyt6o5jy" path="res://assets/ui/status_icons/pvpk.png" id="8_pvpk"]
+[ext_resource type="Texture2D" uid="uid://cqslflbtte4c5" path="res://assets/ui/status_icons/affects.png" id="9_affects"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uumu4"]
+texture = ExtResource("2_k4yyl")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yoqfa"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_uumu4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8nkn"]
 
-[node name="Status" type="Node2D"]
+[node name="Status" type="Node2D" unique_id=1465873940]
 script = ExtResource("1_b8nkn")
 
-[node name="Status_BG" type="Panel" parent="."]
+[node name="frames" type="TileMapLayer" parent="." unique_id=1514792328]
 texture_filter = 1
-offset_left = 630.0
-offset_top = 675.0
-offset_right = 950.0
-offset_bottom = 715.0
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAIAAAABAAAAAQABAAAAAAABAAUAAQABAAAAAAACAAAAAQABAAAAAAACAAUAAQABAAAAAAADAAAAAQABAAAAAAADAAUAAQABAAAAAAAEAAAAAQABAAAAAAAEAAUAAQABAAAAAAAFAAAAAQABAAAAAAAFAAUAAQABAAAAAAAGAAAAAQABAAAAAAAGAAUAAQABAAAAAAAHAAAAAQABAAAAAAAHAAUAAQABAAAAAAAIAAAAAQABAAAAAAAIAAUAAQABAAAAAAAJAAAAAQABAAAAAAAJAAUAAQABAAAAAAAKAAAAAQABAAAAAAAKAAUAAQABAAAAAAALAAAAAQABAAAAAAALAAUAAQABAAAAAAAMAAAAAQABAAAAAAAMAAUAAQABAAAAAAANAAAAAQABAAAAAAANAAUAAQABAAAAAAAOAAAAAQABAAAAAAAOAAUAAQABAAAAAAAPAAAAAQABAAAAAAAPAAUAAQABAAAAAAAQAAAAAQADAAAAAAAQAAEAAQAAAAEAAAAQAAIAAQAAAAEAAAAQAAMAAQAAAAEAAAAQAAQAAQAAAAEAAAAQAAUAAQADAAIAAAA=")
+tile_set = SubResource("TileSet_yoqfa")
+
+[node name="Status_BG" type="Panel" parent="." unique_id=455746091]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 96)
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 525.0
+offset_bottom = 173.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_b8nkn")
 
-[node name="TextDisplay" type="RichTextLabel" parent="Status_BG"]
+[node name="TextDisplay" type="RichTextLabel" parent="Status_BG" unique_id=485780929]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 22.0
@@ -31,3 +70,182 @@ autowrap_trim_flags = 0
 tab_size = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatusLayout" type="HBoxContainer" parent="Status_BG" unique_id=815261759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="CharacterInfo" type="VBoxContainer" parent="Status_BG/StatusLayout" unique_id=1491790970]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="CharacterIcon" type="TextureRect" parent="Status_BG/StatusLayout/CharacterInfo" unique_id=1523285227]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CharacterName" type="Label" parent="Status_BG/StatusLayout/CharacterInfo" unique_id=573825060]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 16
+text = "Name"
+horizontal_alignment = 1
+
+[node name="CharacterMeta" type="Label" parent="Status_BG/StatusLayout/CharacterInfo" unique_id=467856664]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.88, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "race class"
+horizontal_alignment = 1
+
+[node name="StatsSep" type="VSeparator" parent="Status_BG/StatusLayout" unique_id=681345833]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StatsSection" type="VBoxContainer" parent="Status_BG/StatusLayout" unique_id=1589773770]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="StatsGrid" type="GridContainer" parent="Status_BG/StatusLayout/StatsSection" unique_id=387021537]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 4
+
+[node name="HPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=505603030]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_hp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1178326470]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.72, 0.72, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "?/?"
+
+[node name="SPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1419355089]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_sp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SPValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=179486049]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.82, 1, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "?/?"
+
+[node name="GoldIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=871566382]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_gold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=604878669]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.42, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "0"
+
+[node name="XPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=2068677917]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_xp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="XPValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1001856703]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 1, 0.52, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "0/0"
+
+[node name="MobKIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1073239329]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_mobk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MobKValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1781559554]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.88, 0.92, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "0"
+
+[node name="PvPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=103596898]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("8_pvpk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PvPValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=626345530]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.72, 0.42, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 13
+text = "0"
+
+[node name="AffectsRow" type="HBoxContainer" parent="Status_BG/StatusLayout/StatsSection" unique_id=1776008925]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="AffectsIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/AffectsRow" unique_id=1699006272]
+texture_filter = 1
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("9_affects")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AffectsValue" type="Label" parent="Status_BG/StatusLayout/StatsSection/AffectsRow" unique_id=1079282412]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.65, 1, 1)
+theme_override_fonts/font = ExtResource("2_b8nkn")
+theme_override_font_sizes/font_size = 10
+text = "-"
+autowrap_mode = 1

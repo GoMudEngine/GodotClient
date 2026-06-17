@@ -8,21 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="KC_Client"
 run/main_scene="uid://dofvc2ex1xykw"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Global_Status="*res://global_status.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1440
+window/size/viewport_height=900
 window/size/mode=2
 window/stretch/mode="canvas_items"
 

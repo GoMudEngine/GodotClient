@@ -1,24 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsg3jfw1l31dd"]
+[gd_scene format=3 uid="uid://dsg3jfw1l31dd"]
 
-[ext_resource type="Script" uid="uid://c04hhxdxmf0qu" path="res://mobs.gd" id="1_55qyv"]
+[ext_resource type="Script" uid="uid://se5ardi4w32w" path="res://mobs.gd" id="1_55qyv"]
 [ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_55qyv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55qyv"]
 
-[node name="Mobs" type="Node2D"]
+[node name="Mobs" type="Node2D" unique_id=1491248295]
 script = ExtResource("1_55qyv")
 
-[node name="Mobs_BG" type="Panel" parent="."]
+[node name="Mobs_BG" type="Panel" parent="." unique_id=948791892]
 texture_filter = 1
-offset_right = 950.0
-offset_bottom = 40.0
+offset_left = -9.0
+offset_right = 119.0
+offset_bottom = 610.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_55qyv")
 
-[node name="TextDisplay" type="RichTextLabel" parent="Mobs_BG"]
+[node name="TextDisplay2" type="RichTextLabel" parent="Mobs_BG" unique_id=915745660]
 texture_filter = 1
 layout_mode = 0
-offset_right = 940.0
-offset_bottom = 32.0
+offset_left = -45.0
+offset_top = -31.0
+offset_right = 243.0
+offset_bottom = 9.0
+theme_override_fonts/normal_font = ExtResource("2_55qyv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Objects"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextDisplay" type="RichTextLabel" parent="Mobs_BG" unique_id=949245731]
+texture_filter = 1
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 142.0
 theme_override_fonts/normal_font = ExtResource("2_55qyv")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true

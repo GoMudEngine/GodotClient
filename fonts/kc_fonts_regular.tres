@@ -1,9 +1,10 @@
-[gd_resource type="FontVariation" load_steps=4 format=3 uid="uid://bbbowwhyjq3j8"]
+[gd_resource type="FontVariation" load_steps=5 format=3 uid="uid://bbbowwhyjq3j8"]
 
-[ext_resource type="FontFile" uid="uid://cmvfva8ke17ex" path="res://fonts/dejavu-sans-mono/DejaVuSansMono.ttf" id="1_mqnkr"]
-[ext_resource type="FontFile" uid="uid://bi8jttd70rrch" path="res://fonts/NotoSansMono-Regular.ttf" id="2_joeja"]
-[ext_resource type="FontFile" uid="uid://crxhe05gho18y" path="res://fonts/unifont-17.0.01.otf" id="2_vadwk"]
+[ext_resource type="FontFile" uid="uid://dg01vstmuk2vf" path="res://fonts/FiraMonoNerdFontMono-Regular.otf" id="1_fira"]
+[ext_resource type="FontFile" uid="uid://cmvfva8ke17ex" path="res://fonts/dejavu-sans-mono/DejaVuSansMono.ttf" id="2_devu"]
+[ext_resource type="FontFile" uid="uid://bi8jttd70rrch" path="res://fonts/NotoSansMono-Regular.ttf" id="3_noto"]
+[ext_resource type="FontFile" uid="uid://crxhe05gho18y" path="res://fonts/unifont-17.0.01.otf" id="4_uni"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("2_joeja"), ExtResource("2_vadwk")])
-base_font = ExtResource("1_mqnkr")
+base_font = ExtResource("1_fira")
+fallbacks = Array[Font]([ExtResource("2_devu"), ExtResource("3_noto"), ExtResource("4_uni")])

@@ -1,21 +1,19 @@
-[gd_scene load_steps=15 format=4 uid="uid://dofvc2ex1xykw"]
+[gd_scene format=4 uid="uid://dofvc2ex1xykw"]
 
 [ext_resource type="Script" uid="uid://dd8e7lcfu6dkt" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b1vf8vuod1vvw" path="res://TextProcessor.tscn" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cju0nqelwrivj" path="res://assets/ui_frame.png" id="2_kek77"]
-[ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="3_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dqvir5s7oafd6" path="res://assets/ui/ui_frame/ui_frame.png" id="2_kek77"]
 [ext_resource type="PackedScene" uid="uid://sw0x55mw6x86" path="res://Connection.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dy4dr3y4q365w" path="res://Input.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dywvgxco7w4qo" path="res://map.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://e8rqkwrkkjie" path="res://status.tscn" id="5_272bh"]
 [ext_resource type="PackedScene" uid="uid://47siqdrbmm5y" path="res://Containers.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://dsg3jfw1l31dd" path="res://Objects.tscn" id="8_5vw27"]
-[ext_resource type="PackedScene" uid="uid://6wgctohcvfte" path="res://Options.tscn" id="10_efxa6"]
+[ext_resource type="PackedScene" uid="uid://dsg3jfw1l31dd" path="res://mobs.tscn" id="8_5vw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("2_kek77")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -37,105 +35,37 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_efxa6"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_4c57u")
+sources/1 = SubResource("TileSetAtlasSource_kek77")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=1835145485]
 script = ExtResource("1_h2yge")
 
-[node name="bg" type="Panel" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
+[node name="bg" type="Panel" parent="." unique_id=2000921718]
+offset_right = 1440.0
+offset_bottom = 900.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1bvp3")
 
-[node name="frames" type="TileMapLayer" parent="."]
+[node name="frames" type="TileMapLayer" parent="." unique_id=442158517]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAnAAEAAQAAAAEAAAAeAAIAAQABAAEAAAAeAAMAAQAAAAEAAAAeAAQAAQAAAAEAAAAeAAUAAQAAAAEAAAAeAAYAAQAAAAEAAAAeAAcAAQAAAAEAAAAeAAgAAQAAAAEAAAAeAAoAAQAAAAIAAAAfAAoAAQABAAIAAAAgAAoAAQABAAIAAAAhAAoAAQABAAIAAAAiAAoAAQABAAIAAAAjAAoAAQABAAIAAAAkAAoAAQABAAIAAAAlAAoAAQABAAIAAAAmAAoAAQABAAIAAAAnAAoAAQADAAIAAAAeAAkAAQAAAAEAAAAnAAMAAQAAAAEAAAAnAAQAAQAAAAEAAAAnAAUAAQAAAAEAAAAnAAYAAQAAAAEAAAAnAAcAAQAAAAEAAAAnAAgAAQAAAAEAAAAnAAkAAQAAAAEAAAAeAAEAAQAAAAEAAAAeAAAAAQAAAAAAAAAfAAAAAQABAAAAAAAgAAAAAQABAAAAAAAhAAAAAQABAAIAAAAlAAAAAQABAAAAAAAmAAAAAQABAAAAAAAnAAAAAQADAAAAAAAeAAsAAQAAAAAAAAAeAAwAAQABAAEAAAAeAA0AAQAAAAEAAAAeAA4AAQAAAAEAAAAeAA8AAQABAAEAAAAeABAAAQAAAAEAAAAeABEAAQAAAAEAAAAeABIAAQABAAEAAAAeABMAAQAAAAEAAAAeABQAAQAAAAEAAAAfAAsAAQABAAAAAAAgAAsAAQABAAAAAAAhAAsAAQABAAAAAAAhAAwAAQACAAAAAAAhAA0AAQAAAAEAAAAhAA4AAQAAAAEAAAAhAA8AAQACAAEAAAAhABAAAQAAAAEAAAAhABEAAQAAAAEAAAAhABIAAQACAAEAAAAhABMAAQAAAAEAAAAhABQAAQAAAAEAAAAiAAsAAQABAAAAAAAjAAsAAQABAAAAAAAkAAsAAQABAAAAAAAkAAwAAQACAAAAAAAkAA0AAQAAAAEAAAAkAA4AAQAAAAEAAAAkAA8AAQACAAEAAAAkABAAAQAAAAEAAAAkABEAAQAAAAEAAAAkABIAAQACAAEAAAAkABMAAQAAAAEAAAAkABQAAQAAAAEAAAAlAAsAAQABAAAAAAAmAAsAAQABAAAAAAAnAAsAAQADAAAAAAAnAAwAAQADAAEAAAAnAA0AAQAAAAEAAAAnAA4AAQAAAAEAAAAnAA8AAQADAAEAAAAnABAAAQAAAAEAAAAnABEAAQAAAAEAAAAnABIAAQADAAEAAAAnABMAAQAAAAEAAAAnABQAAQAAAAEAAAAeABUAAQAAAAIAAAAfAAwAAQABAAAAAAAfAA8AAQABAAAAAAAfABIAAQABAAAAAAAfABUAAQABAAAAAAAgAAwAAQABAAAAAAAgAA8AAQABAAAAAAAgABIAAQABAAAAAAAgABUAAQABAAAAAAAhABUAAQACAAIAAAAiAAwAAQABAAAAAAAiAA8AAQABAAAAAAAiABIAAQABAAAAAAAiABUAAQABAAAAAAAjAAwAAQABAAAAAAAjAA8AAQABAAAAAAAjABIAAQABAAAAAAAjABUAAQABAAAAAAAkABUAAQACAAIAAAAlAAwAAQABAAAAAAAlAA8AAQABAAAAAAAlABIAAQABAAAAAAAlABUAAQABAAAAAAAmAAwAAQABAAAAAAAmAA8AAQABAAAAAAAmABIAAQABAAAAAAAmABUAAQABAAAAAAAnABUAAQADAAIAAAAnAAIAAQADAAEAAAAfAAIAAQABAAAAAAAgAAIAAQABAAAAAAAhAAIAAQABAAAAAAAiAAIAAQABAAAAAAAjAAIAAQABAAAAAAAkAAIAAQABAAAAAAAlAAIAAQABAAAAAAAmAAIAAQABAAAAAAAkAAAAAQABAAIAAAAiAAAAAQAAAAMAAAAjAAAAAQABAAMAAAACABUAAQAAAAIAAAADABUAAQABAAAAAAAEABUAAQABAAAAAAAFABUAAQABAAAAAAAGABUAAQABAAAAAAAHABUAAQABAAAAAAAIABUAAQABAAAAAAAJABUAAQABAAAAAAAKABUAAQABAAAAAAALABUAAQABAAAAAAAMABUAAQABAAAAAAANABUAAQABAAAAAAAOABUAAQABAAAAAAAPABUAAQABAAAAAAAQABUAAQADAAIAAAATABUAAQAAAAIAAAAUABUAAQABAAIAAAAVABUAAQABAAIAAAAWABUAAQABAAIAAAAXABUAAQABAAIAAAAYABUAAQABAAIAAAAZABUAAQABAAIAAAAaABUAAQABAAIAAAAbABUAAQABAAIAAAAcABUAAQABAAIAAAAdABUAAQADAAIAAAAcABQAAQABAAIAAAAbABQAAQABAAIAAAAaABQAAQABAAIAAAAZABQAAQABAAIAAAAYABQAAQABAAIAAAAXABQAAQABAAIAAAAWABQAAQABAAIAAAAVABQAAQABAAIAAAAUABQAAQABAAIAAAATABQAAQAAAAAAAAADABQAAQABAAAAAAAEABQAAQABAAAAAAAFABQAAQABAAAAAAAGABQAAQABAAAAAAAHABQAAQABAAAAAAAIABQAAQABAAAAAAAJABQAAQABAAAAAAAKABQAAQABAAAAAAALABQAAQABAAAAAAAMABQAAQABAAAAAAANABQAAQABAAAAAAAOABQAAQABAAAAAAAPABQAAQABAAAAAAAQABQAAQADAAAAAAAdABIAAQADAAIAAAAdAAAAAQADAAAAAAAAAAAAAQAAAAAAAAAdAAEAAQADAAMAAAAAAAEAAQADAAMAAAABAAAAAQAAAAMAAAAcAAAAAQABAAMAAAAAABIAAQAAAAIAAAAdABQAAQADAAAAAAACABQAAQAAAAAAAAAAABEAAQACAAMAAAAdABEAAQACAAMAAAABABIAAQAAAAMAAAAcABIAAQABAAMAAAA=")
+tile_map_data = PackedByteArray("AAAjAAoAAQAAAAIAAAAkAAoAAQABAAIAAAAlAAoAAQABAAIAAAAmAAoAAQABAAIAAAAnAAoAAQABAAIAAAAgAAAAAQABAAMAAAAhAAAAAQABAAAAAAAlAAAAAQABAAAAAAAmAAAAAQABAAIAAAAnAAAAAQAAAAMAAAAjAAsAAQAAAAAAAAAkAAsAAQABAAAAAAAkAAwAAQABAAAAAAAkAA8AAQABAAAAAAAkABIAAQABAAAAAAAlAAsAAQABAAAAAAAmAAsAAQABAAAAAAAnAAsAAQABAAAAAAAnAAwAAQABAAAAAAAnAA8AAQABAAAAAAAnABIAAQABAAAAAAAjAAwAAQABAAEAAAAjAA8AAQABAAEAAAAjABIAAQABAAEAAAAjABUAAQAAAAIAAAAkABUAAQABAAAAAAAlAAwAAQABAAAAAAAlAA8AAQABAAAAAAAlABIAAQABAAAAAAAlABUAAQABAAAAAAAmAAwAAQACAAAAAAAmAA8AAQACAAEAAAAmABIAAQACAAEAAAAmABUAAQACAAIAAAAnABUAAQABAAAAAAAjAAIAAQABAAEAAAAkAAAAAQABAAAAAAAjAAAAAQACAAAAAAAdAAAAAQABAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQADAAMAAAABAAAAAQAAAAMAAAAcAAAAAQABAAAAAAAAABgAAQACAAMAAAAAABkAAQAAAAIAAAABABkAAQAAAAMAAAAjAAEAAQAAAAEAAAAjAAMAAQAAAAEAAAAjAAQAAQAAAAEAAAAjAAUAAQAAAAEAAAAjAAYAAQAAAAEAAAAjAAcAAQAAAAEAAAAjAAgAAQAAAAEAAAAjAAkAAQAAAAEAAAAoAAAAAQABAAMAAAAoAAoAAQABAAIAAAApAAAAAQABAAIAAAApAAoAAQABAAIAAAAqAAAAAQABAAAAAAAqAAoAAQABAAIAAAArAAAAAQABAAAAAAArAAIAAQABAAAAAAArAAoAAQABAAIAAAAsAAAAAQADAAAAAAAsAAEAAQAAAAEAAAAsAAIAAQADAAEAAAAsAAMAAQAAAAEAAAAsAAQAAQAAAAEAAAAsAAUAAQAAAAEAAAAsAAYAAQAAAAEAAAAsAAcAAQAAAAEAAAAsAAgAAQAAAAEAAAAsAAkAAQAAAAEAAAAsAAoAAQADAAIAAAAkAAIAAQABAAAAAAAlAAIAAQABAAAAAAAmAAIAAQABAAAAAAAnAAIAAQABAAAAAAAoAAIAAQABAAAAAAApAAIAAQABAAAAAAAqAAIAAQABAAAAAAAeAAAAAQAAAAMAAAAiAAAAAQABAAAAAAAjAA0AAQAAAAEAAAAjAA4AAQAAAAEAAAAjABAAAQAAAAEAAAAjABEAAQAAAAEAAAAjABMAAQAAAAEAAAAjABQAAQAAAAEAAAAmAA0AAQAAAAEAAAAmAA4AAQAAAAEAAAAmABAAAQAAAAEAAAAmABEAAQAAAAEAAAAmABMAAQAAAAEAAAAmABQAAQAAAAEAAAAoAAsAAQABAAAAAAAoAAwAAQABAAAAAAAoAA8AAQABAAAAAAAoABIAAQABAAAAAAAoABUAAQABAAAAAAApAAsAAQABAAAAAAApAAwAAQACAAAAAAApAA0AAQAAAAEAAAApAA4AAQAAAAEAAAApAA8AAQACAAEAAAApABAAAQAAAAEAAAApABEAAQAAAAEAAAApABIAAQACAAEAAAApABMAAQAAAAEAAAApABQAAQAAAAEAAAApABUAAQACAAIAAAAqAAsAAQABAAAAAAAqAAwAAQABAAAAAAAqAA8AAQABAAAAAAAqABIAAQABAAAAAAAqABUAAQABAAAAAAArAAsAAQABAAAAAAArAAwAAQABAAAAAAArAA8AAQABAAAAAAArABIAAQABAAAAAAArABUAAQABAAAAAAAsAAsAAQADAAAAAAAsAAwAAQADAAEAAAAsAA0AAQAAAAEAAAAsAA4AAQAAAAEAAAAsAA8AAQADAAEAAAAsABAAAQAAAAEAAAAsABEAAQAAAAEAAAAsABIAAQADAAEAAAAsABMAAQAAAAEAAAAsABQAAQAAAAEAAAAsABUAAQADAAIAAAAbAAAAAQABAAMAAAA=")
 tile_set = SubResource("TileSet_efxa6")
 
-[node name="Input_label" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_left = 11.0
-offset_top = 652.0
-offset_right = 77.0
-offset_bottom = 692.0
-theme_override_fonts/normal_font = ExtResource("3_4c57u")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Input:"
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="TextProcessor" parent="." unique_id=1811690738 instance=ExtResource("2_h2yge")]
+position = Vector2(33, 33)
 
-[node name="Status_label" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_left = 545.0
-offset_top = 652.0
-offset_right = 621.0
-offset_bottom = 692.0
-theme_override_fonts/normal_font = ExtResource("3_4c57u")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Status:"
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="Input" parent="." unique_id=309308086 instance=ExtResource("4_1bvp3")]
+position = Vector2(0, 832)
 
-[node name="Options_label" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_left = 976.0
-offset_top = 364.0
-offset_right = 1264.0
-offset_bottom = 404.0
-theme_override_fonts/normal_font = ExtResource("3_4c57u")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Options"
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Status" parent="." unique_id=2093362034 instance=ExtResource("5_272bh")]
+position = Vector2(896, 704)
 
-[node name="Map_label" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_left = 980.0
-offset_top = 4.0
-offset_right = 1264.0
-offset_bottom = 28.0
-theme_override_fonts/normal_font = ExtResource("3_4c57u")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "Map"
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Map" parent="." unique_id=1439020823 instance=ExtResource("5_7mycd")]
+position = Vector2(1136, 13)
 
-[node name="TextProcessor" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(33, 31)
+[node name="Mobs" parent="." unique_id=1138314192 instance=ExtResource("8_5vw27")]
+position = Vector2(918, 24)
 
-[node name="Connection" parent="." instance=ExtResource("3_lquwl")]
-position = Vector2(39, 1)
+[node name="Containers" parent="." unique_id=2030253844 instance=ExtResource("5_lquwl")]
+position = Vector2(159, -1)
 
-[node name="Input" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(81, 656)
-
-[node name="Status" parent="." instance=ExtResource("5_272bh")]
-position = Vector2(-28, 22)
-
-[node name="Map" parent="." instance=ExtResource("5_7mycd")]
-position = Vector2(973, 13)
-
-[node name="Mobs" parent="." instance=ExtResource("8_5vw27")]
-position = Vector2(1, 625)
-
-[node name="Options" parent="." instance=ExtResource("10_efxa6")]
-position = Vector2(954, 362)
-
-[node name="Containers" parent="." instance=ExtResource("5_lquwl")]
-position = Vector2(8, 8)
+[node name="Connection" parent="." unique_id=78921479 instance=ExtResource("3_lquwl")]

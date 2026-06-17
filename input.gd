@@ -1,79 +1,86 @@
+class_name CommandInput
 extends Node2D
-
-var _previous_cmd: Array = []
-var _cmd_index: int = -1
-var _input_editing: bool = false
 
 signal cmd_text_submitted(data: String)
 
+const _HISTORY_LIMIT: int = 100
+
+@onready var command: LineEdit = $Command
+
+var _history: Array[String] = []
+var _history_index: int = -1
+var _history_draft: String = ""
+
+
 func _ready() -> void:
-	$"../Options".connect("button_commands_submitted", Callable(self, "_on_button_command_text_submitted"))
-	$"../TextProcessor".connect("auto_commands_submitted", Callable(self, "_on_auto_commands_submitted"))
-	$Command.connect("focus_entered", Callable(self, "_on_focus_entered"))
-	$Command.connect("focus_exited", Callable(self, "_on_focus_exited"))
+	var containers: Variant = $"../Containers"
+	containers.button_commands_submitted.connect(_on_button_command_text_submitted)
+	var mobs: Variant = $"../Mobs"
+	if mobs != null and mobs.has_signal("button_commands_submitted"):
+		mobs.button_commands_submitted.connect(_on_button_command_text_submitted)
 
-func _on_auto_commands_submitted(cmd: String) -> void:
-	emit_signal("cmd_text_submitted", cmd)
-
-func _on_focus_entered() -> void:
-	_input_editing = true
-
-func _on_focus_exited() -> void:
-	_input_editing = false
 
 func _on_button_command_text_submitted(data: String) -> void:
-	if data.strip_edges() != "":
-		emit_signal("cmd_text_submitted", data)
+	if data.length() > 0:
+		cmd_text_submitted.emit(data)
+
 
 func _on_command_text_submitted(data: String) -> void:
-	data = data.strip_edges()
-	if data == "":
+	var text: String = data if data.length() > 0 else command.text
+	cmd_text_submitted.emit(text)
+	if text.length() > 0:
+		_push_history(text)
+	command.clear()
+	_history_index = -1
+	_history_draft = ""
+
+
+func _push_history(text: String) -> void:
+	if _history.is_empty() or _history.back() != text:
+		_history.append(text)
+		if _history.size() > _HISTORY_LIMIT:
+			_history.pop_front()
+
+
+func _history_step(direction: int) -> void:
+	if _history.is_empty():
 		return
-	emit_signal("cmd_text_submitted", data)
-	if _previous_cmd.size() >= 10:
-		_previous_cmd.pop_front()
-	_previous_cmd.append(data)
-	_cmd_index = _previous_cmd.size()  # reset to latest
-	$Command.clear()
-
-func _process(_delta: float) -> void:
-	if _input_editing:
-		# ESC to exit edit mode
-		if Input.is_action_just_pressed("ui_cancel"):
-			_input_editing = false
-			$Command.release_focus()
-			return
-
-		# Handle command history navigation
-		if Input.is_action_just_pressed("ui_up"):
-			if _previous_cmd.size() == 0:
-				return
-			_cmd_index = max(_cmd_index - 1, 0)
-			$Command.text = _previous_cmd[_cmd_index]
-			$Command.caret_column = $Command.text.length()
-		elif Input.is_action_just_pressed("ui_down"):
-			if _previous_cmd.size() == 0:
-				return
-			_cmd_index = min(_cmd_index + 1, _previous_cmd.size() - 1)
-			$Command.text = _previous_cmd[_cmd_index]
-			$Command.caret_column = $Command.text.length()
-
+	if direction < 0:
+		if _history_index == -1:
+			_history_draft = command.text
+			_history_index = _history.size() - 1
+		elif _history_index > 0:
+			_history_index -= 1
 	else:
-		if Input.is_action_just_pressed("ui_accept"):
-			_input_editing = true
-			$Command.grab_focus()
+		if _history_index == -1:
 			return
-			
-		# Handle directional movement when not typing
-		if Input.is_action_just_pressed("ui_up"):
-			emit_signal("cmd_text_submitted", "n")
-		elif Input.is_action_just_pressed("ui_down"):
-			emit_signal("cmd_text_submitted", "s")
-		elif Input.is_action_just_pressed("ui_left"):
-			emit_signal("cmd_text_submitted", "w")
-		elif Input.is_action_just_pressed("ui_right"):
-			emit_signal("cmd_text_submitted", "e")
+		elif _history_index < _history.size() - 1:
+			_history_index += 1
+		else:
+			_history_index = -1
+	command.text = _history[_history_index] if _history_index != -1 else _history_draft
+	command.set_caret_column(command.text.length())
 
-func _on_button_pressed() -> void:
-	_input_editing = true
-	$Command.grab_focus()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed):
+		return
+	var key: InputEventKey = event as InputEventKey
+	if command.has_focus():
+		match key.keycode:
+			KEY_UP:
+				_history_step(-1)
+				get_viewport().set_input_as_handled()
+			KEY_DOWN:
+				_history_step(1)
+				get_viewport().set_input_as_handled()
+		return
+	match key.keycode:
+		KEY_UP:
+			cmd_text_submitted.emit("n")
+		KEY_DOWN:
+			cmd_text_submitted.emit("s")
+		KEY_LEFT:
+			cmd_text_submitted.emit("w")
+		KEY_RIGHT:
+			cmd_text_submitted.emit("e")

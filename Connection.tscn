@@ -1,50 +1,78 @@
-[gd_scene load_steps=7 format=4 uid="uid://sw0x55mw6x86"]
+[gd_scene format=3 uid="uid://sw0x55mw6x86"]
 
 [ext_resource type="Script" uid="uid://bkvt4c8aiypuj" path="res://connection.gd" id="1_n3v31"]
 [ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_gipfx"]
-[ext_resource type="StyleBox" uid="uid://dbvlytgdphl8o" path="res://button_normal.tres" id="3_8dcmy"]
-[ext_resource type="TileSet" uid="uid://yu8us2sunv2v" path="res://ui_tileset.tres" id="3_miogf"]
-[ext_resource type="StyleBox" uid="uid://b5ik4wnedffx1" path="res://button_hover.tres" id="4_go0sp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_miogf"]
+bg_color = Color(0, 0.70980394, 0.49803922, 0.78431374)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gipfx"]
 
-[node name="Connection" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gipfx"]
+bg_color = Color(0, 0, 0, 0.78431374)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_go0sp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iqlhg"]
+
+[node name="Connection" type="Node2D" unique_id=391376803]
 script = ExtResource("1_n3v31")
 
-[node name="Status_BG" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1794495051]
+offset_left = 77.0
+offset_top = 823.0
+offset_right = 883.0
+offset_bottom = 841.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_miogf")
+
+[node name="Status_BG" type="Panel" parent="." unique_id=1969826459]
 texture_filter = 1
-offset_right = 288.0
-offset_bottom = 52.0
+offset_left = 973.0
+offset_top = 664.0
+offset_right = 1261.0
+offset_bottom = 716.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gipfx")
 
-[node name="Status" type="Label" parent="Status_BG"]
+[node name="Status" type="Label" parent="Status_BG" unique_id=156795038]
+z_index = 1
 texture_filter = 1
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 879.0
-offset_bottom = 18.0
+offset_left = -896.0
+offset_top = 159.0
+offset_right = -90.0
+offset_bottom = 177.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_gipfx")
 theme_override_font_sizes/font_size = 12
+text = "fff"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="ReconnectButton" type="Button" parent="Status_BG"]
-layout_mode = 0
-offset_left = 339.0
-offset_top = 317.0
-offset_right = 557.0
-offset_bottom = 375.0
+[node name="ConnectButton" type="Button" parent="Status_BG" unique_id=1611013662]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.5034723
+anchor_top = -19.615385
+anchor_right = 0.3919722
+anchor_bottom = -2.4230769
+offset_left = 324.0
+offset_top = 356.0
+offset_right = 354.112
+offset_bottom = 362.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_gipfx")
-theme_override_font_sizes/font_size = 36
-theme_override_styles/normal = ExtResource("3_8dcmy")
-theme_override_styles/pressed = ExtResource("4_go0sp")
-theme_override_styles/hover = ExtResource("4_go0sp")
-text = "Reconnect"
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_gipfx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_go0sp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_iqlhg")
+text = "Connect"
+metadata/_edit_use_anchors_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Status_BG/ReconnectButton"]
-position = Vector2(13, 13)
-tile_map_data = PackedByteArray("AAD/////AQAAAAAAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQADAAAAAAD//wAAAQAAAAEAAAAGAAAAAQAAAAEAAAD//wEAAQAAAAIAAAAGAAEAAQADAAIAAAAAAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAA=")
-tile_set = ExtResource("3_miogf")
+[connection signal="pressed" from="Status_BG/ConnectButton" to="." method="_on_connect_button_pressed"]

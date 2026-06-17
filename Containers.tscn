@@ -1,14 +1,34 @@
-[gd_scene load_steps=13 format=4 uid="uid://47siqdrbmm5y"]
+[gd_scene format=4 uid="uid://47siqdrbmm5y"]
 
 [ext_resource type="Script" uid="uid://dh5p1h1ow0a8g" path="res://containers.gd" id="1_aqjdc"]
-[ext_resource type="StyleBox" uid="uid://dbvlytgdphl8o" path="res://button_normal.tres" id="5_labx1"]
-[ext_resource type="StyleBox" uid="uid://b5ik4wnedffx1" path="res://button_hover.tres" id="6_2t56i"]
+[ext_resource type="Texture2D" uid="uid://c3fn1ppgdav4d" path="res://assets/ui/button_icons/backpack.png" id="1_l1ewb"]
+[ext_resource type="Texture2D" uid="uid://c30y87tpk5nvi" path="res://assets/ui/button_icons/status.png" id="3_eq0ym"]
+[ext_resource type="Texture2D" uid="uid://db7d38mogv2yf" path="res://assets/ui/button_icons/skills.png" id="4_cqlh8"]
+[ext_resource type="Texture2D" uid="uid://c4nrcqenb1u7i" path="res://assets/ui/button_icons/spells.png" id="5_yq0kq"]
 [ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="6_jsvej"]
-[ext_resource type="Script" uid="uid://ccuqqlwx5pgei" path="res://backpack.gd" id="7_q7mms"]
-[ext_resource type="Texture2D" uid="uid://cju0nqelwrivj" path="res://assets/ui_frame.png" id="7_yq0kq"]
-[ext_resource type="Script" uid="uid://b7hug1li3jn7u" path="res://status_container.gd" id="9_labx1"]
-[ext_resource type="Script" uid="uid://chgk7vyc311w3" path="res://skills.gd" id="10_2t56i"]
-[ext_resource type="Script" uid="uid://dqhhwy0l5vbbb" path="res://spells.gd" id="11_x6kya"]
+[ext_resource type="Texture2D" uid="uid://dqvir5s7oafd6" path="res://assets/ui/ui_frame/ui_frame.png" id="7_yq0kq"]
+[ext_resource type="Texture2D" uid="uid://c56k2dpl8viej" path="res://assets/ui/status_icons/status.png" id="8_character"]
+[ext_resource type="Texture2D" uid="uid://c2p6hdpn17y8j" path="res://assets/ui/status_icons/hp.png" id="9_hp"]
+[ext_resource type="Texture2D" uid="uid://cueb0aknpjdys" path="res://assets/ui/status_icons/sp.png" id="10_sp"]
+[ext_resource type="Script" uid="uid://dxnnf8qwruybc" path="res://scripts/ui/draggable_panel.gd" id="11_x6kya"]
+[ext_resource type="Texture2D" uid="uid://bi8vp4fuh1kxq" path="res://assets/ui/status_icons/gold.png" id="12_gold"]
+[ext_resource type="Texture2D" uid="uid://wipaqt0tm5ei" path="res://assets/ui/status_icons/xp.png" id="13_xp"]
+[ext_resource type="Texture2D" uid="uid://cqslflbtte4c5" path="res://assets/ui/status_icons/affects.png" id="14_affects"]
+[ext_resource type="Texture2D" uid="uid://4ie1l66f35v4" path="res://assets/ui/button_icons/equipment.png" id="15_equipment"]
+[ext_resource type="Texture2D" uid="uid://ycgk6rusjils" path="res://assets/ui/status_icons/alignment.png" id="16_alignment"]
+[ext_resource type="Texture2D" uid="uid://byw1pchlsob25" path="res://assets/ui/status_icons/skills.png" id="17_skills"]
+[ext_resource type="Texture2D" uid="uid://dojb3idytwcvx" path="res://assets/ui/status_icons/training.png" id="18_training"]
+[ext_resource type="Texture2D" uid="uid://bykki4eak8me6" path="res://assets/ui/status_icons/bank.png" id="19_bank"]
+[ext_resource type="Texture2D" uid="uid://ytin8p77pqqv" path="res://assets/ui/status_icons/MobK.png" id="20_mobk"]
+[ext_resource type="Texture2D" uid="uid://dn4nhiyt6o5jy" path="res://assets/ui/status_icons/pvpk.png" id="21_pvpk"]
+[ext_resource type="Texture2D" uid="uid://rlq3v655n0bn" path="res://assets/ui/status_icons/str.png" id="22_str"]
+[ext_resource type="Texture2D" uid="uid://con1kuld4amgj" path="res://assets/ui/status_icons/spd.png" id="23_spd"]
+[ext_resource type="Texture2D" uid="uid://c5eg37t5x8t0s" path="res://assets/ui/status_icons/smt.png" id="24_smt"]
+[ext_resource type="Texture2D" uid="uid://blb57oc3tsc6d" path="res://assets/ui/status_icons/vit.png" id="25_vit"]
+[ext_resource type="Texture2D" uid="uid://cssnd0c0x0jhk" path="res://assets/ui/status_icons/mys.png" id="26_mys"]
+[ext_resource type="Texture2D" uid="uid://2gii021qug8o" path="res://assets/ui/status_icons/per.png" id="27_per"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqlh8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq0ym"]
 bg_color = Color(0, 0, 0, 1)
@@ -37,87 +57,171 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_q7mms")
 
-[node name="Containers" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq0kq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7mms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_labx1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2t56i"]
+
+[node name="Containers" type="Node2D" unique_id=1467042030]
 script = ExtResource("1_aqjdc")
 
-[node name="Backpack" type="Panel" parent="."]
-visible = false
+[node name="Buttons_BG" type="Panel" parent="." unique_id=140932780]
 texture_filter = 1
-offset_right = 317.0
-offset_bottom = 604.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
-script = ExtResource("7_q7mms")
+offset_left = 955.0
+offset_top = 363.0
+offset_right = 1275.0
+offset_bottom = 716.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cqlh8")
 
-[node name="frames" type="TileMapLayer" parent="Backpack"]
-texture_filter = 1
-position = Vector2(-16, -18)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAABMAAQAAAAIAAAAIABMAAQABAAIAAAABABMAAQABAAIAAAACABMAAQABAAIAAAADABMAAQABAAIAAAAEABMAAQABAAAAAAAFABMAAQABAAIAAAAGABMAAQABAAIAAAAHABMAAQABAAIAAAAAAAwAAQAAAAEAAAAAAA0AAQAAAAEAAAAAAA4AAQAAAAEAAAAAAA8AAQAAAAEAAAAAABAAAQAAAAEAAAAAABEAAQAAAAEAAAAAABIAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAAIABIAAQABAAIAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAABABIAAQABAAAAAAACABIAAQABAAAAAAADABIAAQABAAAAAAAEABIAAQABAAAAAAAFABIAAQABAAAAAAAGABIAAQABAAAAAAAHABIAAQABAAAAAAAJABIAAQABAAAAAAAJABMAAQABAAIAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQAAAAEAAAAKAAMAAQAAAAEAAAAKAAQAAQAAAAEAAAAKAAUAAQAAAAEAAAAKAAYAAQAAAAEAAAAKAAcAAQAAAAEAAAAKAAgAAQAAAAEAAAAKAAkAAQAAAAEAAAAKAAoAAQAAAAEAAAAKAAsAAQAAAAEAAAAKAAwAAQAAAAEAAAAKAA0AAQAAAAEAAAAKAA4AAQAAAAEAAAAKAA8AAQAAAAEAAAAKABAAAQAAAAEAAAAKABEAAQAAAAEAAAAKABIAAQADAAEAAAAKABMAAQADAAIAAAA=")
-tile_set = SubResource("TileSet_labx1")
-
-[node name="TextDisplay" type="RichTextLabel" parent="Backpack"]
+[node name="GridContainer" type="GridContainer" parent="Buttons_BG" unique_id=1068237494]
 texture_filter = 1
 layout_mode = 0
-offset_left = 9.0
-offset_top = 34.0
-offset_right = 317.0
-offset_bottom = 570.0
+offset_left = 23.0
+offset_top = 40.0
+offset_right = 2302.0
+offset_bottom = 1558.0
+scale = Vector2(0.125, 0.125)
+columns = 3
+
+[node name="status_button" type="TextureButton" parent="Buttons_BG/GridContainer" unique_id=192359757]
+texture_filter = 1
+custom_minimum_size = Vector2(768, 768)
+layout_mode = 2
+texture_normal = ExtResource("3_eq0ym")
+stretch_mode = 0
+
+[node name="equipment_button" type="TextureButton" parent="Buttons_BG/GridContainer" unique_id=601205460]
+texture_filter = 1
+custom_minimum_size = Vector2(768, 768)
+layout_mode = 2
+texture_normal = ExtResource("15_equipment")
+stretch_mode = 0
+
+[node name="backpack_button" type="TextureButton" parent="Buttons_BG/GridContainer" unique_id=717754016]
+texture_filter = 1
+custom_minimum_size = Vector2(768, 768)
+layout_mode = 2
+texture_normal = ExtResource("1_l1ewb")
+stretch_mode = 0
+
+[node name="skills_button" type="TextureButton" parent="Buttons_BG/GridContainer" unique_id=1763435212]
+texture_filter = 1
+custom_minimum_size = Vector2(768, 768)
+layout_mode = 2
+texture_normal = ExtResource("4_cqlh8")
+stretch_mode = 0
+
+[node name="spells_button" type="TextureButton" parent="Buttons_BG/GridContainer" unique_id=1042082411]
+texture_filter = 1
+custom_minimum_size = Vector2(768, 768)
+layout_mode = 2
+texture_normal = ExtResource("5_yq0kq")
+stretch_mode = 0
+
+[node name="TextDisplay" type="RichTextLabel" parent="Buttons_BG" unique_id=785009194]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = 2.0
+offset_right = 310.0
+offset_bottom = 42.0
 theme_override_fonts/normal_font = ExtResource("6_jsvej")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
+text = "Options"
+scroll_active = false
 autowrap_trim_flags = 0
 tab_size = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Move" type="Button" parent="Backpack"]
+[node name="Backpack" type="Panel" parent="." unique_id=1605615211]
+visible = false
+texture_filter = 1
+offset_right = 454.0
+offset_bottom = 614.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="frames" type="TileMapLayer" parent="Backpack" unique_id=1734669690]
+texture_filter = 1
+position = Vector2(-13, -13)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAABMAAQAAAAIAAAAIABMAAQABAAIAAAABABMAAQABAAIAAAACABMAAQABAAIAAAADABMAAQABAAIAAAAEABMAAQABAAAAAAAFABMAAQABAAIAAAAGABMAAQABAAIAAAAHABMAAQABAAIAAAAAAAwAAQAAAAEAAAAAAA0AAQAAAAEAAAAAAA4AAQAAAAEAAAAAAA8AAQAAAAEAAAAAABAAAQAAAAEAAAAAABEAAQAAAAEAAAAAABIAAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAAIABIAAQABAAIAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAABABIAAQABAAAAAAACABIAAQABAAAAAAADABIAAQABAAAAAAAEABIAAQABAAAAAAAFABIAAQABAAAAAAAGABIAAQABAAAAAAAHABIAAQABAAAAAAAJABIAAQABAAAAAAAJABMAAQABAAIAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAAAAAAKABIAAQABAAAAAAAKABMAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQADAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQADAAEAAAALABIAAQABAAAAAAAMABIAAQABAAAAAAANABIAAQABAAAAAAAOABIAAQADAAEAAAALABMAAQABAAAAAAAMABMAAQABAAAAAAANABMAAQABAAAAAAAOABMAAQADAAIAAAAOABEAAQAAAAEAAAAOABAAAQAAAAEAAAAOAA8AAQAAAAEAAAAOAA4AAQAAAAEAAAAOAA0AAQAAAAEAAAAOAAwAAQAAAAEAAAAOAAsAAQADAAEAAAAOAAoAAQAAAAEAAAAOAAkAAQAAAAEAAAAOAAgAAQAAAAEAAAAOAAcAAQAAAAEAAAAOAAYAAQAAAAEAAAAOAAUAAQAAAAEAAAAOAAQAAQAAAAEAAAAOAAMAAQAAAAEAAAAOAAIAAQAAAAEAAAABAAsAAQABAAAAAAACAAsAAQABAAAAAAADAAsAAQABAAAAAAAEAAsAAQABAAAAAAAFAAsAAQABAAAAAAAGAAsAAQABAAAAAAAHAAsAAQABAAAAAAAIAAsAAQABAAAAAAAJAAsAAQABAAAAAAAKAAsAAQABAAAAAAALAAsAAQABAAAAAAAMAAsAAQABAAAAAAANAAsAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="BackpackGMCP" type="ScrollContainer" parent="Backpack" unique_id=945372853]
 texture_filter = 1
 layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 317.0
-offset_bottom = 27.0
+offset_left = 39.0
+offset_top = 44.0
+offset_right = 439.0
+offset_bottom = 346.0
+follow_focus = true
+
+[node name="BackpackContent" type="VBoxContainer" parent="Backpack/BackpackGMCP" unique_id=1455938482]
+texture_filter = 1
+custom_minimum_size = Vector2(376, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BackpackGrid" type="GridContainer" parent="Backpack/BackpackGMCP/BackpackContent" unique_id=1839338747]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="Move" type="Button" parent="Backpack" unique_id=1605936279]
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 447.0
+offset_bottom = 32.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
 text = "Backpack"
 autowrap_trim_flags = 0
 
-[node name="Close" type="Button" parent="Backpack"]
+[node name="BackpackIcon" type="TextureRect" parent="Backpack/Move" unique_id=555141756]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 112.0
+offset_top = -33.0
+offset_right = 176.0
+offset_bottom = 31.0
+size_flags_horizontal = 4
+texture = ExtResource("1_l1ewb")
+expand_mode = 1
+
+[node name="Close" type="Button" parent="Backpack" unique_id=180982623]
 texture_filter = 1
 layout_mode = 0
-offset_left = 3.0
-offset_top = 577.0
-offset_right = 317.0
-offset_bottom = 603.0
+offset_left = 7.0
+offset_top = 582.0
+offset_right = 447.0
+offset_bottom = 608.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
 text = "Close"
 autowrap_trim_flags = 0
 
-[node name="Status" type="Panel" parent="."]
-visible = false
-texture_filter = 1
-offset_right = 797.0
-offset_bottom = 284.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
-script = ExtResource("9_labx1")
-
-[node name="frames" type="TileMapLayer" parent="Status"]
-texture_filter = 1
-position = Vector2(-16, -18)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQABAAEAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAEAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQAAAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAAAAAkAAQAAAAIAAAABAAkAAQABAAAAAAACAAkAAQABAAAAAAADAAkAAQABAAAAAAAEAAkAAQABAAAAAAAFAAkAAQABAAAAAAAGAAkAAQABAAAAAAAHAAkAAQABAAAAAAAIAAkAAQABAAAAAAAJAAkAAQABAAAAAAAKAAkAAQABAAAAAAALAAkAAQABAAAAAAAMAAkAAQABAAAAAAANAAkAAQABAAAAAAAOAAkAAQABAAAAAAAPAAkAAQABAAAAAAAQAAkAAQABAAAAAAARAAkAAQABAAAAAAASAAkAAQABAAAAAAATAAkAAQABAAAAAAAUAAkAAQABAAAAAAAVAAkAAQABAAAAAAAWAAkAAQABAAAAAAAXAAkAAQABAAAAAAAYAAkAAQABAAAAAAAZAAkAAQADAAIAAAA=")
-tile_set = SubResource("TileSet_labx1")
-
-[node name="TextDisplay" type="RichTextLabel" parent="Status"]
+[node name="BackpackDetail" type="RichTextLabel" parent="Backpack" unique_id=176031526]
 texture_filter = 1
 layout_mode = 0
-offset_left = 4.0
-offset_top = 34.0
-offset_right = 796.0
-offset_bottom = 250.0
+offset_left = 24.0
+offset_top = 364.0
+offset_right = 424.0
+offset_bottom = 571.0
 theme_override_fonts/normal_font = ExtResource("6_jsvej")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
@@ -125,51 +229,803 @@ autowrap_trim_flags = 0
 tab_size = 2
 vertical_alignment = 1
 
-[node name="Move" type="Button" parent="Status"]
+[node name="Attributes" type="Panel" parent="." unique_id=1198360372]
+texture_filter = 1
+offset_right = 358.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="frames" type="TileMapLayer" parent="Attributes" unique_id=800161852]
+texture_filter = 1
+position = Vector2(-45, -13)
+tile_map_data = PackedByteArray("AAAIAAAAAQABAAAAAAABAAAAAQAAAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAEAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQADAAAAAAALAAEAAQABAAAAAAAMAAEAAQADAAEAAAABAAIAAQAAAAEAAAABAAMAAQAAAAEAAAABAAQAAQAAAAEAAAABAAUAAQAAAAEAAAABAAYAAQAAAAEAAAABAAcAAQAAAAEAAAABAAgAAQAAAAEAAAAMAAIAAQAAAAEAAAAMAAMAAQAAAAEAAAAMAAQAAQAAAAEAAAAMAAUAAQAAAAEAAAAMAAYAAQAAAAEAAAAMAAcAAQAAAAEAAAAMAAgAAQAAAAEAAAAMAAkAAQAAAAEAAAAMAAoAAQAAAAEAAAAMAAsAAQAAAAEAAAAMAAwAAQAAAAEAAAAMAA0AAQAAAAEAAAAMAA4AAQAAAAEAAAAMAA8AAQAAAAEAAAABAAkAAQAAAAEAAAABAAoAAQAAAAEAAAABAAsAAQAAAAEAAAABAAwAAQAAAAEAAAABAA0AAQAAAAEAAAABAA4AAQAAAAEAAAABAA8AAQAAAAEAAAABABAAAQABAAEAAAACABAAAQABAAAAAAADABAAAQABAAAAAAAEABAAAQABAAAAAAAFABAAAQABAAAAAAAGABAAAQABAAAAAAAHABAAAQABAAAAAAAIABAAAQABAAAAAAAJABAAAQABAAAAAAAKABAAAQABAAAAAAALABAAAQABAAAAAAAMABAAAQADAAEAAAABABEAAQAAAAIAAAAMABEAAQADAAIAAAACABEAAQABAAAAAAADABEAAQABAAAAAAAEABEAAQABAAAAAAAFABEAAQABAAAAAAAGABEAAQABAAAAAAAHABEAAQABAAAAAAAIABEAAQABAAAAAAAJABEAAQABAAAAAAAKABEAAQABAAAAAAALABEAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="AttributesGMCP" type="Control" parent="Attributes" unique_id=1752586500]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 347.0
+offset_bottom = 507.0
+
+[node name="AttributesContent" type="VBoxContainer" parent="Attributes/AttributesGMCP" unique_id=1245651021]
 texture_filter = 1
 layout_mode = 0
-offset_left = 3.0
-offset_top = 1.0
-offset_right = 797.0
-offset_bottom = 27.0
+offset_right = 432.0
+offset_bottom = 476.0
+theme_override_constants/separation = 8
+
+[node name="AttributesSection" type="VBoxContainer" parent="Attributes/AttributesGMCP/AttributesContent" unique_id=525700875]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AttributesHeader" type="HBoxContainer" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection" unique_id=2010414240]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="CharacterIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesHeader" unique_id=1670135893]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+texture = ExtResource("8_character")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CharacterText" type="VBoxContainer" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesHeader" unique_id=1935186294]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="CharacterName" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesHeader/CharacterText" unique_id=16044204]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Score"
+text = "SulanViervilla"
+clip_text = true
+
+[node name="CharacterMeta" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesHeader/CharacterText" unique_id=1029499448]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.88, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Level 7.0  elf scrub"
+clip_text = true
+
+[node name="AttributesStats" type="GridContainer" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection" unique_id=416728429]
+texture_filter = 1
+custom_minimum_size = Vector2(432, 384)
+layout_mode = 2
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = -9
+columns = 3
+
+[node name="AlignmentIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=369255788]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("16_alignment")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AlignmentLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1075203748]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "Alignment"
+
+[node name="AlignmentValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=911555499]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "neutral"
+clip_text = true
+
+[node name="SkillPointsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=307017354]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("17_skills")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillPointsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=734251134]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "Skill"
+
+[node name="SkillPointsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1638095773]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "1.0"
+
+[node name="TrainingPointsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2106991598]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("18_training")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TrainingPointsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=270590872]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "Training"
+
+[node name="TrainingPointsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1393487051]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "6.0"
+
+[node name="StrengthIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1177556801]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("22_str")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StrengthLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1086623028]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "STR"
+
+[node name="StrengthValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=714421472]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="SpeedIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1360025769]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("23_spd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SpeedLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1507745240]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "SPD"
+
+[node name="SpeedValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1222114240]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="SmartsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2108527794]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("24_smt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SmartsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=272772558]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "SMT"
+
+[node name="SmartsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=251417814]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="VitalityIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1446047207]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("25_vit")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VitalityLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1664145050]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "VIT"
+
+[node name="VitalityValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=402003842]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="MysticismIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1796174756]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("26_mys")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MysticismLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=691037711]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "MYS"
+
+[node name="MysticismValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=92827519]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="PerceptionIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=190782291]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("27_per")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PerceptionLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=311811768]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "PER"
+
+[node name="PerceptionValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2034769423]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "?"
+
+[node name="AttributesIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=196079901]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("8_character")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AttributesLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=944263649]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Attributes"
+
+[node name="AttributesValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1419002786]
+visible = false
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 11
+text = "STR ?  SPD ?  SMT ?"
+autowrap_mode = 2
+clip_text = true
+
+[node name="HPIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1864425524]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("9_hp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HPLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=352803831]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.32, 0.32, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "HP"
+
+[node name="HPValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1012521788]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.78, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "31.0 / 31.0"
+
+[node name="SPIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=516619390]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("10_sp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SPLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2089359386]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.68, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "SP"
+
+[node name="SPValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=835159485]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "35.0 / 35.0"
+
+[node name="GoldIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1564244299]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("12_gold")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=350096054]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.72, 0.22, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Gold"
+
+[node name="GoldValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=732678502]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.48, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "0"
+
+[node name="BankIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1421033737]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("19_bank")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BankLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2132872567]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.72, 0.22, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Bank"
+
+[node name="BankValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1042699941]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.88, 0.48, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "100.0"
+
+[node name="XPIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1262842854]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("13_xp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="XPLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=280872144]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.88, 0.48, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "XP/TNL"
+
+[node name="XPValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1373301693]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.62, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "36031.0 / 45300.0"
+
+[node name="TNLIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1592313317]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("13_xp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TNLLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=236711336]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.88, 0.48, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "TNL"
+
+[node name="TNLValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=137639316]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 1, 0.62, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "45300.0"
+
+[node name="MobKillsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=280651595]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("20_mobk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MobKillsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=877888219]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Mob K/D"
+
+[node name="MobKillsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2069564064]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "82.0 / 2.0"
+
+[node name="PvpKillsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=2064056472]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+texture = ExtResource("21_pvpk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PvpKillsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=365712291]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.72, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "PvP K/D"
+
+[node name="PvpKillsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1237002875]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "0.0 / 0.0"
+
+[node name="AffectsIcon" type="TextureRect" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1357163411]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_affects")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AffectsLabel" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=414534474]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.58, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 14
+text = "Affects"
+
+[node name="AffectsValue" type="Label" parent="Attributes/AttributesGMCP/AttributesContent/AttributesSection/AttributesStats" unique_id=1179453691]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.82, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 11
+text = "Illumination"
+autowrap_mode = 2
+clip_text = true
+
+[node name="Move" type="Button" parent="Attributes" unique_id=1948473635]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 352.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Attributes"
 autowrap_trim_flags = 0
 
-[node name="Close" type="Button" parent="Status"]
+[node name="StatusIcon" type="TextureRect" parent="Attributes/Move" unique_id=404620475]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 53.0
+offset_top = -33.0
+offset_right = 117.0
+offset_bottom = 31.0
+size_flags_horizontal = 4
+texture = ExtResource("3_eq0ym")
+expand_mode = 1
+
+[node name="Close" type="Button" parent="Attributes" unique_id=1457709322]
 texture_filter = 1
 layout_mode = 0
-offset_left = 3.0
-offset_top = 257.0
-offset_right = 797.0
-offset_bottom = 283.0
+offset_left = 6.0
+offset_top = 518.0
+offset_right = 352.0
+offset_bottom = 544.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
 text = "Close"
 autowrap_trim_flags = 0
 
-[node name="Skills" type="Panel" parent="."]
+[node name="Equipment" type="Panel" parent="." unique_id=1157463948]
 visible = false
 texture_filter = 1
-offset_right = 797.0
-offset_bottom = 251.0
+offset_right = 454.0
+offset_bottom = 518.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
-script = ExtResource("10_2t56i")
+script = ExtResource("11_x6kya")
 
-[node name="frames" type="TileMapLayer" parent="Skills"]
+[node name="frames" type="TileMapLayer" parent="Equipment" unique_id=2045933982]
 texture_filter = 1
-position = Vector2(-19, -18)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAIAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQADAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAA=")
+position = Vector2(-13, -13)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAwAAQAAAAEAAAAAAA0AAQAAAAEAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQABAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQADAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQADAAEAAAAOAA0AAQAAAAEAAAAOAAwAAQAAAAEAAAAOAAsAAQAAAAEAAAAOAAoAAQAAAAEAAAAOAAkAAQAAAAEAAAAOAAgAAQADAAEAAAAOAAcAAQAAAAEAAAAOAAYAAQAAAAEAAAAOAAUAAQAAAAEAAAAOAAQAAQAAAAEAAAAOAAMAAQAAAAEAAAAOAAIAAQAAAAEAAAAAAA4AAQAAAAEAAAAOAA4AAQAAAAEAAAAAAA8AAQABAAEAAAAAABAAAQAAAAIAAAABAA8AAQABAAAAAAABABAAAQABAAIAAAACAA8AAQABAAAAAAACABAAAQABAAIAAAADAA8AAQABAAAAAAADABAAAQABAAIAAAAEAA8AAQABAAAAAAAEABAAAQABAAAAAAAFAA8AAQABAAAAAAAFABAAAQABAAIAAAAGAA8AAQABAAAAAAAGABAAAQABAAIAAAAHAA8AAQABAAAAAAAHABAAAQABAAIAAAAIAA8AAQABAAIAAAAIABAAAQABAAIAAAAJAA8AAQABAAAAAAAJABAAAQABAAIAAAAKAA8AAQABAAAAAAAKABAAAQABAAAAAAALAA8AAQABAAAAAAALABAAAQABAAAAAAAMAA8AAQABAAAAAAAMABAAAQABAAAAAAANAA8AAQABAAAAAAANABAAAQABAAAAAAAOAA8AAQADAAEAAAAOABAAAQADAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_labx1")
 
-[node name="TextDisplay" type="RichTextLabel" parent="Skills"]
+[node name="EquipmentGMCP" type="ScrollContainer" parent="Equipment" unique_id=39529018]
+texture_filter = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 41.0
+offset_right = 446.0
+offset_bottom = 255.0
+follow_focus = true
+
+[node name="EquipmentContent" type="VBoxContainer" parent="Equipment/EquipmentGMCP" unique_id=2019326649]
+texture_filter = 1
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquipmentGrid" type="GridContainer" parent="Equipment/EquipmentGMCP/EquipmentContent" unique_id=94708167]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="Move" type="Button" parent="Equipment" unique_id=1557533487]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 448.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Equipment"
+autowrap_trim_flags = 0
+
+[node name="EquipmentIcon" type="TextureRect" parent="Equipment/Move" unique_id=2078433771]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 102.0
+offset_top = -28.0
+offset_right = 166.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+texture = ExtResource("15_equipment")
+expand_mode = 1
+
+[node name="Close" type="Button" parent="Equipment" unique_id=2063964710]
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 486.0
+offset_right = 447.0
+offset_bottom = 512.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="EquipmentDetail" type="RichTextLabel" parent="Equipment" unique_id=1243266905]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 268.0
+offset_right = 424.0
+offset_bottom = 475.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+autowrap_trim_flags = 0
+tab_size = 2
+vertical_alignment = 1
+
+[node name="NpcLook" type="Panel" parent="." unique_id=718424063]
+visible = false
+texture_filter = 1
+offset_left = 456.0
+offset_top = 1.0
+offset_right = 974.0
+offset_bottom = 615.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="NpcLookGMCP" type="ScrollContainer" parent="NpcLook" unique_id=1890898318]
+texture_filter = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 44.0
+offset_right = 504.0
+offset_bottom = 571.0
+follow_focus = true
+
+[node name="NpcLookContent" type="VBoxContainer" parent="NpcLook/NpcLookGMCP" unique_id=67487028]
+texture_filter = 1
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NpcLookHeader" type="VBoxContainer" parent="NpcLook/NpcLookGMCP/NpcLookContent" unique_id=1067505564]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NpcLookTopRow" type="HBoxContainer" parent="NpcLook/NpcLookGMCP/NpcLookContent/NpcLookHeader" unique_id=1190960374]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NpcLookIcon" type="TextureRect" parent="NpcLook/NpcLookGMCP/NpcLookContent/NpcLookHeader/NpcLookTopRow" unique_id=1500009868]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NpcLookDescription" type="RichTextLabel" parent="NpcLook/NpcLookGMCP/NpcLookContent/NpcLookHeader/NpcLookTopRow" unique_id=1598444992]
+texture_filter = 1
+custom_minimum_size = Vector2(384, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+
+[node name="NpcLookActions" type="HBoxContainer" parent="NpcLook/NpcLookGMCP/NpcLookContent/NpcLookHeader" unique_id=337271267]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EquipmentGrid" type="GridContainer" parent="NpcLook/NpcLookGMCP/NpcLookContent" unique_id=196878383]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="Move" type="Button" parent="NpcLook" unique_id=230688738]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 512.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "NPC"
+autowrap_trim_flags = 0
+
+[node name="Close" type="Button" parent="NpcLook" unique_id=1995278582]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 582.0
+offset_right = 512.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="NpcLookDetail" type="RichTextLabel" parent="NpcLook" unique_id=185919748]
+texture_filter = 1
+layout_mode = 0
+offset_left = 11.0
+offset_top = 427.0
+offset_right = 507.0
+offset_bottom = 571.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+autowrap_trim_flags = 0
+tab_size = 2
+
+[node name="frames" type="TileMapLayer" parent="NpcLook" unique_id=168459397]
+texture_filter = 1
+position = Vector2(-13, -13)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAwAAQAAAAEAAAAAAA0AAQABAAEAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAJAAEAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAAKAAEAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAAAA4AAQAAAAEAAAAQAAAAAQADAAAAAAAPAAAAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQADAAEAAAAQAAIAAQAAAAEAAAAQAAMAAQAAAAEAAAAQAAQAAQAAAAEAAAAQAAUAAQAAAAEAAAAQAAYAAQAAAAEAAAAQAAcAAQAAAAEAAAAQAAgAAQAAAAEAAAAQAAkAAQAAAAEAAAAQAAoAAQAAAAEAAAAQAAsAAQAAAAEAAAAQAAwAAQAAAAEAAAAQAA0AAQADAAEAAAAQAA4AAQAAAAEAAAAQAA8AAQAAAAEAAAAQABAAAQAAAAEAAAAQABEAAQAAAAEAAAAAAA8AAQAAAAEAAAAAABAAAQAAAAEAAAAAABEAAQAAAAEAAAAAABIAAQABAAEAAAAAABMAAQAAAAIAAAAQABIAAQADAAEAAAAQABMAAQADAAIAAAABABMAAQABAAAAAAACABMAAQABAAAAAAADABMAAQABAAAAAAAEABMAAQABAAAAAAAFABMAAQABAAAAAAAGABMAAQABAAAAAAAHABMAAQABAAAAAAAIABMAAQABAAAAAAAJABMAAQABAAAAAAAKABMAAQABAAAAAAALABMAAQABAAAAAAAMABMAAQABAAAAAAANABMAAQABAAAAAAAOABMAAQABAAAAAAAPABMAAQABAAAAAAAPABIAAQABAAAAAAAOABIAAQABAAAAAAANABIAAQABAAAAAAAMABIAAQABAAAAAAALABIAAQABAAAAAAAKABIAAQABAAAAAAAJABIAAQABAAAAAAAIABIAAQABAAAAAAAHABIAAQABAAAAAAAGABIAAQABAAAAAAAFABIAAQABAAAAAAAEABIAAQABAAAAAAADABIAAQABAAAAAAACABIAAQABAAAAAAABABIAAQABAAAAAAABAA0AAQABAAAAAAACAA0AAQABAAAAAAADAA0AAQABAAAAAAAEAA0AAQABAAAAAAAFAA0AAQABAAAAAAAGAA0AAQABAAAAAAAHAA0AAQABAAAAAAAIAA0AAQABAAAAAAAJAA0AAQABAAAAAAAKAA0AAQABAAAAAAALAA0AAQABAAAAAAAMAA0AAQABAAAAAAANAA0AAQABAAAAAAAOAA0AAQABAAAAAAAPAA0AAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Skills" type="Panel" parent="." unique_id=700447539]
+visible = false
+texture_filter = 1
+offset_right = 806.0
+offset_bottom = 518.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="frames" type="TileMapLayer" parent="Skills" unique_id=99059630]
+texture_filter = 1
+position = Vector2(-13, -13)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAEAAAAZAAgAAQAAAAEAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQAAAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAAAAA8AAQABAAEAAAAAABAAAQAAAAIAAAABAA8AAQABAAAAAAABABAAAQABAAAAAAACAA8AAQABAAAAAAACABAAAQABAAAAAAADAA8AAQABAAAAAAADABAAAQABAAAAAAAEAA8AAQABAAAAAAAEABAAAQABAAAAAAAFAA8AAQABAAAAAAAFABAAAQABAAAAAAAGAA8AAQABAAAAAAAGABAAAQABAAAAAAAHAA8AAQABAAAAAAAHABAAAQABAAAAAAAIAA8AAQABAAAAAAAIABAAAQABAAAAAAAJAA8AAQABAAAAAAAJABAAAQABAAAAAAAKAA8AAQABAAAAAAAKABAAAQABAAAAAAALAA8AAQABAAAAAAALABAAAQABAAAAAAAMAA8AAQABAAAAAAAMABAAAQABAAAAAAANAA8AAQABAAAAAAANABAAAQABAAAAAAAOAA8AAQABAAAAAAAOABAAAQABAAAAAAAPAA8AAQABAAAAAAAPABAAAQABAAAAAAAQAA8AAQABAAAAAAAQABAAAQABAAAAAAARAA8AAQABAAAAAAARABAAAQABAAAAAAASAA8AAQABAAAAAAASABAAAQABAAAAAAATAA8AAQABAAAAAAATABAAAQABAAAAAAAUAA8AAQABAAAAAAAUABAAAQABAAAAAAAVAA8AAQABAAAAAAAVABAAAQABAAAAAAAWAA8AAQABAAAAAAAWABAAAQABAAAAAAAXAA8AAQABAAAAAAAXABAAAQABAAAAAAAYAA8AAQABAAAAAAAYABAAAQABAAAAAAAZAA8AAQADAAEAAAAZABAAAQADAAIAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAAAAAwAAQAAAAEAAAAAAA0AAQAAAAEAAAAAAA4AAQAAAAEAAAAZAA4AAQAAAAEAAAAZAA0AAQAAAAEAAAAZAAwAAQAAAAEAAAAZAAsAAQAAAAEAAAAZAAoAAQAAAAEAAAAZAAkAAQAAAAEAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Skills" unique_id=889042105]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
@@ -184,21 +1040,205 @@ autowrap_trim_flags = 0
 tab_size = 2
 vertical_alignment = 1
 
-[node name="Close" type="Button" parent="Skills"]
+[node name="SkillsGMCP" type="Control" parent="Skills" unique_id=1983528535]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 795.0
+offset_bottom = 475.0
+
+[node name="SkillsContent" type="HBoxContainer" parent="Skills/SkillsGMCP" unique_id=571685705]
 texture_filter = 1
 layout_mode = 0
-offset_top = 225.0
-offset_right = 794.0
-offset_bottom = 251.0
+offset_right = 784.0
+offset_bottom = 432.0
+theme_override_constants/separation = 10
+
+[node name="JobsSection" type="VBoxContainer" parent="Skills/SkillsGMCP/SkillsContent" unique_id=1562872215]
+texture_filter = 1
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="JobsTitle" type="Label" parent="Skills/SkillsGMCP/SkillsContent/JobsSection" unique_id=477575247]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "Jobs"
+horizontal_alignment = 1
+
+[node name="JobsScroll" type="ScrollContainer" parent="Skills/SkillsGMCP/SkillsContent/JobsSection" unique_id=1890585034]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="JobsList" type="VBoxContainer" parent="Skills/SkillsGMCP/SkillsContent/JobsSection/JobsScroll" unique_id=1416751223]
+texture_filter = 1
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SkillsSection" type="VBoxContainer" parent="Skills/SkillsGMCP/SkillsContent" unique_id=1748206898]
+texture_filter = 1
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="SkillsTitle" type="Label" parent="Skills/SkillsGMCP/SkillsContent/SkillsSection" unique_id=1868848543]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 16
+text = "Skills"
+horizontal_alignment = 1
+
+[node name="SkillsSummary" type="Label" parent="Skills/SkillsGMCP/SkillsContent/SkillsSection" unique_id=256741098]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.88, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 13
+text = "0 skills   0 jobs"
+clip_text = true
+
+[node name="SkillsScroll" type="ScrollContainer" parent="Skills/SkillsGMCP/SkillsContent/SkillsSection" unique_id=506150281]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="SkillsList" type="VBoxContainer" parent="Skills/SkillsGMCP/SkillsContent/SkillsSection/SkillsScroll" unique_id=792686711]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Close" type="Button" parent="Skills" unique_id=986162084]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 486.0
+offset_right = 800.0
+offset_bottom = 512.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
 text = "Close"
 autowrap_trim_flags = 0
 
-[node name="Move" type="Button" parent="Skills"]
+[node name="Move" type="Button" parent="Skills" unique_id=835820579]
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 800.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
+text = "Skills"
+autowrap_trim_flags = 0
+
+[node name="SkillIcon" type="TextureRect" parent="Skills/Move" unique_id=1051705919]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 301.0
+offset_top = -28.0
+offset_right = 365.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+texture = ExtResource("4_cqlh8")
+expand_mode = 1
+
+[node name="Spells" type="Panel" parent="." unique_id=686619746]
+visible = false
+texture_filter = 1
+offset_right = 794.0
+offset_bottom = 250.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
+script = ExtResource("11_x6kya")
+
+[node name="TextDisplay" type="RichTextLabel" parent="Spells" unique_id=1507931216]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 793.0
+offset_bottom = 217.0
+theme_override_fonts/normal_font = ExtResource("6_jsvej")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+
+[node name="SpellsGMCP" type="Control" parent="Spells" unique_id=527301223]
+texture_filter = 1
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 33.0
+offset_right = 778.0
+offset_bottom = 217.0
+
+[node name="SpellsContent" type="VBoxContainer" parent="Spells/SpellsGMCP" unique_id=1885810995]
+texture_filter = 1
+layout_mode = 0
+offset_right = 762.0
+offset_bottom = 184.0
+theme_override_constants/separation = 6
+
+[node name="SpellsSummary" type="Label" parent="Spells/SpellsGMCP/SpellsContent" unique_id=1122432503]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.88, 1, 1)
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 13
+text = "0 known spells"
+clip_text = true
+
+[node name="SpellsScroll" type="ScrollContainer" parent="Spells/SpellsGMCP/SpellsContent" unique_id=1330658428]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="SpellsList" type="VBoxContainer" parent="Spells/SpellsGMCP/SpellsContent/SpellsScroll" unique_id=1159408088]
+texture_filter = 1
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="frames" type="TileMapLayer" parent="Spells" unique_id=1133008657]
+texture_filter = 1
+position = Vector2(-19, -19)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQADAAIAAAAZAAEAAQADAAEAAAAZAAIAAQAAAAEAAAAZAAMAAQAAAAEAAAAZAAQAAQAAAAEAAAAZAAUAAQAAAAEAAAAZAAYAAQAAAAEAAAAZAAcAAQADAAEAAAAZAAAAAQADAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_labx1")
+
+[node name="Close" type="Button" parent="Spells" unique_id=830751113]
+texture_filter = 1
+layout_mode = 0
+offset_top = 224.0
+offset_right = 794.0
+offset_bottom = 250.0
+theme_override_fonts/font = ExtResource("6_jsvej")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_labx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2t56i")
+text = "Close"
+autowrap_trim_flags = 0
+
+[node name="Move" type="Button" parent="Spells" unique_id=175399]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
@@ -207,175 +1247,31 @@ offset_right = 797.0
 offset_bottom = 27.0
 theme_override_fonts/font = ExtResource("6_jsvej")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Skills"
-autowrap_trim_flags = 0
-
-[node name="Spells" type="Panel" parent="."]
-visible = false
-texture_filter = 1
-offset_right = 826.0
-offset_bottom = 250.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
-script = ExtResource("11_x6kya")
-
-[node name="frames" type="TileMapLayer" parent="Spells"]
-texture_filter = 1
-position = Vector2(-19, -19)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAIAAAAAQABAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAEAAQABAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQABAAAAAAAIAAgAAQABAAAAAAAJAAgAAQABAAAAAAAKAAgAAQABAAAAAAALAAgAAQABAAAAAAAMAAgAAQABAAAAAAANAAgAAQABAAAAAAAOAAgAAQABAAAAAAAPAAgAAQABAAAAAAAQAAgAAQABAAAAAAARAAgAAQABAAAAAAASAAgAAQABAAAAAAATAAgAAQABAAAAAAAUAAgAAQABAAAAAAAVAAgAAQABAAAAAAAWAAgAAQABAAAAAAAXAAgAAQABAAAAAAAYAAgAAQABAAAAAAAZAAgAAQABAAAAAAAZAAEAAQABAAAAAAAZAAcAAQABAAAAAAAZAAAAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAYAAAAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAXAAEAAQABAAAAAAAYAAEAAQABAAAAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQABAAAAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQABAAAAAAAIAAcAAQABAAAAAAAJAAcAAQABAAAAAAAKAAcAAQABAAAAAAALAAcAAQABAAAAAAAMAAcAAQABAAAAAAANAAcAAQABAAAAAAAOAAcAAQABAAAAAAAPAAcAAQABAAAAAAAQAAcAAQABAAAAAAARAAcAAQABAAAAAAASAAcAAQABAAAAAAATAAcAAQABAAAAAAAUAAcAAQABAAAAAAAVAAcAAQABAAAAAAAWAAcAAQABAAAAAAAXAAcAAQABAAAAAAAYAAcAAQABAAAAAAAaAAAAAQADAAAAAAAaAAgAAQADAAIAAAAaAAcAAQADAAEAAAAaAAEAAQADAAEAAAAaAAIAAQAAAAEAAAAaAAMAAQAAAAEAAAAaAAQAAQAAAAEAAAAaAAUAAQAAAAEAAAAaAAYAAQAAAAEAAAA=")
-tile_set = SubResource("TileSet_labx1")
-
-[node name="TextDisplay" type="RichTextLabel" parent="Spells"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1.0
-offset_top = 33.0
-offset_right = 825.0
-offset_bottom = 217.0
-theme_override_fonts/normal_font = ExtResource("6_jsvej")
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-
-[node name="Close" type="Button" parent="Spells"]
-texture_filter = 1
-layout_mode = 0
-offset_top = 224.0
-offset_right = 826.0
-offset_bottom = 250.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Close"
-autowrap_trim_flags = 0
-
-[node name="Move" type="Button" parent="Spells"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 3.0
-offset_right = 826.0
-offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq0kq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q7mms")
 text = "Spells"
 autowrap_trim_flags = 0
 
-[node name="Targets" type="Panel" parent="."]
-visible = false
-texture_filter = 1
-offset_right = 218.0
-offset_bottom = 250.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eq0ym")
-script = ExtResource("11_x6kya")
-
-[node name="frames" type="TileMapLayer" parent="Targets"]
-texture_filter = 1
-position = Vector2(-19, -19)
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQABAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQABAAEAAAAAAAYAAQABAAEAAAAAAAcAAQABAAEAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQADAAAAAAABAAEAAQABAAAAAAACAAEAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQADAAEAAAAAAAgAAQAAAAIAAAABAAgAAQABAAAAAAACAAgAAQABAAAAAAADAAgAAQABAAAAAAAEAAgAAQABAAAAAAAFAAgAAQABAAAAAAAGAAgAAQABAAAAAAAHAAgAAQADAAIAAAABAAcAAQABAAAAAAACAAcAAQABAAAAAAADAAcAAQACAAIAAAAEAAcAAQABAAAAAAAFAAcAAQABAAAAAAAGAAcAAQABAAAAAAAHAAcAAQADAAEAAAAHAAIAAQAAAAEAAAAHAAMAAQAAAAEAAAAHAAQAAQAAAAEAAAAHAAUAAQADAAEAAAAHAAYAAQADAAEAAAABAAYAAQABAAAAAAACAAYAAQABAAAAAAADAAYAAQACAAAAAAAEAAYAAQABAAAAAAAFAAYAAQABAAAAAAAGAAYAAQABAAAAAAAEAAUAAQABAAAAAAAFAAUAAQABAAAAAAAGAAUAAQABAAAAAAADAAUAAQABAAAAAAACAAUAAQABAAAAAAABAAUAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_labx1")
-
-[node name="TextDisplay" type="RichTextLabel" parent="Targets"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1.0
-offset_top = 33.0
-offset_right = 218.0
-offset_bottom = 154.0
-theme_override_fonts/normal_font = ExtResource("6_jsvej")
-theme_override_font_sizes/normal_font_size = 15
-bbcode_enabled = true
-scroll_active = false
-autowrap_trim_flags = 0
-tab_size = 2
-horizontal_alignment = 1
-
-[node name="Close" type="Button" parent="Targets"]
-texture_filter = 1
-layout_mode = 0
-offset_top = 224.0
-offset_right = 218.0
-offset_bottom = 250.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Close"
-autowrap_trim_flags = 0
-
-[node name="Move" type="Button" parent="Targets"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 218.0
-offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Targets"
-autowrap_trim_flags = 0
-
-[node name="Add" type="Button" parent="Targets"]
-texture_filter = 1
-layout_mode = 0
-offset_top = 192.0
-offset_right = 90.0
-offset_bottom = 218.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Add"
-autowrap_trim_flags = 0
-
-[node name="Remove" type="Button" parent="Targets"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 96.0
-offset_top = 192.0
-offset_right = 218.0
-offset_bottom = 218.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("5_labx1")
-theme_override_styles/pressed = ExtResource("6_2t56i")
-theme_override_styles/hover = ExtResource("6_2t56i")
-text = "Remove"
-autowrap_trim_flags = 0
-
-[node name="LineEdit" type="LineEdit" parent="Targets"]
-layout_mode = 0
-offset_top = 160.0
-offset_right = 218.0
-offset_bottom = 186.0
-theme_override_fonts/font = ExtResource("6_jsvej")
-theme_override_font_sizes/font_size = 13
-
+[connection signal="pressed" from="Buttons_BG/GridContainer/status_button" to="." method="_on_status_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/equipment_button" to="." method="_on_equipment_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/backpack_button" to="." method="_on_backpack_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/skills_button" to="." method="_on_skills_button_pressed"]
+[connection signal="pressed" from="Buttons_BG/GridContainer/spells_button" to="." method="_on_spells_button_pressed"]
 [connection signal="button_down" from="Backpack/Move" to="Backpack" method="_on_move_button_down"]
 [connection signal="button_up" from="Backpack/Move" to="Backpack" method="_on_move_button_up"]
-[connection signal="pressed" from="Backpack/Close" to="." method="_on_close_pressed"]
-[connection signal="button_down" from="Status/Move" to="Status" method="_on_move_button_down"]
-[connection signal="button_up" from="Status/Move" to="Status" method="_on_move_button_up"]
-[connection signal="pressed" from="Status/Close" to="." method="_on_close_pressed"]
-[connection signal="pressed" from="Skills/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Backpack/Close" to="." method="_on_backpack_close_pressed"]
+[connection signal="button_down" from="Attributes/Move" to="Attributes" method="_on_move_button_down"]
+[connection signal="button_up" from="Attributes/Move" to="Attributes" method="_on_move_button_up"]
+[connection signal="pressed" from="Attributes/Close" to="." method="_on_attributes_close_pressed"]
+[connection signal="button_down" from="Equipment/Move" to="Equipment" method="_on_move_button_down"]
+[connection signal="button_up" from="Equipment/Move" to="Equipment" method="_on_move_button_up"]
+[connection signal="pressed" from="Equipment/Close" to="." method="_on_equipment_close_pressed"]
+[connection signal="button_down" from="NpcLook/Move" to="NpcLook" method="_on_move_button_down"]
+[connection signal="button_up" from="NpcLook/Move" to="NpcLook" method="_on_move_button_up"]
+[connection signal="pressed" from="NpcLook/Close" to="." method="_on_npc_look_close_pressed"]
+[connection signal="pressed" from="Skills/Close" to="." method="_on_skills_close_pressed"]
 [connection signal="button_down" from="Skills/Move" to="Skills" method="_on_move_button_down"]
 [connection signal="button_up" from="Skills/Move" to="Skills" method="_on_move_button_up"]
-[connection signal="pressed" from="Spells/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Spells/Close" to="." method="_on_spells_close_pressed"]
 [connection signal="button_down" from="Spells/Move" to="Spells" method="_on_move_button_down"]
 [connection signal="button_up" from="Spells/Move" to="Spells" method="_on_move_button_up"]
-[connection signal="pressed" from="Targets/Close" to="." method="_on_close_pressed"]
-[connection signal="button_down" from="Targets/Move" to="Targets" method="_on_move_button_down"]
-[connection signal="button_up" from="Targets/Move" to="Targets" method="_on_move_button_up"]
-[connection signal="pressed" from="Targets/Add" to="." method="_on_add_pressed"]
-[connection signal="pressed" from="Targets/Remove" to="." method="_on_remove_pressed"]

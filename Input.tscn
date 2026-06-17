@@ -1,16 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy4dr3y4q365w"]
+[gd_scene format=4 uid="uid://dy4dr3y4q365w"]
 
 [ext_resource type="Script" uid="uid://d3sukwct6alh0" path="res://input.gd" id="1_xone2"]
+[ext_resource type="Texture2D" uid="uid://dqvir5s7oafd6" path="res://assets/ui/ui_frame/ui_frame.png" id="2_lj2xp"]
 [ext_resource type="FontVariation" uid="uid://bbbowwhyjq3j8" path="res://fonts/kc_fonts_regular.tres" id="2_qa0ix"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73r0m"]
+texture = ExtResource("2_lj2xp")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ig0wf"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_73r0m")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xone2"]
 
-[node name="Input" type="Node2D"]
+[node name="Input" type="Node2D" unique_id=1843527413]
 script = ExtResource("1_xone2")
 
-[node name="Command" type="LineEdit" parent="."]
-offset_right = 446.0
-offset_bottom = 32.0
+[node name="frames" type="TileMapLayer" parent="." unique_id=1089746325]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAACAAAAAQAAAAAAAAACAAEAAQAAAAIAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAAAAQABAAAAAAAJAAAAAQABAAAAAAAKAAAAAQABAAAAAAALAAAAAQABAAAAAAAMAAAAAQABAAAAAAADAAEAAQABAAAAAAAEAAEAAQABAAAAAAAFAAEAAQABAAAAAAAGAAEAAQABAAAAAAAHAAEAAQABAAAAAAAIAAEAAQABAAAAAAAJAAEAAQABAAAAAAAKAAEAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAAAAQABAAAAAAAOAAAAAQABAAAAAAAPAAAAAQABAAAAAAAQAAAAAQABAAAAAAARAAAAAQABAAAAAAASAAAAAQABAAAAAAATAAAAAQABAAAAAAAUAAAAAQABAAAAAAAVAAAAAQABAAAAAAAWAAAAAQABAAAAAAAXAAAAAQABAAAAAAAXAAEAAQABAAAAAAANAAEAAQABAAAAAAAOAAEAAQABAAAAAAAPAAEAAQABAAAAAAAQAAEAAQABAAAAAAARAAEAAQABAAAAAAASAAEAAQABAAAAAAATAAEAAQABAAAAAAAUAAEAAQABAAAAAAAVAAEAAQABAAAAAAAWAAEAAQABAAAAAAAaAAAAAQABAAAAAAAaAAEAAQABAAAAAAAbAAAAAQADAAAAAAAbAAEAAQADAAIAAAAZAAAAAQABAAAAAAAYAAAAAQABAAAAAAAYAAEAAQABAAAAAAAZAAEAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_ig0wf")
+
+[node name="Command" type="LineEdit" parent="." unique_id=845868344]
+offset_left = 83.0
+offset_top = 16.0
+offset_right = 877.0
+offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("2_qa0ix")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xone2")
@@ -18,11 +50,21 @@ placeholder_text = "Input something here....."
 alignment = 1
 keep_editing_on_text_submit = true
 
-[node name="Button" type="Button" parent="."]
-offset_right = 446.0
-offset_bottom = 32.0
+[node name="Input_label" type="RichTextLabel" parent="." unique_id=2079587104]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 77.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("2_qa0ix")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Input:"
+scroll_active = false
+autowrap_trim_flags = 0
+tab_size = 2
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[connection signal="text_change_rejected" from="Command" to="." method="_on_command_text_change_rejected"]
-[connection signal="text_changed" from="Command" to="." method="_on_command_text_changed"]
 [connection signal="text_submitted" from="Command" to="." method="_on_command_text_submitted"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

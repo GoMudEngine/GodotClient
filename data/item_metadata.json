@@ -1,0 +1,782 @@
+{
+    "1":  {
+              "name":  "note",
+              "namesimple":  "paper",
+              "type":  "readable",
+              "subtype":  "blobcontent",
+              "description":  "The scribbling on the note has been worn away and can no longer be read."
+          },
+    "2":  {
+              "name":  "map",
+              "namesimple":  "paper",
+              "type":  "readable",
+              "subtype":  "blobcontent",
+              "description":  "This map was once readable, but no longer. Maybe you can get a new one?"
+          },
+    "3":  {
+              "name":  "crypt key",
+              "namesimple":  "key",
+              "type":  "key",
+              "subtype":  "generic",
+              "description":  "An ancient and crude key. I wonder where it could be used?"
+          },
+    "4":  {
+              "name":  "winterfire crystal",
+              "namesimple":  "gemstone",
+              "type":  "object",
+              "subtype":  "mundane",
+              "description":  "This crystal is extraordinarily rare and capable of generating a localized, gentle warmth when activated."
+          },
+    "5":  {
+              "name":  "amethyst",
+              "namesimple":  "gemstone",
+              "type":  "object",
+              "subtype":  "mundane",
+              "description":  "The amethyst crystal is a beautiful hue of purple."
+          },
+    "6":  {
+              "name":  "sleeping bag",
+              "namesimple":  "sleeping bag",
+              "type":  "object",
+              "subtype":  "usable",
+              "description":  "Use this to get some quick sleep"
+          },
+    "7":  {
+              "name":  "residence key",
+              "namesimple":  "key",
+              "type":  "key",
+              "subtype":  "generic",
+              "description":  "A key to a residence in Frostfang. It\u0027s a bit rusty, but it should still work."
+          },
+    "8":  {
+              "name":  "lockpick kit",
+              "namesimple":  "lockpicks",
+              "type":  "lockpicks",
+              "subtype":  "generic",
+              "description":  "A set of lockpicks. You can use these to unlock doors and chests."
+          },
+    "9":  {
+              "name":  "pinecone grenade",
+              "namesimple":  "pinecone grenade",
+              "type":  "grenade",
+              "subtype":  "throwable",
+              "description":  "Throw this to cause a stir!"
+          },
+    "10":  {
+               "name":  "history of frostfang",
+               "namesimple":  "Book",
+               "type":  "readable",
+               "subtype":  "blobcontent",
+               "description":  "The book tells of a time Frostfang was known as \"DragonsFang\", and was not in a permanent winter."
+           },
+    "11":  {
+               "name":  "rat trap",
+               "namesimple":  "box",
+               "type":  "object",
+               "subtype":  "generic",
+               "description":  "A simple wooden box with a hinged lid, containing a spring-loaded mechanism designed to snap shut on small creatures."
+           },
+    "12":  {
+               "name":  "eldertree blossom",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A small, white flower that grows on ancient elder trees, revered for its healing and protective qualities."
+           },
+    "13":  {
+               "name":  "celestial lotus",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A rare aquatic flower with petals that shimmer like stars, believed to enhance one\u0027s connection to the celestial realms."
+           },
+    "14":  {
+               "name":  "moonshadow orchid",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A delicate, luminescent flower that glows softly in the moonlight, often used in lunar magic rituals."
+           },
+    "15":  {
+               "name":  "inferno rose",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A striking deep orange and red rose with petals that resemble flames, often used in rituals invoking passion and transformation."
+           },
+    "16":  {
+               "name":  "aurora heartbloom",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A multicolored flower that changes hues with the dawn and dusk, symbolizing love and new beginnings."
+           },
+    "17":  {
+               "name":  "shadowfern",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "A dark green fern with shadowy fronds, used in concealment spells and for creating safe havens."
+           },
+    "18":  {
+               "name":  "mystic seed packets",
+               "namesimple":  "flower",
+               "type":  "botanical",
+               "subtype":  "mundane",
+               "description":  "Assorted packets of rare and enchanted seeds, each claimed to have unique magical properties."
+           },
+    "19":  {
+               "name":  "the shadow herbarium",
+               "namesimple":  "flower",
+               "type":  "readable",
+               "subtype":  "usable",
+               "description":  "A collection of the most dangerous plants used in shadow magic and dark rituals, with instructions for safe handling."
+           },
+    "20":  {
+               "name":  "junk",
+               "namesimple":  "junk",
+               "type":  "junk",
+               "subtype":  "mundane",
+               "description":  "A broken object that can no longer be recognized."
+           },
+    "21":  {
+               "name":  "stat coupon",
+               "namesimple":  "coupon",
+               "displayname":  ":coupon",
+               "type":  "object",
+               "subtype":  "usable",
+               "description":  "Grants a stat point when used."
+           },
+    "22":  {
+               "name":  "training coupon",
+               "namesimple":  "coupon",
+               "displayname":  ":coupon",
+               "type":  "object",
+               "subtype":  "usable",
+               "description":  "Grants a training point when used."
+           },
+    "23":  {
+               "name":  "rope",
+               "namesimple":  "rope",
+               "type":  "object",
+               "subtype":  "mundane",
+               "description":  "A basic rope. Useful when you need it, a burden when you don\u0027t."
+           },
+    "24":  {
+               "name":  "spellbound projectiles",
+               "namesimple":  "spellbook",
+               "type":  "readable",
+               "subtype":  "usable",
+               "description":  "A book that describes spells used for casting magical projectiles."
+           },
+    "25":  {
+               "name":  "stormwatcher key",
+               "namesimple":  "key",
+               "type":  "key",
+               "subtype":  "generic",
+               "description":  "A large key made of iron."
+           },
+    "26":  {
+               "name":  "broom",
+               "namesimple":  "broom",
+               "type":  "object",
+               "subtype":  "mundane",
+               "description":  "A straw broom. You can \u003cansi fg=\"command\"\u003esweep broom\u003c/ansi\u003e to use it."
+           },
+    "27":  {
+               "name":  "crocodile leather",
+               "type":  "object",
+               "subtype":  "mundane",
+               "description":  "The tough hide of a crocodile."
+           },
+    "100":  {
+                "name":  "newbie kit",
+                "namesimple":  "kit",
+                "type":  "object",
+                "subtype":  "usable",
+                "description":  "A package containing helpful items to get started."
+            },
+    "101":  {
+                "name":  "arcane flute",
+                "namesimple":  "arcane flute",
+                "type":  "object",
+                "subtype":  "generic",
+                "description":  "A flute with faintly glowing markings all along it. Maybe you can \u003cansi fg=\"command\"\u003eplay\u003c/ansi\u003e it."
+            },
+    "102":  {
+                "name":  "room rental",
+                "namesimple":  "room rental",
+                "type":  "service",
+                "subtype":  "generic",
+                "description":  "Rent a room in the Inn and rest up."
+            },
+    "10001":  {
+                  "name":  "sharp stick",
+                  "namesimple":  "stick",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "It looks kinda sticky."
+              },
+    "10002":  {
+                  "name":  "guardsman\u0027s broadsword",
+                  "namesimple":  "broadsword",
+                  "type":  "weapon",
+                  "subtype":  "slashing",
+                  "description":  "The standard issue weapon of a guardsman."
+              },
+    "10003":  {
+                  "name":  "captain\u0027s broadsword",
+                  "namesimple":  "broadsword",
+                  "type":  "weapon",
+                  "subtype":  "slashing",
+                  "description":  "This broadsword has special decorations commemorating a captains promotion."
+              },
+    "10004":  {
+                  "name":  "dagger",
+                  "namesimple":  "dagger",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "A plain dagger that still has a bit of a stabby end left."
+              },
+    "10005":  {
+                  "name":  "obsidian dagger",
+                  "namesimple":  "dagger",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "The dagger, forged from pure obsidian, possesses an enigmatic allure with its glossy, jet-black blade that glistens ominously in the light."
+              },
+    "10006":  {
+                  "name":  "glowing battleaxe",
+                  "namesimple":  "battleaxe",
+                  "displayname":  ":glowing",
+                  "type":  "weapon",
+                  "subtype":  "cleaving",
+                  "description":  "The battleaxe, robust and formidable, commands attention with its radiant glow that emanates from the core of its blade."
+              },
+    "10007":  {
+                  "name":  "finely crafted shortsword",
+                  "namesimple":  "shortsword",
+                  "type":  "weapon",
+                  "subtype":  "slashing",
+                  "description":  "The finely crafted shortsword boasts a perfectly balanced blade, its gleaming steel edge honed to a razor-sharp finish, while the ornate hilt fits snugly in the hand, promising precision and grace in every strike."
+              },
+    "10008":  {
+                  "name":  "wooden claw",
+                  "namesimple":  "claw",
+                  "type":  "weapon",
+                  "subtype":  "claws",
+                  "description":  "The Wooden Claw is a unique hand-to-hand combat weapon, meticulously carved from durable hardwood."
+              },
+    "10009":  {
+                  "name":  "ancient royal scepter",
+                  "namesimple":  "scepter",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "It\u0027s old and crude, but was once the symbol of a king."
+              },
+    "10010":  {
+                  "name":  "cudgel",
+                  "namesimple":  "club",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "The cudgel is a robust, unassuming weapon, fashioned from sturdy oak hardened by time and use. It has a heft to it that feels solid in the grip, reassuring the wielder of its reliability in combat. The wood bears the scars of countless clashes, its surface marred with nicks and stains that speak to its history of service."
+              },
+    "10011":  {
+                  "name":  "spider fang",
+                  "namesimple":  "fang",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "The fang of a large spider."
+              },
+    "10012":  {
+                  "name":  "crowbar",
+                  "namesimple":  "crowbar",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "A long and thin bar of iron. Useful for prying."
+              },
+    "10013":  {
+                  "name":  "tree trunk",
+                  "namesimple":  "trunk",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "A massive wooden trunk."
+              },
+    "10014":  {
+                  "name":  "sling",
+                  "namesimple":  "sling",
+                  "type":  "weapon",
+                  "subtype":  "shooting",
+                  "description":  "A couple of leather straps and a pouch to hold a rock. What more could you want?"
+              },
+    "10015":  {
+                  "name":  "crude cudgel",
+                  "namesimple":  "club",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "A crudely fashioned cudgel, with large nails haphazardly hammered into it, penetrating and sticking out through at various spots."
+              },
+    "10016":  {
+                  "name":  "boat oar",
+                  "namesimple":  "oar",
+                  "type":  "weapon",
+                  "subtype":  "bludgeoning",
+                  "description":  "An oar used to paddle a small boat."
+              },
+    "10017":  {
+                  "name":  "dancing needle",
+                  "namesimple":  "needle",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "A tiny bladed weapon the size of a sewing needle."
+              },
+    "10018":  {
+                  "name":  "jeweled dagger",
+                  "namesimple":  "dagger",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "The jeweled dagger, with its gleaming blade and hilt encrusted with shimmering gems, exudes an aura of both lethal elegance and mystical power."
+              },
+    "10019":  {
+                  "name":  "pruning shears",
+                  "namesimple":  "shears",
+                  "type":  "weapon",
+                  "subtype":  "stabbing",
+                  "description":  "Pruning shears that glow softly in the moonlight, perfect for nighttime gardening."
+              },
+    "10020":  {
+                  "name":  "long whip",
+                  "namesimple":  "whip",
+                  "type":  "weapon",
+                  "subtype":  "whipping",
+                  "description":  "A long whip used by circus performers."
+              },
+    "20001":  {
+                  "name":  "rat pelt",
+                  "namesimple":  "animal skin",
+                  "type":  "gloves",
+                  "subtype":  "wearable",
+                  "description":  "The skin of a dead rat. Maybe you can get a few coins for it."
+              },
+    "20002":  {
+                  "name":  "cape",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A plain cape that protects (poorly) from the elements."
+              },
+    "20003":  {
+                  "name":  "worn boots",
+                  "namesimple":  "boots",
+                  "type":  "feet",
+                  "subtype":  "wearable",
+                  "description":  "Boots well past their usefulness."
+              },
+    "20004":  {
+                  "name":  "wooden shield",
+                  "namesimple":  "shield",
+                  "type":  "offhand",
+                  "subtype":  "wearable",
+                  "description":  "A simple wooden shield."
+              },
+    "20005":  {
+                  "name":  "copper ring",
+                  "namesimple":  "ring",
+                  "type":  "ring",
+                  "subtype":  "wearable",
+                  "description":  "A cheap ring."
+              },
+    "20006":  {
+                  "name":  "tattered pants",
+                  "namesimple":  "pants",
+                  "type":  "legs",
+                  "subtype":  "wearable",
+                  "description":  "A pair of poorly held together pants."
+              },
+    "20007":  {
+                  "name":  "rusty pot",
+                  "namesimple":  "pot",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "It just barely works as a helmet."
+              },
+    "20008":  {
+                  "name":  "cotton shirt",
+                  "namesimple":  "shirt",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "Surprisingly clean."
+              },
+    "20009":  {
+                  "name":  "cloth belt",
+                  "namesimple":  "belt",
+                  "type":  "belt",
+                  "subtype":  "wearable",
+                  "description":  "Just enough to hold your pants up."
+              },
+    "20010":  {
+                  "name":  "giant rat pelt",
+                  "namesimple":  "animal skin",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "The skin of a dead giant rat. It\u0027s just big enough to wear over your head."
+              },
+    "20011":  {
+                  "name":  "giant rat tail",
+                  "namesimple":  "animal tail",
+                  "type":  "belt",
+                  "subtype":  "wearable",
+                  "description":  "Just big enough to use as a belt."
+              },
+    "20012":  {
+                  "name":  "shadowsteel breastplate",
+                  "namesimple":  "breastplate",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "The Shadowsteel breastplate is a marvel of craftsmanship and arcane engineering, meticulously forged from a rare and enigmatic alloy known only to a select few master smiths."
+              },
+    "20013":  {
+                  "name":  "rotting belt",
+                  "type":  "belt",
+                  "subtype":  "wearable",
+                  "description":  "The belt, once an item of great craftsmanship, is now decayed and rotting."
+              },
+    "20014":  {
+                  "name":  "rotting boots",
+                  "namesimple":  "boots",
+                  "type":  "feet",
+                  "subtype":  "wearable",
+                  "description":  "The boots of a king. A dead one, anyways."
+              },
+    "20015":  {
+                  "name":  "royal ring",
+                  "namesimple":  "ring",
+                  "type":  "ring",
+                  "subtype":  "wearable",
+                  "description":  "Though ancient, the ring is in terrific shape."
+              },
+    "20016":  {
+                  "name":  "torn gloves",
+                  "namesimple":  "gloves",
+                  "type":  "gloves",
+                  "subtype":  "wearable",
+                  "description":  "The gloves are in terrible shape."
+              },
+    "20017":  {
+                  "name":  "chain coif",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "The chain coif is a little rusty, but still in good shape."
+              },
+    "20018":  {
+                  "name":  "circlet",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "The circlet of an ancient king."
+              },
+    "20019":  {
+                  "name":  "iron shield",
+                  "namesimple":  "shield",
+                  "type":  "offhand",
+                  "subtype":  "wearable",
+                  "description":  "A heavy, decorative iron shield."
+              },
+    "20020":  {
+                  "name":  "leather cap",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "A leather cap that provides minimal protection."
+              },
+    "20021":  {
+                  "name":  "tattered cape",
+                  "namesimple":  "cape",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A cape eaten by moths and rats."
+              },
+    "20022":  {
+                  "name":  "initiates robe",
+                  "namesimple":  "robe",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "The Initiate\u0027s Robe is a stark, utilitarian garment, symbolizing the acolyte\u0027s commitment to their somber duties. It is made of durable, dark fabric that hangs heavy on the wearer, designed to withstand the dampness and decay of the catacombs. The robe is unadorned save for a few simple, geometric patterns stitched along the hem and cuffs, signifying the wearer\u0027s rank within the order. The hood is practical in shape, meant to shield the eyes from the glare of torches and to preserve the wearer\u0027s anonymity. The cut is loose, allowing for ease of movement during rituals and ceremonies. Its simplicity is its statement, reflecting the solemn vows of its wearer to eschew worldly vanity and embrace the shadowed path they tread."
+              },
+    "20023":  {
+                  "name":  "spider exoskeleton",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "The empty husk of a spider."
+              },
+    "20024":  {
+                  "name":  "fur cape",
+                  "namesimple":  "cape",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "An elegant fur cape."
+              },
+    "20025":  {
+                  "name":  "sophie\u0027s locket",
+                  "namesimple":  "locket",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A locket with a drawing inside."
+              },
+    "20026":  {
+                  "name":  "spiked collar",
+                  "namesimple":  "dog collar",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A leather collar with metal spikes."
+              },
+    "20027":  {
+                  "name":  "gnarled wood ring",
+                  "namesimple":  "ring",
+                  "type":  "ring",
+                  "subtype":  "wearable",
+                  "description":  "A hand crafted ring from an unidenfiable wood."
+              },
+    "20028":  {
+                  "name":  "padded shoes",
+                  "namesimple":  "shoes",
+                  "type":  "feet",
+                  "subtype":  "wearable",
+                  "description":  "Hand cobbled shoes made for traversing a forest."
+              },
+    "20029":  {
+                  "name":  "leather pants",
+                  "namesimple":  "pants",
+                  "type":  "legs",
+                  "subtype":  "wearable",
+                  "description":  "A pair of hand stitched leather pants."
+              },
+    "20030":  {
+                  "name":  "leather vest",
+                  "namesimple":  "vest",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "A crudely fashioned leather vest."
+              },
+    "20031":  {
+                  "name":  "spider queen breastplate",
+                  "namesimple":  "breastplate",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "The Spider Queen Breastplate offers exceptional protection against both physical and magical threats. Its surface is resistant to blades and projectiles, while the enchantments woven into the chitin provide a safeguard against arcane assaults. The armor fits snugly, yet comfortably, against the wearer\u0027s torso, enhancing their natural agility rather than impeding it."
+              },
+    "20032":  {
+                  "name":  "swimming flippers",
+                  "namesimple":  "flippers",
+                  "type":  "feet",
+                  "subtype":  "wearable",
+                  "description":  "Specially crated shoes that allow you to swim in deep water."
+              },
+    "20033":  {
+                  "name":  "sophie\u0027s old locket",
+                  "namesimple":  "locket",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "An old locket"
+              },
+    "20034":  {
+                  "name":  "leather robe",
+                  "namesimple":  "robe",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "The leather robe, commonly worn by Mystarion citizens, is a versatile and elegant garment crafted from supple, enchanted leather that offers both protection and style. The robe\u0027s exterior is a deep, rich brown, embossed with intricate, arcane patterns that subtly glow in low light, hinting at its magical properties. The interior is lined with soft, comfortable fabric, making it suitable for both everyday wear and long hours of study or travel. A hood, often draped casually over the shoulders, provides an added air of mystery and protection against the elements. Fastened with ornate clasps and adorned with small, practical pockets, the leather robe is a testament to the seamless blend of practicality and enchantment in Mystarion\u0027s fashion."
+              },
+    "20035":  {
+                  "name":  "leather choker",
+                  "namesimple":  "choker",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A leather collar."
+              },
+    "20036":  {
+                  "name":  "lantern",
+                  "namesimple":  "lantern",
+                  "displayname":  ":glowing",
+                  "type":  "offhand",
+                  "subtype":  "wearable",
+                  "description":  "A simple handheld lantern."
+              },
+    "20037":  {
+                  "name":  "priests ring",
+                  "namesimple":  "ring",
+                  "type":  "ring",
+                  "subtype":  "wearable",
+                  "description":  "A hand crafted ring with a priestly insignia."
+              },
+    "20038":  {
+                  "name":  "ice armor",
+                  "namesimple":  "ice armor",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "Armor chiseled from solid ice, it is cold to the touch and shimmers with a faint blue light."
+              },
+    "20039":  {
+                  "name":  "students amulet",
+                  "namesimple":  "amulet",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A simple iron amulet signifying that you are in training."
+              },
+    "20040":  {
+                  "name":  "floofy gloves",
+                  "namesimple":  "animal skin",
+                  "type":  "gloves",
+                  "subtype":  "wearable",
+                  "description":  "The skin of a dead snow floof. Floofskin is known to keep you warm in extreme weather."
+              },
+    "20041":  {
+                  "name":  "snow wolf mane",
+                  "namesimple":  "mane",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "The Snow Wolf Mane is a rare and highly prized item found only on the alpha wolves of the Whispering Wastes. This thick ruff of fur runs from the top of the wolf\u0027s head down along its powerful neck and shoulders, and is distinct for its silver-white strands that shimmer like frost in the moonlight. Coarser than the rest of the wolf\u0027s coat, the mane serves as both armor against the biting cold and a display of dominance, bristling when the wolf is threatened or preparing to strike. Legends among the nomads of the Wastes claim that wearing a Snow Wolf Mane grants the bearer enhanced endurance and resistance to cold, a reflection of the wolf\u0027s mastery over the frozen wilderness."
+              },
+    "20042":  {
+                  "name":  "wolf pelt",
+                  "namesimple":  "pelt",
+                  "type":  "body",
+                  "subtype":  "wearable",
+                  "description":  "The shiny pelt of a timber wolf."
+              },
+    "20043":  {
+                  "name":  "graduation cap",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "A special hat signifying that you\u0027ve completed the tutorial."
+              },
+    "20044":  {
+                  "name":  "teaching cap",
+                  "type":  "head",
+                  "subtype":  "wearable",
+                  "description":  "A special hat signifying that you\u0027re worthy to teach a subject."
+              },
+    "20045":  {
+                  "name":  "rat-skin cape",
+                  "namesimple":  "cape",
+                  "type":  "neck",
+                  "subtype":  "wearable",
+                  "description":  "A patchwork cape made up of many rat hides."
+              },
+    "30001":  {
+                  "name":  "small red potion",
+                  "namesimple":  "bottle",
+                  "type":  "potion",
+                  "subtype":  "drinkable",
+                  "description":  "A small red potion... you COULD drink it..."
+              },
+    "30002":  {
+                  "name":  "ambrosia potion",
+                  "namesimple":  "bottle",
+                  "type":  "potion",
+                  "subtype":  "drinkable",
+                  "description":  "Rumored to be from the gods themselves."
+              },
+    "30003":  {
+                  "name":  "abyssal nectar",
+                  "namesimple":  "bottle",
+                  "type":  "potion",
+                  "subtype":  "drinkable",
+                  "description":  "Imbibable essence of the abyss itself."
+              },
+    "30004":  {
+                  "name":  "cheese sandwich",
+                  "namesimple":  "sandwich",
+                  "type":  "food",
+                  "subtype":  "edible",
+                  "description":  "A tasty cheese sandwich."
+              },
+    "30005":  {
+                  "name":  "mutton stew",
+                  "namesimple":  "stew",
+                  "type":  "food",
+                  "subtype":  "edible",
+                  "description":  "A bit gamey."
+              },
+    "30006":  {
+                  "name":  "mug of ale",
+                  "namesimple":  "mug",
+                  "type":  "drink",
+                  "subtype":  "drinkable",
+                  "description":  "Some ale to wash down your meal."
+              },
+    "30007":  {
+                  "name":  "mushroom",
+                  "namesimple":  "mushroom",
+                  "type":  "food",
+                  "subtype":  "edible",
+                  "description":  "It seems safe to eat."
+              },
+    "30008":  {
+                  "name":  "goldenbell",
+                  "namesimple":  "herb",
+                  "type":  "botanical",
+                  "subtype":  "edible",
+                  "description":  "A bright yellow herb that chimes when touched, used to summon light and enhance joy in rituals."
+              },
+    "30009":  {
+                  "name":  "glacial mint",
+                  "namesimple":  "mint",
+                  "type":  "botanical",
+                  "subtype":  "edible",
+                  "description":  "A frosty herb that cools the air around it, perfect for ice spells and calming potions."
+              },
+    "30010":  {
+                  "name":  "moonshade leaf",
+                  "namesimple":  "leaf",
+                  "type":  "botanical",
+                  "subtype":  "edible",
+                  "description":  "A silvery leaf that glows faintly in the dark, used to enhance dream magic and nocturnal rituals."
+              },
+    "30011":  {
+                  "name":  "dreamweaver\u0027s tea",
+                  "namesimple":  "tea",
+                  "type":  "drink",
+                  "subtype":  "drinkable",
+                  "description":  "A soothing lavender and chamomile blend that promotes restful sleep and vivid dreams."
+              },
+    "30012":  {
+                  "name":  "phoenix elixir",
+                  "namesimple":  "tea",
+                  "type":  "drink",
+                  "subtype":  "drinkable",
+                  "description":  "A fiery potion made from sunfire blooms that revitalizes and boosts energy levels."
+              },
+    "30013":  {
+                  "name":  "midnight bliss",
+                  "namesimple":  "tea",
+                  "type":  "drink",
+                  "subtype":  "drinkable",
+                  "description":  "A dark, velvety potion crafted from glimmering nightshade and shadowfern, known for its deep, rich flavor and mysterious allure, perfect for those seeking an enigmatic and profound experience."
+              },
+    "30014":  {
+                  "name":  "small blue potion",
+                  "namesimple":  "bottle",
+                  "type":  "potion",
+                  "subtype":  "drinkable",
+                  "description":  "A small blue potion... you COULD drink it..."
+              },
+    "30015":  {
+                  "name":  "waterskin",
+                  "namesimple":  "waterskin",
+                  "type":  "drink",
+                  "subtype":  "drinkable",
+                  "description":  "A waterskin that holds several glugs."
+              },
+    "30016":  {
+                  "name":  "spotted mushroom",
+                  "namesimple":  "mushroom",
+                  "type":  "food",
+                  "subtype":  "edible",
+                  "description":  "A small red capped mushroom with white spots. Small magenta spores occasionally fall from it."
+              },
+    "30017":  {
+                  "name":  "polymorph potion",
+                  "namesimple":  "bottle",
+                  "displayname":  ":rainbow",
+                  "type":  "potion",
+                  "subtype":  "drinkable",
+                  "description":  "A scintillating rainbow potion, teeming with bubbling activity."
+              }
+}

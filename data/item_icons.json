@@ -1,0 +1,10 @@
+{
+  "empty": "res://assets/items/empty_slot.png",
+  "default": "res://assets/items/default_item.png",
+  "item_id:10001": "res://assets/items/weapons/sharp_stick.png",
+  "item_name:sharp stick": "res://assets/items/weapons/sharp_stick.png",
+  "sharp stick": "res://assets/items/weapons/sharp_stick.png",
+  "type_subtype:weapon:bludgeoning": "res://assets/items/weapons/bludgeoning_default.png",
+  "weapon:bludgeoning": "res://assets/items/weapons/bludgeoning_default.png",
+  "type:weapon": "res://assets/items/weapons/default_weapon.png"
+}

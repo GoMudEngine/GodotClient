@@ -1,3 +1,4 @@
+class_name MobsPanel
 extends Node2D
 
 const CARD_GAP: int = 6
@@ -6,10 +7,6 @@ const OBJECT_KIND_ITEM: String = "item"
 const OBJECT_KIND_CONTAINER: String = "container"
 const OBJECT_KIND_PLAYER: String = "player"
 const OBJECT_CARD_SCENE: PackedScene = preload("res://object_card.tscn")
-const ITEM_ICON_BY_ID_DIR: String = "res://assets/items/by_id"
-const MOB_ICON_BY_NAME_DIR: String = "res://assets/mobs/by_name"
-const DEFAULT_ITEM_ICON_PATH: String = "res://assets/items/default_item.png"
-const DEFAULT_MOB_ICON_PATH: String = "res://assets/mobs/default_mob.png"
 
 signal button_commands_submitted(data: String)
 
@@ -21,23 +18,8 @@ var _last_object_entries: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	var text_processor: Variant = $"../TextProcessor"
-	text_processor.mobs_text.connect(_on_mobs_text_received)
-	$Mobs_BG/TextDisplay.bbcode_enabled = true
 	_ensure_card_ui()
 	$Mobs_BG.resized.connect(_sync_card_scroll_bounds)
-
-
-func _on_mobs_text_received(bb_line: String) -> void:
-	if _has_gmcp_contents:
-		_set_card_ui_visible(true)
-		return
-	_set_card_ui_visible(false)
-	bb_line = bb_line.substr(34)
-	var r: RichTextLabel = $Mobs_BG/TextDisplay
-	r.visible = true
-	r.clear()
-	r.parse_bbcode("Objects here: " + bb_line)
 
 
 func apply_gmcp(topic: String, data: Variant, gmcp_state: Dictionary) -> void:
@@ -76,10 +58,11 @@ func _ensure_card_ui() -> void:
 	_card_scroll.add_child(_card_list)
 
 
-func _set_card_ui_visible(visible: bool) -> void:
+func _set_card_ui_visible(card_visible: bool) -> void:
 	_ensure_card_ui()
-	_card_scroll.visible = visible
-	$Mobs_BG/TextDisplay.visible = not visible
+	_card_scroll.visible = card_visible
+	if has_node("Mobs_BG/TextDisplay"):
+		$Mobs_BG/TextDisplay.visible = false
 
 
 func _render_object_cards(contents: Dictionary) -> void:
@@ -331,60 +314,37 @@ func _object_kind_label(object: Dictionary) -> String:
 func _object_icon_path(object: Dictionary) -> String:
 	match _object_kind(object):
 		OBJECT_KIND_ITEM:
-			return _item_icon_path(object)
+			return IconResolver.item_icon_path(object)
 		OBJECT_KIND_CONTAINER:
-			return DEFAULT_ITEM_ICON_PATH
+			return IconResolver.DEFAULT_ITEM_ICON_PATH
 		OBJECT_KIND_NPC, OBJECT_KIND_PLAYER:
-			return _mob_icon_path(object)
+			return IconResolver.mob_icon_path(object)
 		_:
-			return DEFAULT_ITEM_ICON_PATH
+			return IconResolver.DEFAULT_ITEM_ICON_PATH
 
 
 func _item_icon_path(item: Dictionary) -> String:
-	var spec_id: String = _item_spec_id(str(item.get("id", "")))
-	if spec_id == "":
-		return DEFAULT_ITEM_ICON_PATH
-	var path: String = "%s/%s.png" % [ITEM_ICON_BY_ID_DIR, spec_id]
-	return path if _icon_file_exists(path) else DEFAULT_ITEM_ICON_PATH
+	return IconResolver.item_icon_path(item)
 
 
 func _mob_icon_path(object: Dictionary) -> String:
-	var slug: String = _name_slug(str(object.get("name", "")))
-	if slug == "":
-		return _default_mob_icon_path()
-	var path: String = "%s/%s.png" % [MOB_ICON_BY_NAME_DIR, slug]
-	return path if _icon_file_exists(path) else _default_mob_icon_path()
+	return IconResolver.mob_icon_path(object)
 
 
 func _default_mob_icon_path() -> String:
-	return DEFAULT_MOB_ICON_PATH if _icon_file_exists(DEFAULT_MOB_ICON_PATH) else DEFAULT_ITEM_ICON_PATH
+	return IconResolver.mob_icon_path("")
 
 
 func _item_spec_id(instance_id: String) -> String:
-	var value: String = instance_id.strip_edges()
-	if value.begins_with("!"):
-		value = value.substr(1)
-	var colon_index: int = value.find(":")
-	if colon_index != -1:
-		value = value.substr(0, colon_index)
-	return value if value.is_valid_int() else ""
+	return IconResolver.item_spec_id(instance_id)
 
 
-func _name_slug(name: String) -> String:
-	var slug: String = ""
-	for index: int in range(name.length()):
-		var character: String = name.substr(index, 1).to_lower()
-		if character >= "a" and character <= "z":
-			slug += character
-		elif character >= "0" and character <= "9":
-			slug += character
-		elif slug != "" and not slug.ends_with("_"):
-			slug += "_"
-	return slug.trim_suffix("_")
+func _name_slug(mob_name: String) -> String:
+	return IconResolver.name_slug(mob_name)
 
 
 func _icon_file_exists(path: String) -> bool:
-	return path != "" and (FileAccess.file_exists(path) or ResourceLoader.exists(path))
+	return IconResolver.icon_file_exists(path)
 
 
 func _string_array(values: Variant) -> Array[String]:

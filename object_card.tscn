@@ -47,7 +47,7 @@ clip_text = true
 [node name="TagLabel" type="Label" parent="Layout/Content/TextBox" unique_id=675008658]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_object_card")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "tags"
 clip_text = true
 

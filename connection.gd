@@ -88,7 +88,7 @@ func _process_packets() -> void:
 	while socket.get_available_packet_count() > 0:
 		var data_received: String = socket.get_packet().get_string_from_utf8()
 		if data_received != "":
-			var unix_now: int = Time.get_unix_time_from_system()
+			var unix_now: int = int(Time.get_unix_time_from_system())
 			status.text = "Data received: " + str(unix_now)
 			_parse_and_emit(data_received)
 		else:
@@ -172,7 +172,8 @@ func _closed_status_text() -> String:
 func disconnect_from_server() -> void:
 	_user_disconnected = true
 	_reconnect_countdown = 0.0
-	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+	var state: WebSocketPeer.State = socket.get_ready_state()
+	if state == WebSocketPeer.STATE_OPEN or state == WebSocketPeer.STATE_CONNECTING:
 		socket.close()
 	_pending_messages.clear()
 	_was_open = false
@@ -419,7 +420,11 @@ func _send_open_message(cmd: String) -> void:
 
 
 func _on_connect_button_pressed() -> void:
-	if is_open() or is_connecting():
+	if is_connecting():
+		status.text = "Already connecting to: " + websocket_url
+		_update_connect_button()
+		return
+	if is_open():
 		disconnect_from_server()
 	else:
 		connect_to_server()
@@ -434,7 +439,7 @@ func _update_connect_button() -> void:
 		connect_button.visible = false
 	elif is_connecting():
 		connect_button.text = "Connecting"
-		connect_button.disabled = false
+		connect_button.disabled = true
 		connect_button.visible = true
 	else:
 		connect_button.text = "Connect"

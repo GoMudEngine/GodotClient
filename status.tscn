@@ -90,7 +90,7 @@ size_flags_vertical = 4
 theme_override_constants/separation = 2
 
 [node name="CharacterIcon" type="TextureRect" parent="Status_BG/StatusLayout/CharacterInfo" unique_id=1523285227]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_vertical = 4
 expand_mode = 1
@@ -100,7 +100,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.95, 0.78, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 15
 text = "Name"
 horizontal_alignment = 1
 
@@ -143,7 +143,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.72, 0.72, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "?/?"
 
 [node name="SPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1419355089]
@@ -159,7 +159,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58, 0.82, 1, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "?/?"
 
 [node name="GoldIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=871566382]
@@ -175,7 +175,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.88, 0.42, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="XPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=2068677917]
@@ -191,7 +191,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 1, 0.52, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "0/0"
 
 [node name="MobKIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=1073239329]
@@ -207,7 +207,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(0.82, 0.88, 0.92, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="PvPIcon" type="TextureRect" parent="Status_BG/StatusLayout/StatsSection/StatsGrid" unique_id=103596898]
@@ -223,7 +223,7 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.72, 0.42, 1)
 theme_override_fonts/font = ExtResource("2_b8nkn")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "0"
 
 [node name="AffectsRow" type="HBoxContainer" parent="Status_BG/StatusLayout/StatsSection" unique_id=1776008925]

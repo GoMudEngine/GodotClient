@@ -1,10 +1,5 @@
+class_name StatusPanel
 extends Node2D
-
-const PLAYER_PORTRAIT_DIR: String = "res://assets/player_portraits/by_race_class"
-const STATUS_CHARACTER_ICON_PATH: String = "res://assets/ui/status_icons/status.png"
-const PROFESSION_RANK_PREFIXES: Array[String] = [
-	"novice", "apprentice", "journeyman", "adept", "expert", "master", "grandmaster",
-]
 
 var _status_char_icon: TextureRect = null
 var _status_char_name: Label = null
@@ -32,12 +27,13 @@ func _bind_scene_ui() -> bool:
 	var layout: Node = $Status_BG.get_node_or_null("StatusLayout")
 	if layout == null:
 		return false
-	$Status_BG/TextDisplay.visible = false
+	var legacy_display: Node = $Status_BG.get_node_or_null("TextDisplay")
+	if legacy_display != null:
+		legacy_display.visible = false
 	var icon_node: Node = layout.get_node_or_null("CharacterInfo/CharacterIcon")
 	if icon_node is TextureRect:
 		_status_char_icon = icon_node as TextureRect
-		if ResourceLoader.exists(STATUS_CHARACTER_ICON_PATH):
-			_status_char_icon.texture = load(STATUS_CHARACTER_ICON_PATH) as Texture2D
+		_status_char_icon.texture = IconResolver.load_texture(IconResolver.STATUS_CHARACTER_ICON_PATH)
 	var name_node: Node = layout.get_node_or_null("CharacterInfo/CharacterName")
 	if name_node is Label:
 		_status_char_name = name_node as Label
@@ -64,7 +60,9 @@ func _get_label(parent: Node, node_name: String) -> Label:
 
 
 func _build_dynamic_ui() -> void:
-	$Status_BG/TextDisplay.visible = false
+	var legacy_display: Node = $Status_BG.get_node_or_null("TextDisplay")
+	if legacy_display != null:
+		legacy_display.visible = false
 	var bg: Panel = $Status_BG
 	var hbox: HBoxContainer = HBoxContainer.new()
 	hbox.name = "StatusLayout"
@@ -154,15 +152,4 @@ func apply_gmcp(topic: String, data: Variant, gmcp_state: Dictionary) -> void:
 
 
 func _resolve_portrait_texture(info: Dictionary) -> Texture2D:
-	var race: String = str(info.get("race", "")).to_lower().strip_edges()
-	var job: String = str(info.get("class", "")).to_lower().strip_edges()
-	for prefix: String in PROFESSION_RANK_PREFIXES:
-		if job.begins_with(prefix + " "):
-			job = job.substr(prefix.length() + 1).strip_edges()
-	if race != "" and job != "":
-		var path: String = "%s/%s_%s.png" % [PLAYER_PORTRAIT_DIR, race, job]
-		if ResourceLoader.exists(path):
-			return load(path) as Texture2D
-	if ResourceLoader.exists(STATUS_CHARACTER_ICON_PATH):
-		return load(STATUS_CHARACTER_ICON_PATH) as Texture2D
-	return null
+	return IconResolver.status_character_texture(info)

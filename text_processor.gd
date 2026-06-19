@@ -1,4 +1,4 @@
-class_name TextProcessor
+﻿class_name TextProcessor
 extends Node2D
 
 signal bb_data(text: String)
@@ -12,8 +12,6 @@ signal npc_look_description(data: Dictionary)
 const AnsiParser := preload("res://scripts/text/ansi_parser.gd")
 const MudLayoutDetector := preload("res://scripts/text/mud_layout_detector.gd")
 
-const _LEFT_CHARS  := {"╔": true, "║": true, "╚": true}
-const _RIGHT_CHARS := {"╗": true, "║": true, "╝": true}
 
 var _in_map := false
 var _cur_map: Array = []
@@ -45,163 +43,17 @@ func reset_session(clear_display: bool = true) -> void:
 	if clear_display and has_node("TextDisplay"):
 		$TextDisplay.clear()
 
-func _update_lines(input: String) -> void:
+func update_lines(input: String) -> void:
 	var parsed_data: Array[Dictionary] = parse_ansi_colored_text(input)
 	_data_to_bb(parsed_data)
 
 func _update_one_line(input: String) -> void:
 	$TextDisplay.append_text("\n Sent: " + input + "\n")
 	
-# ANSI 8-bit color mapping (you can customize this table)
-const ANSI_COLORS := {
-	"0": "#AAAAAA",  # reset / default gray
-
-	# Standard colors
-	"30": "#000000",  # black
-	"31": "#800000",  # red
-	"32": "#008000",  # green
-	"33": "#808000",  # yellow
-	"34": "#000080",  # blue
-	"35": "#800080",  # magenta
-	"36": "#008080",  # cyan
-	"37": "#C0C0C0",  # white
-
-	# Bright colors (90–97)
-	"90": "#808080",  # bright black (gray)
-	"91": "#FF0000",  # bright red
-	"92": "#00FF00",  # bright green
-	"93": "#FFFF00",  # bright yellow
-	"94": "#0000FF",  # bright blue
-	"95": "#FF00FF",  # bright magenta
-	"96": "#00FFFF",  # bright cyan
-	"97": "#FFFFFF",  # bright white
-
-	# Common composite styles
-	"1;30": "#555555",  # bold black
-	"1;31": "#FF5555",
-	"1;32": "#55FF55",
-	"1;33": "#FFFF55",
-	"1;34": "#5555FF",
-	"1;35": "#FF55FF",
-	"1;36": "#55FFFF",
-	"1;37": "#FFFFFF",
-
-	# Other useful combos
-	"1;90": "#AAAAAA",
-	"1;91": "#FF8888",
-	"1;92": "#88FF88",
-	"1;93": "#FFFF88",
-	"1;94": "#8888FF",
-	"1;95": "#FF88FF",
-	"1;96": "#88FFFF",
-	"1;97": "#FFFFFF"
-}
-
-func _xterm256_to_hex(idx: int) -> String:
-	idx = clamp(idx, 0, 255)
-	var base16 := [
-		"#000000","#800000","#008000","#808000",
-		"#000080","#800080","#008080","#C0C0C0",
-		"#808080","#FF0000","#00FF00","#FFFF00",
-		"#0000FF","#FF00FF","#00FFFF","#FFFFFF"
-	]
-	if idx < 16:
-		return base16[idx]
-	if idx <= 231:
-		var n := idx - 16
-		var steps := PackedInt32Array([0,95,135,175,215,255])
-		var r = steps[n / 36]
-		var g = steps[(n / 6) % 6]
-		var b = steps[n % 6]
-		return "#%02X%02X%02X" % [r, g, b]
-	var v = clamp(8 + 10 * (idx - 232), 0, 255)  # grayscale 232..255
-	return "#%02X%02X%02X" % [v, v, v]
-	
-func _resolve_fg_from_codes(code_str: String, fallback: String) -> String:
-	# Exact table hit first (handles common "1;31" etc.)
-	if ANSI_COLORS.has(code_str):
-		return ANSI_COLORS[code_str]
-
-	var parts := code_str.split(";")
-	if parts.is_empty():
-		return ""
-
-	var fg := fallback
-	var changed := false
-	var i := 0
-	while i < parts.size():
-		var c := int(parts[i])
-
-		# 16-color sets
-		if c >= 30 and c <= 37:
-			fg = _xterm256_to_hex(c - 30); changed = true
-		elif c >= 90 and c <= 97:
-			fg = _xterm256_to_hex(8 + (c - 90)); changed = true
-
-		# 256-color or truecolor foreground
-		elif c == 38 and i + 1 < parts.size():
-			var mode := int(parts[i + 1])
-			if mode == 5 and i + 2 < parts.size():                 # 38;5;n
-				fg = _xterm256_to_hex(int(parts[i + 2])); changed = true; i += 2
-			elif mode == 2 and i + 4 < parts.size():               # 38;2;r;g;b
-				var r = clamp(int(parts[i + 2]), 0, 255)
-				var g = clamp(int(parts[i + 3]), 0, 255)
-				var b = clamp(int(parts[i + 4]), 0, 255)
-				fg = "#%02X%02X%02X" % [r, g, b]; changed = true; i += 4
-			# else ignore malformed
-
-		# we ignore backgrounds: 40–47 / 100–107 / 48;*  (not supported in RichTextLabel)
-		i += 1
-
-	return fg if changed else ""
 	
 func parse_ansi_colored_text(input: String) -> Array[Dictionary]:
 	return _ansi_parser.parse(input)
-	var result: Array[Dictionary] = []
-	var current_color = ANSI_COLORS.get("0", "#AAAAAA")
 
-	var s := input.replace("\r","")   # avoid carriage-return oddities
-	var i := 0
-	var last := 0
-	while i < s.length():
-		var ch := s[i]
-		# ESC [
-		if ch == "\u001b" and i + 1 < s.length() and s[i + 1] == "[":
-			# flush plain text up to ESC
-			if i > last:
-				result.append({"text": s.substr(last, i - last), "color": current_color})
-
-			# find CSI final byte (@..~). If it's 'm' → SGR; else ignore
-			var j := i + 2
-			while j < s.length():
-				var fin := s[j]
-				if fin >= "@" and fin <= "~":
-					break
-				j += 1
-			if j >= s.length():
-				break
-
-			var final_char := s[j]
-			var body := s.substr(i + 2, j - (i + 2))  # e.g. "1;38;5;214" or "2K" body will be "2K"? no—final is 'K'
-			if final_char == "m":
-				var new_color := _resolve_fg_from_codes(body, current_color)
-				if new_color != "":
-					current_color = new_color
-				elif body == "" or body == "0":
-					current_color = ANSI_COLORS.get("0", "#AAAAAA")
-			# else: cursor control/erase/etc → ignore (no output)
-
-			i = j + 1
-			last = i
-			continue
-
-		i += 1
-
-	# tail
-	if last < s.length():
-		result.append({"text": s.substr(last), "color": current_color})
-
-	return result
 	
 func _data_to_bb(data: Array) -> void:
 	var out := ""
@@ -355,45 +207,38 @@ func _process_one_bb_line(bb_chunk: String) -> void:
 		
 		var l0_prefix_100 = _visible_prefix(descs[0], 100)
 		var l1_prefix_100 = _visible_prefix(descs[1], 100)
-		var l2_prefix_100 = _visible_prefix(descs[2], 100)
+		var _l2_prefix_100 = _visible_prefix(descs[2], 100)
 		#print("------------------------------")
 		#print("L0 Prefix: ", l0_prefix_100)
 		#print("L1 Prefix: ", l1_prefix_100)
 		#print("L2 Prefix: ", l2_prefix_100)
 		#print("------------------------------")
 		
-		if _visible_prefix(l1_prefix_100, 4) == ".: (":
+		if l1_prefix_100.begins_with(".: ("):
 			# location name
 			location_name.emit(bb_chunk)
 			mobs_text.emit("")
 			$TextDisplay.append_text(bb_chunk)
 		
-		elif l2_prefix_100 == "┌─ .:Info ──────────────────────┐ ┌─ .:Attributes ───────────────────────────┐":
-			# status table
+		elif text.contains("Info") and text.contains("Attributes"):
+			# status table legacy route; GMCP status is preferred.
 			container_request.emit(bb_chunk, "status")
 			_backpack_prohibit = true
 			
-		elif l0_prefix_100 == "┌─ .:Equipment ──────────────────────────────────────────────────────────────┐":
-			# backpack
+		elif l0_prefix_100.contains("Equipment"):
+			# equipment/backpack legacy route; GMCP is preferred.
 			if not _backpack_prohibit:
 				container_request.emit(bb_chunk, "equipment")
 			else:
 				_backpack_prohibit = false
 		
-		elif l1_prefix_100 == "┌─ .:Skills ─────────────────────────────────────────────────────────────────┐":
-			# skills table
+		elif text.contains("Skills"):
 			container_request.emit(bb_chunk, "skills")
 		
-		elif l0_prefix_100 == ".: Spells":
-			# skills table
+		elif l0_prefix_100.contains(".: Spells") or text.contains(".: Spells"):
 			container_request.emit(bb_chunk, "spells")
 				
-		elif l0_prefix_100 == "┌─────────────────────────────────────────────────────────────────────────┐":
-			# sunrise and sunset
-			$TextDisplay.append_text(bb_chunk)
-		
-		elif l2_prefix_100 == "│ Name   │ Level │ Alignment │ Profession │ Online │ Role │":
-			# player table
+		elif text.contains("Name") and text.contains("Level") and text.contains("Alignment") and text.contains("Profession"):
 			$TextDisplay.append_text(bb_chunk)
 		
 		elif l1_prefix_100 == ".: Pets by Rodric":
@@ -412,87 +257,26 @@ func _line_map_slice_indices(bb_line: String) -> Array:
 
 func _has_bottom_ignoring_tags(bb_line: String) -> bool:
 	return _layout_detector.has_bottom_ignoring_tags(bb_line)
-	var in_tag := false
-	for i in range(bb_line.length()):
-		var ch := bb_line.substr(i, 1)
-		if ch == "[":
-			in_tag = true
-			continue
-		elif ch == "]":
-			in_tag = false
-			continue
-		if in_tag:
-			continue
-		if ch == "╝":
-			return true
-	return false
 
 # Parse opening color tags active BEFORE column `upto`
 func _color_prefix_before_index(line: String, upto: int) -> Dictionary:
 	return _layout_detector.color_prefix_before_index(line, upto)
-	var stack: Array = []   # store exact opening tags like "[color=#808080]"
-	var in_tag := false
-	var tag := ""
-	for i in range(min(upto, line.length())):
-		var ch := line.substr(i, 1)
-		if not in_tag:
-			if ch == "[":
-				in_tag = true
-				tag = ""
-			continue
-		if ch == "]":
-			var t := tag.strip_edges()
-			if t == "/color":
-				if stack.size() > 0: stack.pop_back()
-			elif t.begins_with("color"):
-				stack.append("[" + t + "]")
-			in_tag = false
-		else:
-			tag += ch
-	var prefix := ""
-	for t in stack:
-		prefix += t
-	return {"prefix": prefix, "stack": stack}
 
 # Update color stack by scanning BBCode in `text`
 func _update_color_stack_with_text(stack: Array, text: String) -> void:
 	_layout_detector.update_color_stack_with_text(stack, text)
-	return
-	var in_tag := false
-	var tag := ""
-	for i in range(text.length()):
-		var ch := text.substr(i, 1)
-		if not in_tag:
-			if ch == "[":
-				in_tag = true
-				tag = ""
-			continue
-		if ch == "]":
-			var t := tag.strip_edges()
-			if t == "/color":
-				if stack.size() > 0: stack.pop_back()
-			elif t.begins_with("color"):
-				stack.append("[" + t + "]")
-			in_tag = false
-		else:
-			tag += ch
 
 func _closing_for_stack(stack: Array) -> String:
 	return _layout_detector.closing_for_stack(stack)
-	var s := ""
-	for i in range(stack.size() - 1, -1, -1):
-		if String(stack[i]).begins_with("[color"):
-			s += "[/color]"
-	return s
 
 
-func _is_npc_look_description(descs: Array, joined_text: String) -> bool:
-	var visible: String = _strip_bbcode(joined_text)
-	if not visible.to_lower().contains("description"):
+func _is_npc_look_description(_descs: Array, joined_text: String) -> bool:
+	var npc_look_visible: String = _strip_bbcode(joined_text)
+	if not npc_look_visible.to_lower().contains("description"):
 		return false
 	var health_re := RegEx.new()
 	health_re.compile("(?i)\\b.+\\s+is\\s+in\\s+.+\\s+health\\b")
-	return health_re.search(visible) != null
+	return health_re.search(npc_look_visible) != null
 
 
 func _npc_look_description_data(descs: Array, joined_text: String) -> Dictionary:
@@ -501,18 +285,18 @@ func _npc_look_description_data(descs: Array, joined_text: String) -> Dictionary
 		var clean_line: String = _clean_npc_look_line(str(desc))
 		if clean_line != "" and not _is_decorative_box_line(clean_line):
 			visible_lines.append(clean_line)
-	var visible: String = _normalize_spaces(" ".join(visible_lines))
-	var description: String = _clean_npc_description_text(visible)
-	var name: String = _extract_npc_name_from_description(visible)
+	var visible_text: String = _normalize_spaces(" ".join(visible_lines))
+	var description: String = _clean_npc_description_text(visible_text)
+	var npc_name: String = _extract_npc_name_from_description(visible_text)
 	return {
-		"name": name,
+		"name": npc_name,
 		"description": description,
 		"raw": joined_text,
 	}
 
 
-func _clean_npc_description_text(visible: String) -> String:
-	var text: String = _remove_mud_box_art(visible)
+func _clean_npc_description_text(visible_text: String) -> String:
+	var text: String = _remove_mud_box_art(visible_text)
 	text = text.replace("Description", " ")
 	text = text.replace(".:Description", " ")
 	text = text.replace(".:", " ")
@@ -522,10 +306,10 @@ func _clean_npc_description_text(visible: String) -> String:
 	return _normalize_spaces(text)
 
 
-func _extract_npc_name_from_description(visible: String) -> String:
+func _extract_npc_name_from_description(visible_text: String) -> String:
 	var health_re := RegEx.new()
 	health_re.compile("(?i)\\b([A-Za-z][A-Za-z0-9 '\\-]*)\\s+is\\s+in\\s+[^.\\n]+\\s+health\\b")
-	var match: RegExMatch = health_re.search(visible)
+	var match: RegExMatch = health_re.search(visible_text)
 	if match == null:
 		return ""
 	return match.get_string(1).strip_edges()
@@ -620,8 +404,8 @@ func _clean_general_text_for_display(bb_chunk: String) -> String:
 
 
 func _is_probable_map_slice(slice: String) -> bool:
-	var visible: String = _strip_bbcode(slice)
-	var clean_slice: String = _remove_mud_box_art(visible)
+	var stripped: String = _strip_bbcode(slice)
+	var clean_slice: String = _remove_mud_box_art(stripped)
 	var normalized: String = _normalize_spaces(clean_slice)
 	if normalized == "":
 		return true

@@ -1,12 +1,12 @@
 extends Node2D
 
-@onready var connection: Variant = $Connection
-@onready var text_processor: Variant = $TextProcessor
-@onready var command_input: Variant = $Input
-@onready var map_panel: Variant = $Map
-@onready var status_panel: Variant = $Status
-@onready var mobs_panel: Variant = $Mobs
-@onready var containers_panel: Variant = $Containers
+@onready var connection: GameConnection = $Connection
+@onready var text_processor: TextProcessor = $TextProcessor
+@onready var command_input: CommandInput = $Input
+@onready var map_panel: MapPanel = $Map
+@onready var status_panel: StatusPanel = $Status
+@onready var mobs_panel: MobsPanel = $Mobs
+@onready var containers_panel: ContainersController = $Containers
 
 var gmcp_state: Dictionary = {}
 var _gmcp_ready: bool = false
@@ -21,10 +21,10 @@ func _ready() -> void:
 
 
 func _on_text_received(data: String) -> void:
-	text_processor._update_lines(data)
+	text_processor.update_lines(data)
 
 
-func _on_sound_received(data: Dictionary) -> void:
+func _on_sound_received(_data: Dictionary) -> void:
 	pass
 
 
@@ -56,18 +56,17 @@ func _apply_gmcp_payload(topic: String, data: Variant) -> void:
 
 
 func _dispatch_gmcp_payload(topic: String, data: Variant) -> void:
-	for panel: Variant in [map_panel, status_panel, mobs_panel, containers_panel]:
-		if panel != null and panel.has_method("apply_gmcp"):
-			panel.apply_gmcp(topic, data, gmcp_state)
+	map_panel.apply_gmcp(topic, data, gmcp_state)
+	status_panel.apply_gmcp(topic, data, gmcp_state)
+	mobs_panel.apply_gmcp(topic, data, gmcp_state)
+	containers_panel.apply_gmcp(topic, data, gmcp_state)
 
 
 func _on_connection_connected() -> void:
 	gmcp_state.clear()
 	_gmcp_ready = false
-	if text_processor != null and text_processor.has_method("reset_session"):
-		text_processor.reset_session(true)
-	if containers_panel != null and containers_panel.has_method("clear_pending_npc_look"):
-		containers_panel.clear_pending_npc_look()
+	text_processor.reset_session(true)
+	containers_panel.clear_pending_npc_look()
 
 
 func _request_gmcp_snapshot() -> void:
@@ -76,7 +75,7 @@ func _request_gmcp_snapshot() -> void:
 
 
 func _send_gmcp_if_connected(topic: String, additional: String = "") -> void:
-	if connection != null and connection.has_method("is_open") and connection.is_open():
+	if connection.is_open():
 		connection.send_gmcp_request(topic, additional)
 
 
@@ -84,8 +83,7 @@ func _on_cmd_text_submitted(data: String) -> void:
 	if _handle_local_command(data):
 		return
 	if not _prepare_look_context(data):
-		if containers_panel != null and containers_panel.has_method("clear_pending_npc_look"):
-			containers_panel.clear_pending_npc_look()
+		containers_panel.clear_pending_npc_look()
 	connection.send_message(data)
 
 
@@ -115,11 +113,15 @@ func _handle_local_command(data: String) -> bool:
 			return true
 		"/gmcp":
 			if not _gmcp_ready:
-				connection.show_status_message("Login first. GMCP is enabled after the server sends character data.")
+				connection.show_status_message(
+					"Login first. GMCP is enabled after the server sends character data."
+				)
 				return true
 			if parts.size() > 1:
 				var topic: String = parts[1]
-				var additional: String = command.substr(command.find(topic) + topic.length()).strip_edges()
+				var additional: String = (
+					command.substr(command.find(topic) + topic.length()).strip_edges()
+				)
 				connection.send_gmcp_request(topic, additional)
 			return true
 		"/ui":
@@ -133,7 +135,9 @@ func _handle_local_command(data: String) -> bool:
 func _handle_gmcp_command(command: String, force_local: bool = false) -> bool:
 	if not _gmcp_ready:
 		if force_local:
-			connection.show_status_message("Login first. GMCP windows are available after the server sends character data.")
+			connection.show_status_message(
+				"Login first. GMCP windows are available after the server sends character data."
+			)
 			return true
 		return false
 
@@ -180,10 +184,8 @@ func _prepare_look_context(command: String) -> bool:
 	if target == "":
 		return false
 	var context: Dictionary = {"target": target}
-	if mobs_panel != null and mobs_panel.has_method("object_for_command_target"):
-		var object: Variant = mobs_panel.object_for_command_target(target)
-		if object is Dictionary:
-			context["object"] = object
-	if containers_panel != null and containers_panel.has_method("set_pending_npc_look_context"):
-		containers_panel.set_pending_npc_look_context(context)
+	var object: Variant = mobs_panel.object_for_command_target(target)
+	if object is Dictionary:
+		context["object"] = object
+	containers_panel.set_pending_npc_look_context(context)
 	return true

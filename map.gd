@@ -1,3 +1,4 @@
+class_name MapPanel
 extends Node2D
 
 const MAP_RADIUS: int = 2
@@ -8,6 +9,7 @@ const TILE_MATRIX_SIZE: int = MAP_RADIUS * 4 + 1
 const TILE_CELL_SIZE: Vector2 = Vector2(24.0, 18.0)
 const DEFAULT_MAP_HISTORY_PATH: String = "user://map_history.json"
 const TILE_FONT: FontVariation = preload("res://fonts/kc_fonts_regular.tres")
+const MAP_SAVE_DEBOUNCE_MS: int = 5000
 
 var _has_gmcp_room: bool = false
 var _current_coord: Vector3i = Vector3i.ZERO
@@ -17,40 +19,25 @@ var _tile_grid: GridContainer = null
 var _tile_cells: Array[Label] = []
 var _map_history_loaded: bool = false
 var _map_history_path: String = DEFAULT_MAP_HISTORY_PATH
+var _map_dirty: bool = false
+var _last_save_time_ms: int = 0
 
 
 func _ready() -> void:
-	var text_processor: Variant = $"../TextProcessor"
-	text_processor.bb_data.connect(_on_bb_data_received)
-	text_processor.exits_text.connect(_on_exits_text_received)
-	text_processor.location_name.connect(_on_location_name_received)
-	$Map_BG/TextDisplay.bbcode_enabled = true
 	$Map_BG/TextDisplay_Location_Name.bbcode_enabled = true
 	$Map_BG/TextDisplay_Exits.bbcode_enabled = true
 	_load_map_history()
 	_ensure_tile_map_view()
 
 
-func _on_bb_data_received(bb_line: String) -> void:
-	if _has_gmcp_room:
+func _process(_delta: float) -> void:
+	if not _map_dirty:
 		return
-	if _tile_grid != null:
-		_tile_grid.visible = false
-	$Map_BG/TextDisplay.visible = true
-	$Map_BG/TextDisplay.clear()
-	$Map_BG/TextDisplay.append_text(bb_line)
-
-
-func _on_exits_text_received(bb_line: String) -> void:
-	if _has_gmcp_room:
-		return
-	$Map_BG/TextDisplay_Exits.text = organize_exits(bb_line)
-
-
-func _on_location_name_received(bb_line: String) -> void:
-	if _has_gmcp_room:
-		return
-	$Map_BG/TextDisplay_Location_Name.text = organize_location_name(bb_line)
+	var now: int = Time.get_ticks_msec()
+	if now - _last_save_time_ms >= MAP_SAVE_DEBOUNCE_MS:
+		_map_dirty = false
+		_last_save_time_ms = now
+		_save_map_history()
 
 
 func apply_gmcp(topic: String, data: Variant, _gmcp_state: Dictionary) -> void:
@@ -63,15 +50,16 @@ func apply_gmcp(topic: String, data: Variant, _gmcp_state: Dictionary) -> void:
 	_current_coord = _parse_room_coords(str(room.get("coords", "")), _current_area)
 	_store_room(room)
 	_store_exit_placeholders(room)
-	_save_map_history()
+	_map_dirty = true
 	_render_gmcp_room(room)
 
 
 func _render_gmcp_room(room: Dictionary) -> void:
 	$Map_BG/TextDisplay_Location_Name.text = _format_room_title(room)
 	$Map_BG/TextDisplay_Exits.text = _format_gmcp_exits(_room_exits(room))
-	$Map_BG/TextDisplay.clear()
-	$Map_BG/TextDisplay.visible = false
+	if has_node("Map_BG/TextDisplay"):
+		$Map_BG/TextDisplay.clear()
+		$Map_BG/TextDisplay.visible = false
 	_render_gmcp_tile_map()
 
 
